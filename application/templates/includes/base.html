@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Gender Statistical Portal" />
+    <meta name="keywords" content="Gender Statistical Portal" />
+    <meta name="author" content="4Him" />
+    <title>
+        Gender Statistical Portal
+    </title>
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css">
+    <!-- Google Fonts -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap">
+    <!-- Bootstrap core CSS -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.0/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Material Design Bootstrap -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.19.1/css/mdb.min.css" rel="stylesheet">
+
+    <!-- UIkit CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/uikit@3.5.7/dist/css/uikit.min.css" />
+
+    <!-- UIkit JS -->
+    <script src="https://cdn.jsdelivr.net/npm/uikit@3.5.7/dist/js/uikit.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/uikit@3.5.7/dist/js/uikit-icons.min.js"></script>
+
+    <!-- Links for Chart.js Charts-->
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@2.9.3/dist/Chart.min.js"></script>
+
+    <!-- Links to the CSS custom files -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/dist/main.css') }}">
+
+    <style>
+        a,
+        a:hover {
+            color: #000;
+            text-decoration: none;
+        }
+
+        li {
+            display: inline-block;
+            position: relative;
+            padding-bottom: 3px;
+            margin-right: 10px;
+        }
+
+        li:last-child {
+            margin-right: 0;
+        }
+
+        li:after {
+            content: '';
+            display: block;
+            margin: auto;
+            height: 3px;
+            width: 0px;
+            background: transparent;
+            transition: width .5s ease, background-color .5s ease;
+        }
+
+        li:hover:after {
+            width: 100%;
+            background: blue;
+        }
+    </style>
+
+
+</head>
+
+<body class="uk-height-large">
+    <header>
+        <div class="uk-card uk-card-default uk-card-body" style="z-index: 980; padding: 0px;"
+            uk-sticky="bottom: #offset">
+            <div style="border-bottom: 1px solid blue;">
+                <img src="{{ url_for('static', filename='./img/ubos_logo.png') }}" class="img-fluid mx-auto d-block"
+                    style="padding-top: 3px; padding-bottom: 3px;" alt="Responsive image">
+            </div>
+            <div class="topnav">
+                <ul>
+                    <li><a href="#">HOME</a></li>
+                    <li><a href="#">PAGE</a></li>
+                    <li><a href="#">ABOUT US</a></li>
+                    <li><a href="#">CONTACT US</a></li>
+                </ul>
+            </div>
+    </header>
+    <main">
+        <div>
+            {% block body %}{% endblock %}
+        </div>
+        </main>
+        <footer>
+            <!-- Footer -->
+            <footer class="page-footer font-small unique-color-dark">
+
+                <div style="background-color: #3672C0;">
+                    <div class="container">
+
+                        <!-- Grid row-->
+                        <div class="row py-4 d-flex align-items-center">
+
+                            <!-- Grid column -->
+                            <div class="col-md-6 col-lg-5 text-center text-md-left mb-4 mb-md-0">
+                                <h6 class="mb-0 uk-text-light uk-text-small text-white">Get connected with us on social
+                                    networks!</h6>
+                            </div>
+                            <!-- Grid column -->
+
+                            <!-- Grid column -->
+                            <div class="col-md-6 col-lg-7 text-center text-md-right">
+
+                                <ul class="uk-iconnav">
+                                    <li><a href="#" uk-icon="icon: twitter"></a></li>
+                                    <li><a href="#" uk-icon="icon: facebook"></a></li>
+                                    <li><a href="#" uk-icon="icon: instagram"></a></li>
+                                    <li><a href="#" uk-icon="icon: youtube"></a></li>
+                                    <li><a href="#" uk-icon="icon: whatsapp"></a></li>
+                                </ul>
+
+                            </div>
+
+                            <!-- Grid column -->
+
+                        </div>
+                        <!-- Grid row-->
+
+                    </div>
+                </div>
+
+                <!-- Footer Links -->
+                <div class="container text-center text-md-left mt-5">
+
+                    <!-- Grid row -->
+                    <div class="row mt-3">
+
+                        <!-- Grid column -->
+                        <div class="col-md-3 col-lg-4 col-xl-3 mx-auto mb-4">
+
+                            <!-- Content -->
+                            <h6 class="text-uppercase font-weight-bold text-white">Gender Statistical Portal</h6>
+                            <hr class="deep-purple accent-2 mb-4 mt-0 d-inline-block mx-auto" style="width: 60px;">
+                            <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Soluta architecto quae qui nam
+                                aut
+                                cumque autem neque officia omnis reprehenderit? Impedit vitae mollitia perspiciatis
+                                expedita
+                                culpa porro dicta tenetur obcaecati.</p>
+
+                        </div>
+                        <!-- Grid column -->
+
+                        <!-- Grid column -->
+                        <div class="col-md-2 col-lg-2 col-xl-2 mx-auto mb-4">
+
+                            <!-- Links -->
+                            <h6 class="text-uppercase font-weight-bold text-white">Useful Links here</h6>
+                            <hr class="deep-purple accent-2 mb-4 mt-0 d-inline-block mx-auto" style="width: 60px;">
+                            <p>
+                                <a href="#!" class="uk-text-small">UBOS</a>
+                            </p>
+                            <p>
+                                <a href="#!" class="uk-text-small">UN Women</a>
+                            </p>
+                            <p>
+                                <a href="#!" class="uk-text-small">Ministry of Gender - Uganda</a>
+                            </p>
+                            <p>
+                                <a href="#!" class="uk-text-small">World Bank Gender Portal</a>
+                            </p>
+
+                        </div>
+                        <!-- Grid column -->
+
+                        <!-- Grid column -->
+                        <div class="col-md-4 col-lg-3 col-xl-3 mx-auto mb-md-0 mb-4">
+
+                            <!-- Links -->
+                            <h6 class="text-uppercase font-weight-bold text-white">Contact</h6>
+                            <hr class="deep-purple accent-2 mb-4 mt-0 d-inline-block mx-auto" style="width: 60px;">
+                            <p>
+                                <i class="fas fa-home mr-3"></i> Kampala, windsor kamwookya 123, UG
+                            </p>
+                            <p>
+                                <i class="fas fa-envelope mr-3"></i> info@i3c.com
+                            </p>
+                            <p>
+                                <i class="fas fa-phone mr-3"></i> + 256 123456789
+                            </p>
+                            <p>
+                                <i class="fas fa-print mr-3"></i> + 256 123456789
+                            </p>
+
+                        </div>
+                        <div class="col-md-4 col-lg-3 col-xl-3 mx-auto mb-md-0 mb-4">
+                            <a href="" uk-totop style="display: block; text-decoration: none;"> Back to top of page </a>
+                        </div>
+                        <!-- Grid column -->
+
+                    </div>
+                    <!-- Grid row -->
+
+                </div>
+                <!-- Footer Links -->
+
+                <!-- Copyright -->
+                <div class="footer-copyright text-center py-3">© 2020 Copyright:
+                    <a href="#"> 4Him</a>
+                </div>
+                <!-- Copyright -->
+
+            </footer>
+            <!-- Footer -->
+        </footer>
+
+        <!-- JQuery -->
+        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        <!-- Bootstrap tooltips -->
+        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.4/umd/popper.min.js">
+        </script>
+        <!-- Bootstrap core JavaScript -->
+        <script type="text/javascript"
+            src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.0/js/bootstrap.min.js">
+        </script>
+        <!-- MDB core JavaScript -->
+        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.19.1/js/mdb.min.js">
+        </script>
+
+        <!--Custom Javascript for the pages-->
+        <script src="{{ url_for('static', filename='js/sample.js') }}"></script>
+        <script src="{{ url_for('static', filename='js/lib/semantic.min.js') }}"></script>
+</body>
+
+</html>
