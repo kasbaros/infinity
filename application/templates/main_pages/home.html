@@ -1,278 +1,603 @@
-{% extends './includes/base.html' %}
-{% block body %}
+{% extends './includes/base.html' %} {% block body %}
 
 <head>
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/dist/cards.css') }}">
+  <link
+    rel="stylesheet"
+    href="{{ url_for('static', filename='css/dist/cards.css') }}"
+  />
 </head>
 <!--Carousel Wrapper-->
-<div id="carousel-example-1z" class="carousel slide carousel-fade" data-ride="carousel" style="margin-bottom: -60px;">
-    <!--Indicators-->
-    <ol class="carousel-indicators">
-        <li data-target="#carousel-example-1z" data-slide-to="0" class="active"></li>
-        <li data-target="#carousel-example-1z" data-slide-to="1"></li>
-        <li data-target="#carousel-example-1z" data-slide-to="2"></li>
-        <li data-target="#carousel-example-1z" data-slide-to="3"></li>
-        <li data-target="#carousel-example-1z" data-slide-to="4"></li>
-        <li data-target="#carousel-example-1z" data-slide-to="5"></li>
-        <li data-target="#carousel-example-1z" data-slide-to="6"></li>
-        <li data-target="#carousel-example-1z" data-slide-to="7"></li>
-        <li data-target="#carousel-example-1z" data-slide-to="8"></li>
-        <li data-target="#carousel-example-1z" data-slide-to="9"></li>
-    </ol>
-    <!--/.Indicators-->
-    <!--Slides-->
-    <div class="carousel-inner" role="listbox" style="height: 480px;">
-        <!--First slide-->
-        <div class="carousel-item active">
-            <img class="d-block w-100" src="{{ url_for('static', filename='./img/IMG_7806.JPG') }}" alt="First slide">
-        </div>
-        <!--/First slide-->
-        <!--Second slide-->
-        <div class="carousel-item">
-            <img class="d-block w-100" src="{{ url_for('static', filename='./img/IMG_7878.JPG') }}" alt="Second slide">
-        </div>
-        <!--/Second slide-->
-        <!--Third slide-->
-        <div class="carousel-item">
-            <img class="d-block w-100" src="{{ url_for('static', filename='./img/IMG_7893.JPG') }}" alt="Third slide">
-        </div>
-        <!--/Third slide-->
-        <!--fourth slide-->
-        <div class="carousel-item">
-            <img class="d-block w-100" src="{{ url_for('static', filename='./img/IMG_7954.JPG') }}" alt="fourth slide">
-        </div>
-        <!--/fourth slide-->
-        <!--fifth slide-->
-        <div class="carousel-item">
-            <img class="d-block w-100" src="{{ url_for('static', filename='./img/IMG_8022.JPG') }}" alt="fifth slide">
-        </div>
-        <!--/fifth slide-->
-        <!--sixth slide-->
-        <div class="carousel-item">
-            <img class="d-block w-100" src="{{ url_for('static', filename='./img/IMG_8042.JPG') }}" alt="sixth slide">
-        </div>
-        <!--/sixth slide-->
-        <!--seventh slide-->
-        <div class="carousel-item">
-            <img class="d-block w-100" src="{{ url_for('static', filename='./img/IMG_8118.JPG') }}" alt="seventh slide">
-        </div>
-        <!--/seventh slide-->
-        <!--eigth slide-->
-        <div class="carousel-item">
-            <img class="d-block w-100" src="{{ url_for('static', filename='./img/IMG_8128.JPG') }}" alt="eigth slide">
-        </div>
-        <!--/eigth slide-->
-        <!--nineth slide-->
-        <div class="carousel-item">
-            <img class="d-block w-100" src="{{ url_for('static', filename='./img/IMG_7779.JPG') }}" alt="nineth slide">
-        </div>
-        <!--/nineth slide-->
+<div
+  id="carousel-example-1z"
+  class="carousel slide carousel-fade"
+  data-ride="carousel"
+  style="margin-bottom: -60px"
+>
+  <!--Indicators-->
+  <ol class="carousel-indicators">
+    <li
+      data-target="#carousel-example-1z"
+      data-slide-to="0"
+      class="active"
+    ></li>
+    <li data-target="#carousel-example-1z" data-slide-to="1"></li>
+    <li data-target="#carousel-example-1z" data-slide-to="2"></li>
+    <li data-target="#carousel-example-1z" data-slide-to="3"></li>
+    <li data-target="#carousel-example-1z" data-slide-to="4"></li>
+    <li data-target="#carousel-example-1z" data-slide-to="5"></li>
+    <li data-target="#carousel-example-1z" data-slide-to="6"></li>
+    <li data-target="#carousel-example-1z" data-slide-to="7"></li>
+    <li data-target="#carousel-example-1z" data-slide-to="8"></li>
+    <li data-target="#carousel-example-1z" data-slide-to="9"></li>
+  </ol>
+  <!--/.Indicators-->
+  <!--Slides-->
+  <div class="carousel-inner" role="listbox" style="height: 480px">
+    <!--First slide-->
+    <div class="carousel-item active">
+      <img
+        class="d-block w-100"
+        src="{{ url_for('static', filename='./img/IMG_7806.JPG') }}"
+        alt="First slide"
+      />
     </div>
-    <!--/.Slides-->
-    <!--Controls-->
-    <a class="carousel-control-prev" href="#carousel-example-1z" role="button" data-slide="prev">
-        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-        <span class="sr-only">Previous</span>
-    </a>
-    <a class="carousel-control-next" href="#carousel-example-1z" role="button" data-slide="next">
-        <span class="carousel-control-next-icon" aria-hidden="true"></span>
-        <span class="sr-only">Next</span>
-    </a>
-    <!--/.Controls-->
+    <!--/First slide-->
+    <!--Second slide-->
+    <div class="carousel-item">
+      <img
+        class="d-block w-100"
+        src="{{ url_for('static', filename='./img/IMG_7878.JPG') }}"
+        alt="Second slide"
+      />
+    </div>
+    <!--/Second slide-->
+    <!--Third slide-->
+    <div class="carousel-item">
+      <img
+        class="d-block w-100"
+        src="{{ url_for('static', filename='./img/IMG_7893.JPG') }}"
+        alt="Third slide"
+      />
+    </div>
+    <!--/Third slide-->
+    <!--fourth slide-->
+    <div class="carousel-item">
+      <img
+        class="d-block w-100"
+        src="{{ url_for('static', filename='./img/IMG_7954.JPG') }}"
+        alt="fourth slide"
+      />
+    </div>
+    <!--/fourth slide-->
+    <!--fifth slide-->
+    <div class="carousel-item">
+      <img
+        class="d-block w-100"
+        src="{{ url_for('static', filename='./img/IMG_8022.JPG') }}"
+        alt="fifth slide"
+      />
+    </div>
+    <!--/fifth slide-->
+    <!--sixth slide-->
+    <div class="carousel-item">
+      <img
+        class="d-block w-100"
+        src="{{ url_for('static', filename='./img/IMG_8042.JPG') }}"
+        alt="sixth slide"
+      />
+    </div>
+    <!--/sixth slide-->
+    <!--seventh slide-->
+    <div class="carousel-item">
+      <img
+        class="d-block w-100"
+        src="{{ url_for('static', filename='./img/IMG_8118.JPG') }}"
+        alt="seventh slide"
+      />
+    </div>
+    <!--/seventh slide-->
+    <!--eigth slide-->
+    <div class="carousel-item">
+      <img
+        class="d-block w-100"
+        src="{{ url_for('static', filename='./img/IMG_8128.JPG') }}"
+        alt="eigth slide"
+      />
+    </div>
+    <!--/eigth slide-->
+    <!--nineth slide-->
+    <div class="carousel-item">
+      <img
+        class="d-block w-100"
+        src="{{ url_for('static', filename='./img/IMG_7779.JPG') }}"
+        alt="nineth slide"
+      />
+    </div>
+    <!--/nineth slide-->
+  </div>
+  <!--/.Slides-->
+  <!--Controls-->
+  <a
+    class="carousel-control-prev"
+    href="#carousel-example-1z"
+    role="button"
+    data-slide="prev"
+  >
+    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+    <span class="sr-only">Previous</span>
+  </a>
+  <a
+    class="carousel-control-next"
+    href="#carousel-example-1z"
+    role="button"
+    data-slide="next"
+  >
+    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+    <span class="sr-only">Next</span>
+  </a>
+  <!--/.Controls-->
 </div>
 <!--/.Carousel Wrapper-->
-<div class="uk-section mt-5 container">
-    <div>
-        <div class="uk-grid-match uk-child-width-expand@s uk-text-center" uk-grid>
-            <div class="uk-animation-toggle" tabindex="0">
-                <div class="card"
-                    style="height: 150px; background: lightskyblue; box-shadow: 0 13px 17px rgba(0, 0, 0, 0.2);">
-                    <div class="imgBx">
-                        <img src="{{ url_for('static', filename='./img/accountability.jpg')}}" alt="images">
-                    </div>
-                    <div class="details">
-                        <a href="{{ url_for('data') }}" class="text-black">
-                            <h5 class="text-black" style="margin-bottom: -1px; display: inline">Accountability Sector
-                            </h5>
-                        </a>
-                    </div>
-                </div>
+<section>
+  <!-- Testing cards -->
+  <div class="uk-section mt-5 container">
+    <div class="uk-child-width-expand@s uk-text-center" uk-grid>
+      <div>
+        <div class="uk-card uk-card-default uk-card-body" style="padding: 0px">
+          <!-- Card -->
+          <div
+            class="card card-image"
+            style="
+              background-image: url(./static/img/accountability.jpg);
+              background-position: center;
+              background-size: contain;
+              background-repeat: no-repeat;
+            "
+          >
+            <!-- Content -->
+            <div
+              class="text-white text-center d-flex align-items-center rgba-black-strong py-5 px-4"
+            >
+              <div>
+                <a
+                  href="{{ url_for('accountability') }}"
+                  uk-icon="icon: settings; ratio: 1.5;"
+                >
+                  Accountability Sector
+                </a>
+              </div>
             </div>
-            <div class="uk-animation-toggle" tabindex="0">
-                <div class="card"
-                    style="height: 150px; background: lightskyblue; box-shadow: 0 13px 17px rgba(0, 0, 0, 0.2);">
-                    <div class="imgBx">
-                        <img src="{{ url_for('static', filename='./img/agriculture.jpg')}}" alt="images">
-                    </div>
-                    <div class="details">
-                        <a href="{{ url_for('data') }}" class="text-black">
-                            <h5 class="text-black" style="margin-bottom: -1px; display: inline">Agriculture Sector
-                            </h5>
-                        </a>
-                    </div>
-                </div>
-            </div>
-            <div class="uk-animation-toggle" tabindex="0">
-                <div class="card"
-                    style="height: 150px; background: lightskyblue; box-shadow: 0 13px 17px rgba(0, 0, 0, 0.2);">
-                    <div class="imgBx">
-                        <img src="{{ url_for('static', filename='./img/education.jpg')}}" alt=" images">
-                    </div>
-                    <div class="details">
-                        <a href="{{ url_for('data') }}" class="text-black">
-                            <h5 class="text-black" style="margin-bottom: -1px; display: inline">Education Sector
-                            </h5>
-                        </a>
-                    </div>
-                </div>
-            </div>
-            <div class="uk-animation-toggle" tabindex="0">
-                <div class="card"
-                    style="height: 150px; background: lightskyblue; box-shadow: 0 13px 17px rgba(0, 0, 0, 0.2);">
-                    <div class="imgBx">
-                        <img src="{{ url_for('static', filename='./img/mining.png')}}" alt="images">
-                    </div>
-                    <div class="details">
-                        <a href="{{ url_for('data') }}" class="text-black">
-                            <h5 class="text-black" style="margin-bottom: -1px; display: inline">Energy and Mining
-                                Development Sector
-                            </h5>
-                        </a>
-                    </div>
-                </div>
-            </div>
+          </div>
+          <!-- Card -->
         </div>
-    </div>
-    <br>
-    <div>
-        <div class="uk-grid-match uk-child-width-expand@s uk-text-center" uk-grid>
-            <div class="uk-animation-toggle" tabindex="0">
-                <div class="card"
-                    style="height: 150px; background: lightskyblue; box-shadow: 0 13px 17px rgba(0, 0, 0, 0.2);">
-                    <div class="imgBx">
-                        <img src="{{ url_for('static', filename='./img/health.jpg') }}" alt="images">
-                    </div>
-                    <div class="details">
-                        <a href="{{ url_for('data') }}" class="text-black">
-                            <h5 class="text-black" style="margin-bottom: -1px; display: inline">Health Sector
-                            </h5>
-                        </a>
-                    </div>
-                </div>
+      </div>
+      <div>
+        <div class="uk-card uk-card-default uk-card-body" style="padding: 0px">
+          <!-- Card -->
+          <div
+            class="card card-image"
+            style="
+              background-image: url(./static/img/water.png);
+              background-position: center;
+              background-size: contain;
+              background-repeat: no-repeat;
+            "
+          >
+            <!-- Content -->
+            <div
+              class="text-white text-center d-flex align-items-center rgba-black-strong py-5 px-4"
+            >
+              <div>
+                <a
+                  href="{{ url_for('water_and_environment') }}"
+                  uk-icon="icon: settings; ratio: 1.5;"
+                >
+                  Environment and Water Sector
+                </a>
+              </div>
             </div>
-            <div class="uk-animation-toggle" tabindex="0">
-                <div class="card"
-                    style="height: 150px; background: lightskyblue; box-shadow: 0 13px 17px rgba(0, 0, 0, 0.2);">
-                    <div class="imgBx">
-                        <img src="{{ url_for('static', filename='./img/ict.jpg') }}" alt="images">
-                    </div>
-                    <div class="details">
-                        <a href="{{ url_for('data') }}" class="text-black">
-                            <h5 class="text-black" style="margin-bottom: -1px; display: inline">ICT and National
-                                Guidance Sector
-                            </h5>
-                        </a>
-                    </div>
-                </div>
-            </div>
-            <div class="uk-animation-toggle" tabindex="0">
-                <div class="card"
-                    style="height: 150px; background: lightskyblue; box-shadow: 0 13px 17px rgba(0, 0, 0, 0.2);">
-                    <div class="imgBx">
-                        <img src="{{ url_for('static', filename='./img/justice.jpg') }}" alt="images">
-                    </div>
-                    <div class="details">
-                        <a href="{{ url_for('data') }}" class="text-black">
-                            <h5 class="text-black" style="margin-bottom: -1px; display: inline">Justice, Law & Order
-                                Sector
-                            </h5>
-                        </a>
-                    </div>
-                </div>
-            </div>
-            <div class="uk-animation-toggle" tabindex="0">
-                <div class="card"
-                    style="height: 150px; background: lightskyblue; box-shadow: 0 13px 17px rgba(0, 0, 0, 0.2);">
-                    <div class="imgBx">
-                        <img src="{{ url_for('static', filename='./img/housing.jpg') }}" alt="images">
-                    </div>
-                    <div class="details">
-                        <a href="{{ url_for('data') }}" class="text-black">
-                            <h5 class="text-black" style="margin-bottom: -1px; display: inline">Lands and Housing Sector
-                            </h5>
-                        </a>
-                    </div>
-                </div>
-            </div>
+          </div>
+          <!-- Card -->
         </div>
-    </div>
-    <br>
-    <div>
-        <div class="uk-grid-match uk-child-width-expand@s uk-text-center" uk-grid>
-            <div class="uk-animation-toggle" tabindex="0">
-                <div class="card"
-                    style="height: 150px; background: lightskyblue; box-shadow: 0 13px 17px rgba(0, 0, 0, 0.2);">
-                    <div class="imgBx">
-                        <img src="{{ url_for('static', filename='./img/public.jpg')}}" alt="images">
-                    </div>
-                    <div class="details">
-                        <a href="{{ url_for('data') }}" class="text-black">
-                            <h5 class="text-black" style="margin-bottom: -1px; display: inline">Public Sector Management
-                                Sector
-                            </h5>
-                        </a>
-                    </div>
-                </div>
+      </div>
+      <div>
+        <div class="uk-card uk-card-default uk-card-body" style="padding: 0px">
+          <!-- Card -->
+          <div
+            class="card card-image"
+            style="
+              background-image: url(./static/img/agriculture.jpg);
+              background-position: center;
+              background-size: contain;
+              background-repeat: no-repeat;
+            "
+          >
+            <!-- Content -->
+            <div
+              class="text-white text-center d-flex align-items-center rgba-black-strong py-5 px-4"
+            >
+              <div>
+                <a
+                  href="{{ url_for('agriculture') }}"
+                  uk-icon="icon: settings; ratio: 1.5;"
+                >
+                  Agriculture Sector
+                </a>
+              </div>
             </div>
-            <div class="uk-animation-toggle" tabindex="0">
-                <div class="card"
-                    style="height: 150px; background: lightskyblue; box-shadow: 0 13px 17px rgba(0, 0, 0, 0.2);">
-                    <div class="imgBx">
-                        <img src="{{ url_for('static', filename='./img/tech.png')}}" alt="images">
-                    </div>
-                    <div class="details">
-                        <a href="{{ url_for('data') }}" class="text-black">
-                            <h5 class="text-black" style="margin-bottom: -1px; display: inline">Science, Technology and
-                                Innovation Sector
-                            </h5>
-                        </a>
-                    </div>
-                </div>
-            </div>
-            <div class="uk-animation-toggle" tabindex="0">
-                <div class="card"
-                    style="height: 150px; background: lightskyblue; box-shadow: 0 13px 17px rgba(0, 0, 0, 0.2);">
-                    <div class="imgBx">
-                        <img src="{{ url_for('static', filename='./img/social.jpg')}}" alt="images">
-                    </div>
-                    <div class="details">
-                        <a href="{{ url_for('data') }}" class="text-black">
-                            <h5 class="text-black" style="margin-bottom: -1px; display: inline">Social Development
-                                Sector
-                            </h5>
-                        </a>
-                    </div>
-                </div>
-            </div>
-            <div class="uk-animation-toggle" tabindex="0">
-                <div class="card"
-                    style="height: 150px; background: lightskyblue; box-shadow: 0 13px 17px rgba(0, 0, 0, 0.2);">
-                    <div class="imgBx">
-                        <img src="{{ url_for('static', filename='./img/water.png')}}" alt="images">
-                    </div>
-                    <div class="details">
-                        <a href="{{ url_for('data') }}" class="text-black">
-                            <h5 class="text-black" style="margin-bottom: -1px; display: inline">Water and Environment
-                                Sector
-                            </h5>
-                        </a>
-                    </div>
-                </div>
-            </div>
+          </div>
+          <!-- Card -->
         </div>
+      </div>
+      <div>
+        <div class="uk-card uk-card-default uk-card-body" style="padding: 0px">
+          <!-- Card -->
+          <div
+            class="card card-image"
+            style="
+              background-image: url(./static/img/education.jpg);
+              background-position: center;
+              background-size: contain;
+              background-repeat: no-repeat;
+            "
+          >
+            <!-- Content -->
+            <div
+              class="text-white text-center d-flex align-items-center rgba-black-strong py-5 px-4"
+            >
+              <div>
+                <a
+                  href="{{ url_for('education') }}"
+                  uk-icon="icon: settings; ratio: 1.5;"
+                >
+                  Education Sector
+                </a>
+              </div>
+            </div>
+          </div>
+          <!-- Card -->
+        </div>
+      </div>
     </div>
+    <br />
+    <div class="uk-child-width-expand@s uk-text-center" uk-grid>
+      <div>
+        <div class="uk-card uk-card-default uk-card-body" style="padding: 0px">
+          <!-- Card -->
+          <div
+            class="card card-image"
+            style="
+              background-image: url(./static/img/mining.png);
+              background-position: center;
+              background-size: contain;
+              background-repeat: no-repeat;
+            "
+          >
+            <!-- Content -->
+            <div
+              class="text-white text-center d-flex align-items-center rgba-black-strong py-5 px-4"
+            >
+              <div>
+                <a
+                  href="{{ url_for('energy_and_mineral_development') }}"
+                  uk-icon="icon: settings; ratio: 1.5;"
+                >
+                  Energy and Mineral Development Sector
+                </a>
+              </div>
+            </div>
+          </div>
+          <!-- Card -->
+        </div>
+      </div>
+      <div>
+        <div class="uk-card uk-card-default uk-card-body" style="padding: 0px">
+          <!-- Card -->
+          <div
+            class="card card-image"
+            style="
+              background-image: url(./static/img/health.jpg);
+              background-position: center;
+              background-size: contain;
+              background-repeat: no-repeat;
+            "
+          >
+            <!-- Content -->
+            <div
+              class="text-white text-center d-flex align-items-center rgba-black-strong py-5 px-4"
+            >
+              <div>
+                <a
+                  href="{{ url_for('health') }}"
+                  uk-icon="icon: settings; ratio: 1.5;"
+                >
+                  Health Sector
+                </a>
+              </div>
+            </div>
+          </div>
+          <!-- Card -->
+        </div>
+      </div>
+      <div>
+        <div class="uk-card uk-card-default uk-card-body" style="padding: 0px">
+          <!-- Card -->
+          <div
+            class="card card-image"
+            style="
+              background-image: url(./static/img/ict.jpg);
+              background-position: center;
+              background-size: contain;
+              background-repeat: no-repeat;
+            "
+          >
+            <!-- Content -->
+            <div
+              class="text-white text-center d-flex align-items-center rgba-black-strong py-5 px-4"
+            >
+              <div>
+                <a
+                  href="{{ url_for('ict_and_national_guidance') }}"
+                  uk-icon="icon: settings; ratio: 1.5;"
+                >
+                  ICT and National Guidance Sector
+                </a>
+              </div>
+            </div>
+          </div>
+          <!-- Card -->
+        </div>
+      </div>
+      <div>
+        <div class="uk-card uk-card-default uk-card-body" style="padding: 0px">
+          <!-- Card -->
+          <div
+            class="card card-image"
+            style="
+              background-image: url(./static/img/justice.png);
+              background-position: center;
+              background-size: contain;
+              background-repeat: no-repeat;
+            "
+          >
+            <!-- Content -->
+            <div
+              class="text-white text-center d-flex align-items-center rgba-black-strong py-5 px-4"
+            >
+              <div>
+                <a
+                  href="{{ url_for('justice_law_and_order') }}"
+                  uk-icon="icon: settings; ratio: 1.5;"
+                >
+                  Justice, Law and Order Sector
+                </a>
+              </div>
+            </div>
+          </div>
+          <!-- Card -->
+        </div>
+      </div>
+    </div>
+    <br />
+    <div class="uk-child-width-expand@s uk-text-center" uk-grid>
+      <div>
+        <div class="uk-card uk-card-default uk-card-body" style="padding: 0px">
+          <!-- Card -->
+          <div
+            class="card card-image"
+            style="
+              background-image: url(./static/img/housing.jpg);
+              background-position: center;
+              background-size: contain;
+              background-repeat: no-repeat;
+            "
+          >
+            <!-- Content -->
+            <div
+              class="text-white text-center d-flex align-items-center rgba-black-strong py-5 px-4"
+            >
+              <div>
+                <a
+                  href="{{ url_for('lands_and_housing') }}"
+                  uk-icon="icon: settings; ratio: 1.5;"
+                >
+                  Lands and Housing Sector
+                </a>
+              </div>
+            </div>
+          </div>
+          <!-- Card -->
+        </div>
+      </div>
+      <div>
+        <div class="uk-card uk-card-default uk-card-body" style="padding: 0px">
+          <!-- Card -->
+          <div
+            class="card card-image"
+            style="
+              background-image: url(./static/img/public.jpg);
+              background-position: center;
+              background-size: contain;
+              background-repeat: no-repeat;
+            "
+          >
+            <!-- Content -->
+            <div
+              class="text-white text-center d-flex align-items-center rgba-black-strong py-5 px-4"
+            >
+              <div>
+                <a
+                  href="{{ url_for('public_sector_management') }}"
+                  uk-icon="icon: settings; ratio: 1.5;"
+                >
+                  Public Sector Management Sector
+                </a>
+              </div>
+            </div>
+          </div>
+          <!-- Card -->
+        </div>
+      </div>
+      <div>
+        <div class="uk-card uk-card-default uk-card-body" style="padding: 0px">
+          <!-- Card -->
+          <div
+            class="card card-image"
+            style="
+              background-image: url(./static/img/tech.png);
+              background-position: center;
+              background-size: contain;
+              background-repeat: no-repeat;
+            "
+          >
+            <!-- Content -->
+            <div
+              class="text-white text-center d-flex align-items-center rgba-black-strong py-5 px-4"
+            >
+              <div>
+                <a
+                  href="{{ url_for('science_technology_and_innovation') }}"
+                  uk-icon="icon: settings; ratio: 1.5;"
+                >
+                  Science, Technology and Innovation Sector
+                </a>
+              </div>
+            </div>
+          </div>
+          <!-- Card -->
+        </div>
+      </div>
+      <div>
+        <div class="uk-card uk-card-default uk-card-body" style="padding: 0px">
+          <!-- Card -->
+          <div
+            class="card card-image"
+            style="
+              background-image: url(./static/img/social.jpg);
+              background-position: center;
+              background-size: contain;
+              background-repeat: no-repeat;
+            "
+          >
+            <!-- Content -->
+            <div
+              class="text-white text-center d-flex align-items-center rgba-black-strong py-5 px-4"
+            >
+              <div>
+                <a
+                  href="{{ url_for('social_development') }}"
+                  uk-icon="icon: settings; ratio: 1.5;"
+                >
+                  Social Development Sector
+                </a>
+              </div>
+            </div>
+          </div>
+          <!-- Card -->
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- end of Testing cards -->
+</section>
+<section>
+  <div class="container">
+    <!-- Header for the Trending section -->
+    <header>
+      <h4 class="h4-responsive">Trending</h4>
+      <p>Some of the latest trending news</p>
+      <hr />
+    </header>
+    <div>
+      <ul uk-accordion>
+        <li>
+          <a class="uk-accordion-title" href="#">News Item 1</a>
+          <div class="uk-accordion-content">
+            <div class="uk-panel">
+              <img
+                class="uk-align-left uk-margin-remove-adjacent"
+                src="{{ url_for('static', filename='./img/IMG_7806.JPG') }}"
+                width="225"
+                height="150"
+                alt="Example image"
+              />
+              <p>
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+                eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
+                enim ad minim veniam, quis nostrud exercitation ullamco laboris
+                nisi ut aliquip ex ea commodo consequat.
+              </p>
+              <p>
+                Duis aute irure dolor in reprehenderit in voluptate velit esse
+                cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat
+                cupidatat non proident, sunt in culpa qui officia deserunt
+                mollit anim id est laborum. Lorem ipsum dolor sit amet,
+                consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
+                labore et dolore magna aliqua.
+              </p>
+            </div>
+          </div>
+        </li>
+        <li class="uk-open">
+          <a class="uk-accordion-title" href="#">News Item 2</a>
+          <div class="uk-accordion-content">
+            <div class="uk-panel">
+              <img
+                class="uk-align-left uk-margin-remove-adjacent"
+                src="{{ url_for('static', filename='./img/IMG_7806.JPG') }}"
+                width="225"
+                height="150"
+                alt="Example image"
+              />
+              <p>
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+                eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
+                enim ad minim veniam, quis nostrud exercitation ullamco laboris
+                nisi ut aliquip ex ea commodo consequat.
+              </p>
+              <p>
+                Duis aute irure dolor in reprehenderit in voluptate velit esse
+                cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat
+                cupidatat non proident, sunt in culpa qui officia deserunt
+                mollit anim id est laborum. Lorem ipsum dolor sit amet,
+                consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
+                labore et dolore magna aliqua.
+              </p>
+            </div>
+          </div>
+        </li>
+        <li>
+          <a class="uk-accordion-title" href="#">News Item 3</a>
+          <div class="uk-accordion-content">
+            <div class="uk-panel">
+              <img
+                class="uk-align-left uk-margin-remove-adjacent"
+                src="{{ url_for('static', filename='./img/IMG_7806.JPG') }}"
+                width="225"
+                height="150"
+                alt="Example image"
+              />
+              <p>
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+                eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
+                enim ad minim veniam, quis nostrud exercitation ullamco laboris
+                nisi ut aliquip ex ea commodo consequat.
+              </p>
+              <p>
+                Duis aute irure dolor in reprehenderit in voluptate velit esse
+                cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat
+                cupidatat non proident, sunt in culpa qui officia deserunt
+                mollit anim id est laborum. Lorem ipsum dolor sit amet,
+                consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
+                labore et dolore magna aliqua.
+              </p>
+            </div>
+          </div>
+        </li>
+      </ul>
+    </div>
+  </div>
+</section>
+<br />
 
-</div>
-
-
-{% endblock  %}
+{% endblock %}
