@@ -1,248 +1,275 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="description" content="Gender Statistical Portal" />
-    <meta name="keywords" content="Gender Statistical Portal" />
-    <meta name="author" content="4Him" />
-    <title>Gender Statistical Portal</title>
 
-    <!-- Font Awesome -->
-    <link
-      rel="stylesheet"
-      href="https://use.fontawesome.com/releases/v5.8.2/css/all.css"
-    />
-    <!-- Google Fonts -->
-    <link
-      rel="stylesheet"
-      href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap"
-    />
-    <!-- Bootstrap core CSS -->
-    <link
-      href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.0/css/bootstrap.min.css"
-      rel="stylesheet"
-    />
-    <!-- Material Design Bootstrap -->
-    <link
-      href="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.19.1/css/mdb.min.css"
-      rel="stylesheet"
-    />
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Gender Statistical Portal" />
+  <meta name="keywords" content="Gender Statistical Portal" />
+  <meta name="author" content="4Him" />
+  <title>Gender Statistical Portal</title>
 
-    <!-- UIkit CSS -->
-    <link
-      rel="stylesheet"
-      href="https://cdn.jsdelivr.net/npm/uikit@3.5.7/dist/css/uikit.min.css"
-    />
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css" />
+  <!-- Google Fonts -->
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap" />
+  <!-- Bootstrap core CSS -->
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.0/css/bootstrap.min.css" rel="stylesheet" />
+  <!-- Material Design Bootstrap -->
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.19.1/css/mdb.min.css" rel="stylesheet" />
 
-    <!--  Jquery CDN -->
-    <!--<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>-->
+  <!-- UIkit CSS -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/uikit@3.5.7/dist/css/uikit.min.css" />
 
-    <!-- UIkit JS -->
-    <script src="https://cdn.jsdelivr.net/npm/uikit@3.5.7/dist/js/uikit.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/uikit@3.5.7/dist/js/uikit-icons.min.js"></script>
+  <!--  Jquery CDN -->
+  <!--<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>-->
 
-    <!-- Links for Chart.js Charts-->
-    <!--<script src="https://cdn.jsdelivr.net/npm/chart.js@2.9.3/dist/Chart.min.js"></script>-->
+  <!-- UIkit JS -->
+  <script src="https://cdn.jsdelivr.net/npm/uikit@3.5.7/dist/js/uikit.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/uikit@3.5.7/dist/js/uikit-icons.min.js"></script>
 
-    <!-- Links to the CSS custom files -->
-    <link
-      rel="stylesheet"
-      href="{{ url_for('static', filename='css/dist/main.css') }}"
-    />
-  </head>
+  <!-- Links for Chart.js Charts-->
+  <!--<script src="https://cdn.jsdelivr.net/npm/chart.js@2.9.3/dist/Chart.min.js"></script>-->
 
-  <body class="uk-height-large">
-    <header>
-      <div
-        class="uk-card uk-card-default uk-card-body"
-        style="z-index: 980; padding: 0px"
-        uk-sticky="show-on-up: true; animation: uk-animation-slide-top; bottom: #bottom"
-      >
-        <div style="border-bottom: 1px solid blue">
-          <img
-            src="{{ url_for('static', filename='./img/ubos_logo.png') }}"
-            class="img-fluid mx-auto d-block"
-            style="padding-top: 3px; padding-bottom: 3px"
-            alt="Responsive image"
-          />
+  <!-- Links to the CSS custom files -->
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/dist/main.css') }}" />
+</head>
+
+<body class="uk-height-large">
+  <header>
+    <div class="uk-card uk-card-default uk-card-body" style="z-index: 980; padding: 0px"
+      uk-sticky="show-on-up: true; animation: uk-animation-slide-top; bottom: #bottom">
+      <div style="border-bottom: 1px solid blue">
+        <img src="{{ url_for('static', filename='./img/ubos_logo.png') }}" class="img-fluid mx-auto d-block"
+          style="padding-top: 3px; padding-bottom: 3px" alt="Responsive image" />
+      </div>
+      <div>
+        <ul class="nav justify-content-center" style="padding-top: 2px">
+          <li class="nav-item">
+            <a class="nav-link active" href="#">HOME</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">PUBLICATIONS</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">PRESENTATIONS</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">GENDER ACTIVITIES</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">GALLERY</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#modal-overflow" uk-toggle>ABOUT US</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">CONTACT US</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </header>
+  <main>
+    <!-- ########################################################################################################## -->
+    <!-- #################################### MODALS FOR THE DIFFERENT MENU ITEMS ###################################### -->
+
+    <!-- ABOUT US MODAL -->
+    <div id="modal-overflow" class="uk-modal-container" uk-modal>
+      <div class="uk-modal-dialog">
+        <div class="uk-modal-header" style="background-image: url('./static/img/aboutUs.jpg');">
+          <h2 class="uk-modal-title uk-text-light uk-text-primary">About Us</h2>
         </div>
-        <div>
-          <ul class="nav justify-content-center" style="padding-top: 2px">
-            <li class="nav-item">
-              <a class="nav-link active" href="#">HOME</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#">PUBLICATIONS</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#">PRESENTATIONS</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#">GENDER ACTIVITIES</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#">GALLERY</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#">ABOUT US</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#">CONTACT US</a>
-            </li>
+        <div class="uk-modal-body uk-text-justify" uk-overflow-auto>
+          <h4 class="uk-heading-bullet">Overview</h4>
+          <p>Gender is an important variable that systematically structures a person’s economic and social position and
+            prospects in society. It describes attitudes, roles and responsibilities assigned to males and females, that
+            often result in different opportunities and behavior for both men and women. The concept of gender emerged
+            out of the study of social dynamics between the sexes, hence the expression “gender dynamics”. Gender
+            aspects are determined by society and vary within and between societies.
+          </p>
+
+          <p>The aspects are dynamic and usually influenced by cultural, economic, political and environmental factors.
+            Hence, the different roles men and women create differences in need as well as access to and control over
+            resources. The trend of mainstreaming gender in statistics development evolved since the 1995 Beijing
+            Declaration at the Beijing Platform for Action (BPfA) and has continued to expand and entrench itself in
+            various development frameworks and policies at international, continental and national level. Some of these
+            include: the 1985 Convention on the Elimination of all forms of Discrimination against Women (CEDAW), the
+            1987 International Covenant on Economic, Social and Cultural Rights, the 1995 International Covenant on
+            Civil and Political Rights, the 1986 Convention against Torture, the 1990 Convention on the Rights of the
+            Child, the Agenda 2030 on Sustainable Development, Africa Agenda 2063 and the National Development Plan
+            (NDP), to mention but a few. All these require data to measure progress towards the country’s commitment on
+            gender equality and women’s empowerment. Overall, efforts related to policy formulation and programme
+            design, implementation and monitoring require detailed, reliable and timely gender statistics. Uganda is
+            part of the global framework and is expected to respond and adhere to all international resolutions
+            Principles, Standards and Classifications at international level meant for statistics.
+          </p>
+          <p>
+            Empirical evidence shows that Uganda has made efforts to implement the actions recommended in the Beijing
+            Platform of Action, objective H3 through increased sex disaggregation of data, improved analysis of data
+            from a gender perspective and identification of gaps in statistical products. The Plan for National
+            Statistical Development (PNSD) is Uganda’s framework for strengthening statistical production and
+            development in the National Statistical System (NSS). The PNSD, and Uganda Bureau of Statistics (UBOS)
+            Strategic Plan underscore the need for gender statistics and gender and equity responsive statistics in
+            all census, survey and administrative data reports. The current initiatives to mainstream gender in UBOS
+            notwithstanding, more work needs to be done to attain a gender responsive National Statistical System
+            (NSS). UBOS has made great strides in mainstreaming gender in the organization, and promoting the
+            production and use of gender statistics in the NSS, as a whole.
+          </p>
+          <h4 class="uk-heading-bullet">The National Priority Gender Equality Indicators (NPGEIs)</h4>
+          <p>
+            The Uganda Bureau of Statistics (UBOS) as the agency coordinating the development and maintenance of the NSS
+            in collaboration with Ministries, Departments and Agencies (MDAs) developed the National Priority Gender
+            Equality Indicators (NPGEIs). The NPGEIs are intended to guide development and production of gender
+            responsive indicators in the country. The NPGEIs are aligned to the NDP, Sector Development Plans (SDPs) and
+            the Sustainable Development Goals (SDGs). The NPGEIs are presented by sector and categorized by tiers. The
+            categories of tiers are based on the availability of data and methodology as follows;
+          </p>
+          <ul class="uk-list uk-list-square">
+            <li>Tier I: Indicators with available methodology and data.</li>
+            <li>Tier II: Indicators with available methodology but data is not being produced.</li>
+            <li>Tier III: Indicators with neither methodology nor data.</li>
           </ul>
         </div>
+
+        <div class="uk-modal-footer uk-text-right">
+          <button class="uk-button uk-button-default uk-modal-close" type="button">Close</button>
+        </div>
+
       </div>
-    </header>
-    <main>
-      <div>{% block content %}{% endblock %}</div>
-    </main>
-    <footer>
-      <!-- Footer -->
-      <footer class="page-footer font-small unique-color-dark">
-        <div style="background-color: #3672c0">
-          <div class="container">
-            <!-- Grid row-->
-            <div class="row py-4 d-flex align-items-center">
-              <!-- Grid column -->
-              <div
-                class="col-md-6 col-lg-5 text-center text-md-left mb-4 mb-md-0"
-              >
-                <h6 class="mb-0 uk-text-light uk-text-small text-white">
-                  Get connected with us on social networks!
-                </h6>
-              </div>
-              <!-- Grid column -->
+    </div>
+    <!-- END ABOUT US MODAL -->
 
-              <!-- Grid column -->
-              <div class="col-md-6 col-lg-7 text-center text-md-right">
-                <ul class="uk-iconnav">
-                  <li><a href="#" uk-icon="icon: twitter"></a></li>
-                  <li><a href="#" uk-icon="icon: facebook"></a></li>
-                  <li><a href="#" uk-icon="icon: instagram"></a></li>
-                  <li><a href="#" uk-icon="icon: youtube"></a></li>
-                  <li><a href="#" uk-icon="icon: whatsapp"></a></li>
-                </ul>
-              </div>
 
-              <!-- Grid column -->
-            </div>
-            <!-- Grid row-->
-          </div>
-        </div>
+    <!-- ########################################################################################################## -->
+    <!-- ########################################################################################################## -->
 
-        <!-- Footer Links -->
-        <div class="container text-center text-md-left mt-5">
-          <!-- Grid row -->
-          <div class="row mt-3">
+    <div>{% block content %}{% endblock %}</div>
+  </main>
+  <footer>
+    <!-- Footer -->
+    <footer class="page-footer font-small unique-color-dark">
+      <div style="background-color: #3672c0">
+        <div class="container">
+          <!-- Grid row-->
+          <div class="row py-4 d-flex align-items-center">
             <!-- Grid column -->
-            <div class="col-md-3 col-lg-4 col-xl-3 mx-auto mb-4">
-              <!-- Content -->
-              <h6 class="text-uppercase font-weight-bold text-white">
-                Gender Statistical Portal
+            <div class="col-md-6 col-lg-5 text-center text-md-left mb-4 mb-md-0">
+              <h6 class="mb-0 uk-text-light uk-text-small text-white">
+                Get connected with us on social networks!
               </h6>
-              <hr
-                class="deep-purple accent-2 mb-4 mt-0 d-inline-block mx-auto"
-                style="width: 60px"
-              />
-              <p>
-                The UBOS Gender Statistical Portal is a tool that is meant to
-                provide visualisations of the data concerning men, women and
-                children demographics.
-              </p>
             </div>
             <!-- Grid column -->
 
             <!-- Grid column -->
-            <div class="col-md-2 col-lg-2 col-xl-2 mx-auto mb-4">
-              <!-- Links -->
-              <h6 class="text-uppercase font-weight-bold text-white">
-                Useful Links here
-              </h6>
-              <hr
-                class="deep-purple accent-2 mb-4 mt-0 d-inline-block mx-auto"
-                style="width: 60px"
-              />
-              <p>
-                <a href="#!" class="uk-text-small">UBOS</a>
-              </p>
-              <p>
-                <a href="#!" class="uk-text-small">UN Women</a>
-              </p>
-              <p>
-                <a href="#!" class="uk-text-small"
-                  >Ministry of Gender - Uganda</a
-                >
-              </p>
-              <p>
-                <a href="#!" class="uk-text-small">World Bank Gender Portal</a>
-              </p>
+            <div class="col-md-6 col-lg-7 text-center text-md-right">
+              <ul class="uk-iconnav">
+                <li><a href="#" uk-icon="icon: twitter"></a></li>
+                <li><a href="#" uk-icon="icon: facebook"></a></li>
+                <li><a href="#" uk-icon="icon: instagram"></a></li>
+                <li><a href="#" uk-icon="icon: youtube"></a></li>
+                <li><a href="#" uk-icon="icon: whatsapp"></a></li>
+              </ul>
             </div>
-            <!-- Grid column -->
 
-            <!-- Grid column -->
-            <div class="col-md-4 col-lg-3 col-xl-3 mx-auto mb-md-0 mb-4">
-              <!-- Links -->
-              <h6 class="text-uppercase font-weight-bold text-white">
-                Contact
-              </h6>
-              <hr
-                class="deep-purple accent-2 mb-4 mt-0 d-inline-block mx-auto"
-                style="width: 60px"
-              />
-              <p>
-                <i class="fas fa-home mr-3"></i> Statistics House, Plot 9
-                Colville Street P.O. Box 7186, Kampala. Uganda
-              </p>
-              <p><i class="fas fa-envelope mr-3"></i>ubos@ubos.org</p>
-              <p><i class="fas fa-phone mr-3"></i> +256-414 - 706000</p>
-              <p><i class="fas fa-phone mr-3"></i> ++256-392-902551</p>
-              <p><i class="fas fa-web mr-3"></i>http://www.ubos.org</p>
-            </div>
-            <div class="col-md-4 col-lg-3 col-xl-3 mx-auto mb-md-0 mb-4">
-              <a href="" uk-totop style="display: block; text-decoration: none">
-                Back to top of page
-              </a>
-            </div>
             <!-- Grid column -->
           </div>
-          <!-- Grid row -->
+          <!-- Grid row-->
         </div>
-        <!-- Footer Links -->
+      </div>
 
-        <!-- Copyright -->
-        <div class="footer-copyright text-center py-3">
-          © 2020 Copyright:
-          <a href="#"> UBOS</a>
+      <!-- Footer Links -->
+      <div class="container text-center text-md-left mt-5">
+        <!-- Grid row -->
+        <div class="row mt-3">
+          <!-- Grid column -->
+          <div class="col-md-3 col-lg-4 col-xl-3 mx-auto mb-4">
+            <!-- Content -->
+            <h6 class="text-uppercase font-weight-bold text-white">
+              Gender Statistical Portal
+            </h6>
+            <hr class="deep-purple accent-2 mb-4 mt-0 d-inline-block mx-auto" style="width: 60px" />
+            <p>
+              The UBOS Gender Statistical Portal is a tool that is meant to
+              provide visualisations of the data concerning men, women and
+              children demographics.
+            </p>
+          </div>
+          <!-- Grid column -->
+
+          <!-- Grid column -->
+          <div class="col-md-2 col-lg-2 col-xl-2 mx-auto mb-4">
+            <!-- Links -->
+            <h6 class="text-uppercase font-weight-bold text-white">
+              Useful Links here
+            </h6>
+            <hr class="deep-purple accent-2 mb-4 mt-0 d-inline-block mx-auto" style="width: 60px" />
+            <p>
+              <a href="#!" class="uk-text-small">UBOS</a>
+            </p>
+            <p>
+              <a href="#!" class="uk-text-small">UN Women</a>
+            </p>
+            <p>
+              <a href="#!" class="uk-text-small">Ministry of Gender - Uganda</a>
+            </p>
+            <p>
+              <a href="#!" class="uk-text-small">World Bank Gender Portal</a>
+            </p>
+          </div>
+          <!-- Grid column -->
+
+          <!-- Grid column -->
+          <div class="col-md-4 col-lg-3 col-xl-3 mx-auto mb-md-0 mb-4">
+            <!-- Links -->
+            <h6 class="text-uppercase font-weight-bold text-white">
+              Contact
+            </h6>
+            <hr class="deep-purple accent-2 mb-4 mt-0 d-inline-block mx-auto" style="width: 60px" />
+            <p>
+              <i class="fas fa-home mr-3"></i> Statistics House, Plot 9
+              Colville Street P.O. Box 7186, Kampala. Uganda
+            </p>
+            <p><i class="fas fa-envelope mr-3"></i>ubos@ubos.org</p>
+            <p><i class="fas fa-phone mr-3"></i> +256-414 - 706000</p>
+            <p><i class="fas fa-phone mr-3"></i> ++256-392-902551</p>
+            <p><i class="fas fa-web mr-3"></i>http://www.ubos.org</p>
+          </div>
+          <div class="col-md-4 col-lg-3 col-xl-3 mx-auto mb-md-0 mb-4">
+            <a href="" uk-totop style="display: block; text-decoration: none">
+              Back to top of page
+            </a>
+          </div>
+          <!-- Grid column -->
         </div>
-        <!-- Copyright -->
-      </footer>
-      <!-- Footer -->
+        <!-- Grid row -->
+      </div>
+      <!-- Footer Links -->
+
+      <!-- Copyright -->
+      <div class="footer-copyright text-center py-3">
+        © 2020 Copyright:
+        <a href="#"> UBOS</a>
+      </div>
+      <!-- Copyright -->
     </footer>
+    <!-- Footer -->
+  </footer>
 
-    <!-- JQuery -->
-    <script
-      type="text/javascript"
-      src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"
-    ></script>
-    <!-- Bootstrap tooltips -->
-    <script
-      type="text/javascript"
-      src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.4/umd/popper.min.js"
-    ></script>
-    <!-- Bootstrap core JavaScript -->
-    <script
-      type="text/javascript"
-      src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.0/js/bootstrap.min.js"
-    ></script>
-    <!-- MDB core JavaScript -->
-    <script
-      type="text/javascript"
-      src="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.19.1/js/mdb.min.js"
-    ></script>
+  <!-- JQuery -->
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <!-- Bootstrap tooltips -->
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.4/umd/popper.min.js">
+  </script>
+  <!-- Bootstrap core JavaScript -->
+  <script type="text/javascript"
+    src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.0/js/bootstrap.min.js"></script>
+  <!-- MDB core JavaScript -->
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.19.1/js/mdb.min.js"></script>
 
-    <!--Custom Javascript for the pages-->
-    <script src="{{ url_for('static', filename='js/sample.js') }}"></script>
-    <script src="{{ url_for('static', filename='js/lib/semantic.min.js') }}"></script>
-  </body>
+  <!--Custom Javascript for the pages-->
+  <script src="{{ url_for('static', filename='js/sample.js') }}"></script>
+  <script src="{{ url_for('static', filename='js/lib/semantic.min.js') }}"></script>
+</body>
+
 </html>
