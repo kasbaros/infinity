@@ -38,10 +38,6 @@
   <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.4/umd/popper.min.js">
   </script>
 
-  <!-- Links to the CSS custom files -->
-  <link rel="stylesheet" href="{{ url_for('static', filename='css/dist/main.css') }}" />
-
-
   <!-- Vendor CSS Files -->
   <!--<link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">-->
   <link href="{{ url_for('static', filename='assets/vendor/icofont/icofont.min.css') }}" rel="stylesheet">
@@ -63,14 +59,69 @@
       font-weight: 400;
     }
 
-    /*@font-face {
-    font-family: 'Montserrat';
-    font-style: normal;
-    font-weight: 300;
-    src: local('Montserrat Light'), local('Montserrat-Light'),
-    url(https://fonts.gstatic.com/s/montserrat/v12/JTURjIg1_i6t8kCHKm45_cJD3gfD_u50.woff2) format('woff2');
-    unicode-range: U+0100-024F, U+0259, U+1E00-1EFF, U+2020, U+20A0-20AB, U+20AD-20CF, U+2113, U+2C60-2C7F, U+A720-A7FF;
-    }*/
+    /* Animation for the link underlines */
+    .scrollto {
+      color: #584E4A;
+      position: relative;
+      text-decoration: none;
+      padding-bottom: 8px;
+    }
+
+    .scrollto:before,
+    .scrollto:after {
+      content: '';
+      position: absolute;
+      bottom: 2px;
+      left: 0;
+      right: 0;
+      height: 2px;
+      background-color: #76f372;
+    }
+
+    .scrollto:before {
+      opacity: 0;
+      -webkit-transform: translateY(-8px);
+      transform: translateY(-8px);
+      -webkit-transition: opacity 0s, -webkit-transform 0s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+      transition: opacity 0s, -webkit-transform 0s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+      transition: transform 0s cubic-bezier(0.175, 0.885, 0.32, 1.275), opacity 0s;
+      transition: transform 0s cubic-bezier(0.175, 0.885, 0.32, 1.275), opacity 0s, -webkit-transform 0s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    }
+
+    .scrollto:after {
+      opacity: 0;
+      -webkit-transform: translateY(4px);
+      transform: translateY(4px);
+      -webkit-transition: opacity 0.2s, -webkit-transform 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+      transition: opacity 0.2s, -webkit-transform 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+      transition: transform 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275), opacity 0.2s;
+      transition: transform 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275), opacity 0.2s, -webkit-transform 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    }
+
+    .scrollto:hover:before,
+    .scrollto:hover:after,
+    .scrollto:focus:before,
+    .scrollto:focus:after {
+      opacity: 1;
+      -webkit-transform: translateY(0);
+      transform: translateY(0);
+    }
+
+    .scrollto:hover:before,
+    .scrollto:focus:before {
+      -webkit-transition: opacity 0.2s, -webkit-transform 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+      transition: opacity 0.2s, -webkit-transform 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+      transition: transform 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275), opacity 0.2s;
+      transition: transform 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275), opacity 0.2s, -webkit-transform 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    }
+
+    .scrollto:hover:after,
+    .scrollto:focus:after {
+      -webkit-transition: opacity 0s 0.2s, -webkit-transform 0s 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+      transition: opacity 0s 0.2s, -webkit-transform 0s 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+      transition: transform 0s 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275), opacity 0s 0.2s;
+      transition: transform 0s 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275), opacity 0s 0.2s, -webkit-transform 0s 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    }
   </style>
 
 </head>
@@ -86,7 +137,7 @@
         <div class="logo mr-auto" style="border-bottom: 2px solid blue">
           <a href="{{ url_for('home') }}">
             <img src="{{ url_for('static', filename='img/ubos_logo.png') }}" class="img-fluid mx-auto d-block"
-              style="width: 70%; height:20%;" alt="Responsive image">
+              style="width: 90%;" alt="Responsive image">
           </a>
         </div>
 
@@ -100,58 +151,35 @@
             <div class="collapse navbar-collapse" id="navbarNav">
               <ul class="navbar-nav">
                 <li class="nav-item active">
-                  <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+                  <a class="nav-link scrollto" href="#">Home <span class="sr-only">(current)</span></a>
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link" href="#">Portal Data</a>
+                  <a class="nav-link scrollto" href="#sect-bg">Portal Data</a>
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link" href="#">Publications</a>
+                  <a class="nav-link scrollto" href="#">Publications</a>
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link" href="#">Gender Activities</a>
+                  <a class="nav-link scrollto" href="#">Gender Activities</a>
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link" href="#">Gallery</a>
+                  <a class="nav-link scrollto" href="#">Gallery</a>
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link" href="#modal-overflow" uk-toggle>About Us</a>
+                  <a class="nav-link scrollto" href="#modal-overflow" uk-toggle>About Us</a>
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link" href="#">Contact Us</a>
+                  <a class="nav-link scrollto" href="#contact-us" uk-toggle>Contact Us</a>
                 </li>
+
               </ul>
             </div>
           </div>
         </nav>
-
-
       </div>
     </div>
   </header>
-  <!--<header id="header" class="fixed-top d-flex align-items-center">
 
-    <div class="container d-flex align-items-center">
-
-      <div class="logo ">
-        <a href="{{ url_for('home') }}"><img src="{{ url_for('static', filename='img/ubos_logo.png') }}" alt=""
-            class="img-fluid"></a>
-      </div>
-
-      <nav class="nav-menu d-none d-lg-block">
-        <ul>
-          <li class="active"><a href="{{ url_for('home') }}">Home</a></li>
-          <li><a href="#">Publications</a></li>
-          <li><a href="#">Presentations</a></li>
-          <li><a href="#">Gender Activities</a></li>
-          <li><a href="#">Gallery</a></li>
-          <li><a href="#">About Us</a></li>
-          <li><a href="#">Contact Us</a></li>
-        </ul>
-      </nav>
-
-    </div>
-  </header>-->
   <!-- End Header -->
 
   <main id="main">
@@ -226,6 +254,43 @@
     <!-- ########################################################################################################## -->
     <!-- ########################################################################################################## -->
 
+    <!-- ########################################################################################################## -->
+    <!--  CONTACT US MODAL  -->
+    <!-- ########################################################################################################## -->
+    <div id="contact-us" class="uk-modal-full" uk-modal>
+      <div class="uk-modal-dialog">
+        <button class="uk-modal-close-full uk-close-large" type="button" uk-close></button>
+        <div class="uk-grid-collapse uk-child-width-1-2@s uk-flex-middle" uk-grid>
+          <div class="uk-background-cover" style="background-image: url(../../static/img/contactUs.jpeg);"
+            uk-height-viewport></div>
+          <div class="mt-2 p-md-5">
+            <h1 class="uk-text-lead uk-text-large uk-text-bold uk-text-uppercase uk-text-primary">Here is how to get in
+              touch with us:
+            </h1>
+            <ul class="uk-list uk-list-divider">
+              <li class="uk-text-small"><strong class="uk-text-success">Address:</strong> Statistics House, Plot 9
+                Colville
+                Street</li>
+              <li class="uk-text-small"><strong class="uk-text-success">Posta:</strong> P.O. Box 7186, Kampala</li>
+              <li class="uk-text-small"><strong class="uk-text-success">Phone:</strong> +256 414 706000</li>
+              <li class="uk-text-small"><strong class="uk-text-success">Email:</strong> ubos@ubos.org</li>
+            </ul>
+            <h1 class="uk-text-lead">You can also chat with us or check our pages:</h1>
+            <ul class="uk-iconnav">
+              <a href="#" class="uk-icon-button uk-margin-small-right" uk-icon="twitter"></a>
+              <a href="#" class="uk-icon-button  uk-margin-small-right" uk-icon="facebook"></a>
+              <a href="#" class="uk-icon-button uk-margin-small-right" uk-icon="instagram"></a>
+              <a href="#" class="uk-icon-button uk-margin-small-right" uk-icon="linkedin"></a>
+              <a href="#" class="uk-icon-button uk-margin-small-right" uk-icon="google-plus"></a>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- ########################################################################################################## -->
+    <!--  end CONTACT US MODAL  -->
+    <!-- ########################################################################################################## -->
+
 
     <div>{% block content %}{% endblock %}</div>
 
@@ -233,7 +298,12 @@
   </main><!-- End #main -->
 
   <!-- ======= Footer ======= -->
+  <!-- Copyright -->
+  <div class="footer-copyright text-center py-2 mt-0" style="background: #262627;">social media icons here</a>
+  </div>
+  <!-- Copyright -->
   <footer id="footer">
+
     <div class="container">
       <div class="row d-flex align-items-center">
         <div class="col-lg-6 text-lg-left text-center">
@@ -246,10 +316,10 @@
         </div>
         <div class="col-lg-6">
           <nav class="footer-links text-lg-right text-center pt-2 pt-lg-0">
-            <a href="#" class="scrollto">Home</a>
-            <a href="#" class="scrollto">About</a>
-            <a href="#" class="scrollto">More info</a>
-            <a href="#" class="scrollto">Anohter source here</a>
+            <a href="http://www.ubos.org/" class="scrollto">UBOS</a>
+            <a href="http://www.unwomen.org/" class="scrollto">UN Women</a>
+            <a href="http://www.mglsd.go.ug/" class="scrollto">Ministry of Gender - Ug</a>
+            <a href="https://www.worldbank.org/en/topic/gender" class="scrollto">World Bank Gender Portal</a>
           </nav>
         </div>
       </div>

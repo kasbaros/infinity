@@ -1,10 +1,7 @@
 /*--------------------------------------------------------------
 # General
 --------------------------------------------------------------*/
-body {
-  font-family: "Open Sans", sans-serif;
-  color: #444444;
-}
+
 
 a {
   color: #3498db;
@@ -1614,7 +1611,7 @@ section {
 }
 
 #footer .footer-links a {
-  color: #222222;
+  color: #000000;
   padding-left: 15px;
 }
 
@@ -1623,5 +1620,6 @@ section {
 }
 
 #footer .footer-links a:hover {
-  color: #3498db;
+  color: #71db34;
+  transition: .3s ease-in-out;
 }
