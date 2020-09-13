@@ -9,11 +9,17 @@ from flask import (
     jsonify,
 )
 from application import app
+from .models import *
+from .forms import ContactForm
 
 
-@app.route("/")
+@app.route("/", methods=("GET", "POST"))
 def home():
-    return render_template("./main_pages/home.html")
+    files = publications.query.all()
+    form = ContactForm()
+    if form.validate_on_submit():
+        return redirect(url_for("home"))
+    return render_template("./main_pages/home.html", form=form)
 
 
 @app.route("/accountability")
