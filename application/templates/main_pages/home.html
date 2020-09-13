@@ -1,0 +1,686 @@
+{% extends './includes/base.html' %} {% block content%}
+
+<div>
+
+  <head>
+    <!-- CSS FOR THE SAMPLE CAROUSEL-->
+    <style>
+      .contenedor {
+        height: 100%;
+        padding: 5% 0;
+      }
+
+      h1 {
+        color: #fcfbfa;
+      }
+
+      .container_foto {
+        background-color: rgba(57, 62, 93, 0.7);
+        padding: 0;
+        overflow: hidden;
+        max-width: 350px;
+        margin: 5px;
+      }
+
+      .container_foto article {
+        padding: 10%;
+        position: absolute;
+        bottom: 0;
+        z-index: 1;
+        -webkit-transition: all 0.5s ease;
+        -moz-transition: all 0.5s ease;
+        -o-transition: all 0.5s ease;
+        -ms-transition: all 0.5s ease;
+        transition: all 0.5s ease;
+      }
+
+      .container_foto h2 {
+        color: #fff;
+        font-weight: 800;
+        font-size: 25px;
+        border-bottom: #fff solid 1px;
+        font-family: Verdana, Geneva, Tahoma, sans-serif;
+        text-shadow: 1px 2px #092c42;
+      }
+
+      .container_foto h4 {
+        font-weight: 300;
+        color: #fff;
+        font-size: 16px;
+      }
+
+      .container_foto img {
+        width: 100%;
+        top: 0;
+        left: 0;
+        opacity: 0.8;
+        -webkit-transition: all 4s ease;
+        -moz-transition: all 4s ease;
+        -o-transition: all 4s ease;
+        -ms-transition: all 4s ease;
+        transition: all 4s ease;
+      }
+
+      .ver_mas {
+        background-color: #5c8fff;
+        position: absolute;
+        width: 100%;
+        height: 70px;
+        bottom: 0;
+        z-index: 1;
+        opacity: 0;
+        transform: translate(0px, 70px);
+        -webkit-transform: translate(0px, 70px);
+        -moz-transform: translate(0px, 70px);
+        -o-transform: translate(0px, 70px);
+        -ms-transform: translate(0px, 70px);
+        -webkit-transition: all 0.2s ease-in-out;
+        -moz-transition: all 0.2s ease-in-out;
+        -o-transition: all 0.2s ease-in-out;
+        -ms-transition: all 0.2s ease-in-out;
+        transition: all 0.2s ease-in-out;
+      }
+
+      .ver_mas span {
+        font-size: 40px;
+        color: #fff;
+        position: relative;
+        margin: 0 auto;
+        width: 100%;
+        top: 13px;
+      }
+
+      /*hovers*/
+
+      .container_foto:hover {
+        cursor: pointer;
+      }
+
+      .container_foto:hover img {
+        opacity: 0.1;
+        transform: scale(1.5);
+      }
+
+      .container_foto:hover article {
+        transform: translate(2px, -69px);
+        -webkit-transform: translate(2px, -69px);
+        -moz-transform: translate(2px, -69px);
+        -o-transform: translate(2px, -69px);
+        -ms-transform: translate(2px, -69px);
+      }
+
+      .container_foto:hover .ver_mas {
+        transform: translate(0px, 0px);
+        -webkit-transform: translate(0px, 0px);
+        -moz-transform: translate(0px, 0px);
+        -o-transform: translate(0px, 0px);
+        -ms-transform: translate(0px, 0px);
+        opacity: 1;
+      }
+
+      /* The carousel testing thingie */
+      .inners .btns:hover {
+        background: #fff;
+        color: #000;
+      }
+
+      .overlays {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        background: -webkit-gradient(linear,
+            left top,
+            left bottom,
+            from(rgba(14, 29, 51, 0.8)),
+            to(rgba(14, 29, 51, 0.2)));
+        background: linear-gradient(to bottom,
+            rgba(14, 29, 51, 0.8),
+            rgba(14, 29, 51, 0.2));
+      }
+
+      .hero-sliders {
+        width: 100%;
+        height: 100vh;
+        overflow: hidden;
+      }
+
+      .hero-sliders .carousel-cell {
+        width: 100%;
+        height: 100%;
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-position: center;
+      }
+
+      .inners {
+        position: relative;
+        top: 50%;
+        -webkit-transform: translateY(-50%);
+        transform: translateY(-50%);
+        color: white;
+        text-align: center;
+      }
+
+      .inners .subtitles {
+        font-family: "Roboto Slab", serif;
+        font-size: 2.2rem;
+        line-height: 1.2em;
+        font-weight: 200;
+        font-style: italic;
+        letter-spacing: 3px;
+        color: rgb(255, 255, 255);
+        margin-bottom: 5px;
+      }
+
+      .inners .titles {
+        font-family: "Montserrat", sans-serif;
+        font-size: 3rem;
+        line-height: 1.2em;
+        text-transform: uppercase;
+        letter-spacing: 3px;
+        margin-bottom: 40px;
+      }
+
+      .inners .btns {
+        border: 1px solid #fff;
+        padding: 14px 18px;
+        text-transform: uppercase;
+        font-family: "Montserrat", sans-serif;
+        font-size: 0.8rem;
+        letter-spacing: 3px;
+        color: #fff;
+        text-decoration: none;
+        -webkit-transition: all 0.2s ease;
+        transition: all 0.2s ease;
+      }
+
+      .inners .btns:hover {
+        background: #fff;
+        color: #000;
+      }
+
+      .hero-sliders .flickity-prev-next-button {
+        width: 80px;
+        height: 80px;
+        background: transparent;
+      }
+
+      .hero-sliders .flickity-prev-next-button:hover {
+        background: transparent;
+      }
+
+      .hero-sliders .flickity-prev-next-button .arrow {
+        fill: white;
+      }
+
+      .hero-sliders .flickity-page-dots {
+        bottom: 30px;
+      }
+
+      .hero-sliders .flickity-page-dots .dot {
+        width: 30px;
+        height: 4px;
+        opacity: 1;
+        background: rgba(255, 255, 255, 0.5);
+        border: 0 solid white;
+        border-radius: 0;
+      }
+
+      .hero-sliders .flickity-page-dots .dot.is-selected {
+        background: #ff0000;
+        border: 0 solid #ff0000;
+      }
+    </style>
+    <!-- end of CSS FOR THE SAMPLE CAROUSEL-->
+
+    <script>
+      var options = {
+        accessibility: true,
+        prevNextButtons: true,
+        pageDots: true,
+        setGallerySize: false,
+        arrowShape: {
+          x0: 10,
+          x1: 60,
+          y1: 50,
+          x2: 60,
+          y2: 45,
+          x3: 15
+        }
+      };
+
+      var carousel = document.querySelector("[data-carousel]");
+      var slides = document.getElementsByClassName("carousel-cell");
+      var flkty = new Flickity(carousel, options);
+
+      flkty.on("scroll", function() {
+        flkty.slides.forEach(function(slide, i) {
+          var image = slides[i];
+          var x = ((slide.target + flkty.x) * -1) / 3;
+          image.style.backgroundPosition = x + "px";
+        });
+      });
+    </script>
+  </head>
+
+  <!--Carousel Wrapper-->
+  <section>
+    <div class="uk-position-relative uk-visible-toggle" tabindex="-1" uk-slideshow="animation: push" style="height: 100vh;">
+      <ul class="uk-slideshow-items">
+        <li>
+          <div class="uk-position-cover uk-animation-kenburns uk-animation-reverse uk-transform-origin-center-left">
+            <img src="/static/./img/tea1.jpeg" alt="" uk-cover />
+            <div class="inners">
+              <h3 class="subtitles">Uganda Gender Records at a glance</h3>
+              <h2 class="titles text-white" style="text-shadow: 2px 6px 2px back">
+                Gender Statistics Portal
+              </h2>
+            </div>
+            <div style="position: absolute; top: 0px; left: 0px; width: 100%; height: 100%; background: rgba(0,0,0,0.0);">
+            </div>
+          </div>
+        </li>
+        <li>
+          <div class="uk-position-cover uk-animation-kenburns uk-animation-reverse uk-transform-origin-center-left">
+            <img src="/static/./img/tea2.jpeg" alt="" uk-cover />
+            <div class="inners">
+              <h3 class="subtitles">Uganda Gender Records at a glance</h3>
+              <h2 class="titles text-white" style="text-shadow: 2px 6px 2px back">
+                Gender Statistics Portal
+              </h2>
+            </div>
+            <div style="position: absolute; top: 0px; left: 0px; width: 100%; height: 100%; background: rgba(0,0,0,0.0);">
+            </div>
+          </div>
+        </li>
+        <li>
+          <div class="uk-position-cover uk-animation-kenburns uk-animation-reverse uk-transform-origin-center-left">
+            <img src="/static/./img/tea3.jpeg" alt="" uk-cover />
+            <div class="inners">
+              <h3 class="subtitles">Uganda Gender Records at a glance</h3>
+              <h2 class="titles text-white" style="text-shadow: 2px 6px 2px back">
+                Gender Statistics Portal
+              </h2>
+            </div>
+            <div style="position: absolute; top: 0px; left: 0px; width: 100%; height: 100%; background: rgba(0,0,0,0.0);">
+            </div>
+          </div>
+        </li>
+        <li>
+          <div class="uk-position-cover uk-animation-kenburns uk-animation-reverse uk-transform-origin-center-left">
+            <img src="/static/./img/tea4.jpeg" alt="" uk-cover />
+            <div class="inners">
+              <h3 class="subtitles">Uganda Gender Records at a glance</h3>
+              <h2 class="titles text-white" style="text-shadow: 2px 6px 2px back">
+                Gender Statistics Portal
+              </h2>
+            </div>
+            <div style="position: absolute; top: 0px; left: 0px; width: 100%; height: 100%; background: rgba(0,0,0,0.0);">
+            </div>
+          </div>
+        </li>
+        <li>
+          <div class="uk-position-cover uk-animation-kenburns uk-animation-reverse uk-transform-origin-center-left">
+            <img src="/static/./img/tea5.jpeg" alt="" uk-cover />
+            <div class="inners">
+              <h3 class="subtitles">Uganda Gender Records at a glance</h3>
+              <h2 class="titles text-white" style="text-shadow: 2px 6px 2px back">
+                Gender Statistics Portal
+              </h2>
+            </div>
+            <div style="position: absolute; top: 0px; left: 0px; width: 100%; height: 100%; background: rgba(0,0,0,0.0);">
+            </div>
+          </div>
+        </li>
+        <li>
+          <div class="uk-position-cover uk-animation-kenburns uk-animation-reverse uk-transform-origin-center-left">
+            <img src="/static/./img/tea6.jpeg" alt="" uk-cover />
+            <div class="inners">
+              <h3 class="subtitles">Uganda Gender Records at a glance</h3>
+              <h2 class="titles text-white" style="text-shadow: 2px 6px 2px back">
+                Gender Statistics Portal
+              </h2>
+            </div>
+            <div style="position: absolute; top: 0px; left: 0px; width: 100%; height: 100%; background: rgba(0,0,0,0.0);">
+            </div>
+          </div>
+        </li>
+        <li>
+          <div class="uk-position-cover uk-animation-kenburns uk-animation-reverse uk-transform-origin-center-left">
+            <img src="/static/./img/tea7.jpeg" alt="" uk-cover />
+            <div class="inners">
+              <h3 class="subtitles">Uganda Gender Records at a glance</h3>
+              <h2 class="titles text-white" style="text-shadow: 2px 6px 2px back">
+                Gender Statistics Portal
+              </h2>
+            </div>
+            <div style="position: absolute; top: 0px; left: 0px; width: 100%; height: 100%; background: rgba(0,0,0,0.0);">
+            </div>
+          </div>
+        </li>
+      </ul>
+
+      <div class="uk-light">
+        <a class="uk-position-center-left uk-position-small uk-hidden-hover" href="#" uk-slidenav-previous uk-slideshow-item="previous"></a>
+        <a class="uk-position-center-right uk-position-small uk-hidden-hover" href="#" uk-slidenav-next uk-slideshow-item="next"></a>
+      </div>
+    </div>
+  </section>
+  <!--/.Carousel Wrapper-->
+  <section>
+    <div class="uk-container" style="padding-top: -30px;
+      padding-bottom: -30px;">
+      <br />
+      <div class="uk-container">
+        <h3 class="uk-heading-bullet text-black">Portal Data</h3>
+        <p class="note note-primary">
+          <strong>Important Information:</strong> By clicking on any of the
+          sector cards below, you will be redirected to a page that will allow
+          you to view data of the corresponding sector in form of tables, maps
+          and graphs. You will find also more information there ...
+        </p>
+      </div>
+      <br />
+      <!-- Header for the Trending section -->
+      <div class="card border-info">
+        <div class="card-body text-info">
+          <!-- Testing cards -->
+          <div class="uk-section uk-container" style="margin-top: -48px;
+      margin-bottom: -48px; margin-right: 10px;">
+            <div class="uk-child-width-expand@s uk-text-center" uk-grid style="margin-top:-20px;">
+              <div>
+                <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12 container_foto " style="-webkit-box-shadow: 10px 10px 17px -3px rgba(0,0,0,0.44);
+-moz-box-shadow: 10px 10px 17px -3px rgba(0,0,0,0.44);
+box-shadow: 10px 10px 17px -3px rgba(0,0,0,0.44);">
+                  <div class="ver_mas text-center">
+                    <a href="/accountability"><span class="bx bx-dollar-circle" uk-tooltip="Click on icon to view this sector"></span></a>
+                  </div>
+                  <article class="text-left">
+                    <h2>Accountability<br />Sector</h2>
+                  </article>
+                  <img src="/static/../../static/img/accountability.jpg" alt="" />
+                </div>
+              </div>
+              <div>
+                <!-- Card -->
+                <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12 container_foto" style="-webkit-box-shadow: 10px 10px 17px -3px rgba(0,0,0,0.44);
+-moz-box-shadow: 10px 10px 17px -3px rgba(0,0,0,0.44);
+box-shadow: 10px 10px 17px -3px rgba(0,0,0,0.44);">
+                  <div class="ver_mas text-center">
+                    <a href="/agriculture"><span class="bx bx-spa" uk-tooltip="Click on icon to view this sector"></span></a>
+                  </div>
+                  <article class="text-left">
+                    <h2>Agriculture<br />Sector</h2>
+                  </article>
+                  <img src="/static/../../static/img/agriculture.jpg" alt="" />
+                </div>
+                <!-- Card -->
+              </div>
+              <div>
+                <!-- Card -->
+                <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12 container_foto" style="-webkit-box-shadow: 10px 10px 17px -3px rgba(0,0,0,0.44);
+-moz-box-shadow: 10px 10px 17px -3px rgba(0,0,0,0.44);
+box-shadow: 10px 10px 17px -3px rgba(0,0,0,0.44);">
+                  <div class="ver_mas text-center">
+                    <span class="bx bx-book" uk-tooltip="Click on icon to view this sector"></span>
+                  </div>
+                  <article class="text-left">
+                    <h2>Education<br />Sector</h2>
+                  </article>
+                  <img src="/static/../../static/img/education.jpg" alt="" />
+                </div>
+                <!-- Card -->
+              </div>
+              <div>
+                <!-- Card -->
+                <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12 container_foto " style="-webkit-box-shadow: 10px 10px 17px -3px rgba(0,0,0,0.44);
+-moz-box-shadow: 10px 10px 17px -3px rgba(0,0,0,0.44);
+box-shadow: 10px 10px 17px -3px rgba(0,0,0,0.44);">
+                  <div class="ver_mas text-center">
+                    <span class="bx bx-diamond" uk-tooltip="Click on icon to view this sector"></span>
+                  </div>
+                  <article class="text-left">
+                    <h2>Energy & Mineral<br />Sector</h2>
+                  </article>
+                  <img src="/static/../../static/img/mining.jpg" alt="" />
+                </div>
+                <!-- Card -->
+              </div>
+            </div>
+            <br />
+            <div class="uk-child-width-expand@s uk-text-center" uk-grid>
+              <div>
+                <!-- Card -->
+                <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12 container_foto " style="-webkit-box-shadow: 10px 10px 17px -3px rgba(0,0,0,0.44);
+-moz-box-shadow: 10px 10px 17px -3px rgba(0,0,0,0.44);
+box-shadow: 10px 10px 17px -3px rgba(0,0,0,0.44);">
+                  <div class="ver_mas text-center">
+                    <a href="{{ url_for('health') }}"><span class="bx bx-health" uk-tooltip="Click on icon to view this sector"></span></a>
+                  </div>
+                  <article class="text-left">
+                    <h2>Health<br />Sector</h2>
+                  </article>
+                  <img src="/static/../../static/img/health.jpg" alt="" />
+                </div>
+                <!-- Card -->
+              </div>
+              <div>
+                <!-- Card -->
+                <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12 container_foto " style="-webkit-box-shadow: 10px 10px 17px -3px rgba(0,0,0,0.44);
+-moz-box-shadow: 10px 10px 17px -3px rgba(0,0,0,0.44);
+box-shadow: 10px 10px 17px -3px rgba(0,0,0,0.44);">
+                  <div class="ver_mas text-center">
+                    <span class="bx bx-code-block" uk-tooltip="Click on icon to view this sector"></span>
+                  </div>
+                  <article class="text-left">
+                    <h2>ICT & Guidance<br />Sector</h2>
+                  </article>
+                  <img src="/static/../../static/img/ict.jpg" alt="" />
+                </div>
+                <!-- Card -->
+              </div>
+              <div>
+                <!-- Card -->
+                <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12 container_foto " style="-webkit-box-shadow: 10px 10px 17px -3px rgba(0,0,0,0.44);
+-moz-box-shadow: 10px 10px 17px -3px rgba(0,0,0,0.44);
+box-shadow: 10px 10px 17px -3px rgba(0,0,0,0.44);">
+                  <div class="ver_mas text-center">
+                    <span class="bx bx-key" uk-tooltip="Click on icon to view this sector"></span>
+                  </div>
+                  <article class="text-left">
+                    <h2>Justice & Law<br />Sector</h2>
+                  </article>
+                  <img src="/static/../../static/img/justice.jpg" alt="" />
+                </div>
+                <!-- Card -->
+              </div>
+              <div>
+                <!-- Card -->
+                <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12 container_foto " style="-webkit-box-shadow: 10px 10px 17px -3px rgba(0,0,0,0.44);
+-moz-box-shadow: 10px 10px 17px -3px rgba(0,0,0,0.44);
+box-shadow: 10px 10px 17px -3px rgba(0,0,0,0.44);">
+                  <div class="ver_mas text-center">
+                    <span class="bx bx-building-house" uk-tooltip="Click on icon to view this sector"></span>
+                  </div>
+                  <article class="text-left">
+                    <h2>Lands & Housing<br />Sector</h2>
+                  </article>
+                  <img src="/static/../../static/img/housing.jpg" alt="" />
+                </div>
+                <!-- Card -->
+              </div>
+            </div>
+            <br />
+            <div class="uk-child-width-expand@s uk-text-center" uk-grid style="margin-bottom: -20px">
+              <div>
+                <!-- Card -->
+                <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12 container_foto " style="-webkit-box-shadow: 10px 10px 17px -3px rgba(0,0,0,0.44);
+-moz-box-shadow: 10px 10px 17px -3px rgba(0,0,0,0.44);
+box-shadow: 10px 10px 17px -3px rgba(0,0,0,0.44);">
+                  <div class="ver_mas text-center">
+                    <span class="bx bx-directions" uk-tooltip="Click on icon to view this sector"></span>
+                  </div>
+                  <article class="text-left">
+                    <h2>Public Mag't<br />Sector</h2>
+                  </article>
+                  <img src="/static/../../static/img/public.jpg" alt="" />
+                </div>
+                <!-- Card -->
+              </div>
+              <div>
+                <!-- Card -->
+                <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12 container_foto " style="-webkit-box-shadow: 10px 10px 17px -3px rgba(0,0,0,0.44);
+-moz-box-shadow: 10px 10px 17px -3px rgba(0,0,0,0.44);
+box-shadow: 10px 10px 17px -3px rgba(0,0,0,0.44);">
+                  <div class="ver_mas text-center">
+                    <span class="bx bx-terminal" uk-tooltip="Click on icon to view this sector"></span>
+                  </div>
+                  <article class="text-left">
+                    <h2>Science & Tech<br />Sector</h2>
+                  </article>
+                  <img src="/static/../../static/img/tech.jpg" alt="" />
+                </div>
+                <!-- Card -->
+              </div>
+              <div>
+                <!-- Card -->
+                <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12 container_foto " style="-webkit-box-shadow: 10px 10px 17px -3px rgba(0,0,0,0.44);
+-moz-box-shadow: 10px 10px 17px -3px rgba(0,0,0,0.44);
+box-shadow: 10px 10px 17px -3px rgba(0,0,0,0.44);">
+                  <div class="ver_mas text-center">
+                    <span class="bx bx-plus-medical" uk-tooltip="Click on icon to view this sector"></span>
+                  </div>
+                  <article class="text-left">
+                    <h2>Social Dev't<br />Sector</h2>
+                  </article>
+                  <img src="/static/../../static/img/social.jpg" alt="" />
+                </div>
+                <!-- Card -->
+              </div>
+              <div>
+                <!-- Card -->
+                <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12 container_foto " style="-webkit-box-shadow: 10px 10px 17px -3px rgba(0,0,0,0.44);
+-moz-box-shadow: 10px 10px 17px -3px rgba(0,0,0,0.44);
+box-shadow: 10px 10px 17px -3px rgba(0,0,0,0.44);">
+                  <div class="ver_mas text-center">
+                    <span class="bx bx-droplet" uk-tooltip="Click on icon to view this sector"></span>
+                  </div>
+                  <article class="text-left">
+                    <h2>Water & Enviro<br />Sector</h2>
+                  </article>
+                  <img src="/static/../../static/img/water.jpg" alt="" />
+                </div>
+                <!-- Card -->
+              </div>
+            </div>
+          </div>
+          <!-- end of Testing cards -->
+        </div>
+      </div>
+    </div>
+  </section>
+  <br />
+  <section class="uk-container">
+    <!-- ======= What's New Section ======= -->
+
+    <h3 class="uk-heading-bullet text-dark">What's New</h3>
+
+    <p class="note note-primary">
+      <strong>Some of the latest trending news:</strong> You can read some of
+      the currently popular and widely discussed topics online, especially on
+      social media sites regarding gender demographics and more.
+    </p>
+  </section>
+  <br />
+  <section>
+    <div class="uk-container">
+      <!-- Header for the Trending section -->
+      <div class="card border-info mb-2 mr-2 ml-2">
+        <div class="card-body text-info">
+          <div>
+            <ul uk-accordion>
+              <li>
+                <a class="uk-accordion-title" href="#">News Item 1</a>
+                <div class="uk-accordion-content">
+                  <div class="uk-panel">
+                    <img class="uk-align-left uk-margin-remove-adjacent" src="/static/./img/tea7.jpeg" width="225" height="150" alt="Example image" />
+                    <p class="uk-text-secondary">
+                      Lorem ipsum dolor sit amet, consectetur adipiscing elit,
+                      sed do eiusmod tempor incididunt ut labore et dolore magna
+                      aliqua. Ut enim ad minim veniam, quis nostrud exercitation
+                      ullamco laboris nisi ut aliquip ex ea commodo consequat.
+                    </p>
+                    <p class="uk-text-secondary">
+                      Duis aute irure dolor in reprehenderit in voluptate velit
+                      esse cillum dolore eu fugiat nulla pariatur. Excepteur
+                      sint occaecat cupidatat non proident, sunt in culpa qui
+                      officia deserunt mollit anim id est laborum. Lorem ipsum
+                      dolor sit amet, consectetur adipiscing elit, sed do
+                      eiusmod tempor incididunt ut labore et dolore magna
+                      aliqua.
+                    </p>
+                  </div>
+                </div>
+              </li>
+              <li class="uk-open">
+                <a class="uk-accordion-title" href="#">News Item 2</a>
+                <div class="uk-accordion-content">
+                  <div class="uk-panel">
+                    <img class="uk-align-left uk-margin-remove-adjacent" src="/static/./img/tea7.jpeg" width="225" height="150" alt="Example image" />
+                    <p class="uk-text-secondary">
+                      Lorem ipsum dolor sit amet, consectetur adipiscing elit,
+                      sed do eiusmod tempor incididunt ut labore et dolore magna
+                      aliqua. Ut enim ad minim veniam, quis nostrud exercitation
+                      ullamco laboris nisi ut aliquip ex ea commodo consequat.
+                    </p>
+                    <p class="uk-text-secondary">
+                      Duis aute irure dolor in reprehenderit in voluptate velit
+                      esse cillum dolore eu fugiat nulla pariatur. Excepteur
+                      sint occaecat cupidatat non proident, sunt in culpa qui
+                      officia deserunt mollit anim id est laborum. Lorem ipsum
+                      dolor sit amet, consectetur adipiscing elit, sed do
+                      eiusmod tempor incididunt ut labore et dolore magna
+                      aliqua.
+                    </p>
+                  </div>
+                </div>
+              </li>
+              <li>
+                <a class="uk-accordion-title" href="#">News Item 3</a>
+                <div class="uk-accordion-content">
+                  <div class="uk-panel">
+                    <img class="uk-align-left uk-margin-remove-adjacent" src="/static/./img/tea7.jpeg" width="225" height="150" alt="Example image" />
+                    <p class="uk-text-secondary">
+                      Lorem ipsum dolor sit amet, consectetur adipiscing elit,
+                      sed do eiusmod tempor incididunt ut labore et dolore magna
+                      aliqua. Ut enim ad minim veniam, quis nostrud exercitation
+                      ullamco laboris nisi ut aliquip ex ea commodo consequat.
+                    </p>
+                    <p class="uk-text-secondary">
+                      Duis aute irure dolor in reprehenderit in voluptate velit
+                      esse cillum dolore eu fugiat nulla pariatur. Excepteur
+                      sint occaecat cupidatat non proident, sunt in culpa qui
+                      officia deserunt mollit anim id est laborum. Lorem ipsum
+                      dolor sit amet, consectetur adipiscing elit, sed do
+                      eiusmod tempor incididunt ut labore et dolore magna
+                      aliqua.
+                    </p>
+                  </div>
+                </div>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <br />
+
+  <br />
+</div>
+
+{% endblock %}

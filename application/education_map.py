@@ -2,7 +2,7 @@ import folium
 import pandas as pd
 import os
 
-regions = os.path.join("./static/data", "uganda_subregion_boundaries.geojson")
+regions = os.path.join("./static/data", "15_Statistical_Regions.geojson")
 education_regions = os.path.join("./static/data", "education_data.csv")
 education_data = pd.read_csv(education_regions)
 
@@ -13,7 +13,7 @@ folium.Choropleth(
     name="Choropleth",
     data=education_data,
     columns=["Geography", "2017 Male", "2017 Female"],
-    key_on="feature.properties.SUB_REGION",
+    key_on="feature.properties.F15Regions",
     fill_color="BuPu",
     fill_opacity=0.6,
     line_opacity=0.2,
