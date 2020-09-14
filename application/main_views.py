@@ -81,3 +81,11 @@ def social_development():
 def water_and_environment():
     return render_template("./main_pages/water_and_environment.html")
 
+
+""" The maps routes here """
+
+
+@app.route("/edu_map")
+def edu_map():
+    return render_template("./maps/education_map.html")
+
