@@ -87,108 +87,88 @@
 <!-- ============================================================================================================== -->
 <!-- ============================================================================================================== -->
 
-
 <div class="uk-container mt-4">
-  <div class="uk-child-width-1-2@m" uk-grid
-    uk-scrollspy="cls: uk-animation-slide-bottom; target: .uk-card; delay: 300; repeat: true">
-    <div>
-      <div class="uk-card uk-card-default uk-card-body blue">
-        <h4 class="uk-card-title text-white uk-text-small">
-          CHANGE TO DIFFERENT SECTOR AND VIEW ITS DATA
-        </h4>
-        <p>
-          <form class="m-2">
-            <fieldset class="uk-fieldset">
-              <div class="uk-margin">
-                <select class="uk-select">
-                  <option>
-                    Select to change Sector
-                  </option>
-                  <option>
-                    <a href="{{ url_for('accountability') }}">Accountability Sector</a>
-                  </option>
-                  <option>
-                    <a href="">Agriculture Sector</a>
-                  </option>
-                  <option>
-                    <a href="">Education Sector</a>
-                  </option>
-                  <option>
-                    <a href="">Energy and Mineral Development Sector</a>
-                  </option>
-                </select>
+  <div class="card">
+    <div class="card-body">
+      <div class="row">
+        <div class="col-md-4">You can quickly choose which sector to view or which indicator by clicking on the
+          corresponding buttons:</div>
+        <!-- ======================= the sector selection modal ========================== -->
+        <div class="col-md-4 text-center">
+          <!-- Button trigger modal -->
+          <button type="button" class="btn btn-success btn-lg btn-block text-white" data-toggle="modal"
+            data-target="#exampleModalCenter"><i class="fas fa-angle-double-right"></i>
+            SELECT SECTOR
+          </button>
+
+          <!-- Modal -->
+          <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog"
+            aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+
+            <!-- Add .modal-dialog-centered to .modal-dialog to vertically center the modal -->
+            <div class="modal-dialog modal-dialog-centered" role="document">
+
+
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title" id="exampleModalLongTitle">Modal title</h5>
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                </div>
+                <div class="modal-body">
+                  ...
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                  <button type="button" class="btn btn-primary">Save changes</button>
+                </div>
               </div>
-            </fieldset>
-          </form>
-        </p>
-      </div>
-    </div>
-    <div>
-      <div class="uk-card uk-card-default uk-card-body orange" uk-scrollspy-class="uk-animation-slide-top">
-        <h3 class="uk-card-title text-white uk-text-small">
-          SELECT DIFFERENT INDICATOR FOR THIS SECTOR
-        </h3>
-        <!-- Select change of indicator -->
-        <form class="m-2">
-          <fieldset class="uk-fieldset">
-            <div class="uk-margin">
-              <select class="uk-select">
-                <option>
-                  Select indicator
-                </option>
-                <option>
-                  Prevalence of stunting in children under 5 years of age (%)
-                </option>
-                <option>
-                  Prevalence of wasting in children under 5 years of age (%)
-                </option>
-                <option>
-                  Prevalence of under-weight children under 5 years of age by
-                  sex (%)
-                </option>
-                <option>
-                  Prevalence of Anaemia among women of reproductive age
-                </option>
-                <option>
-                  Infant mortality rate per 1,000 live births by sex
-                </option>
-                <option>
-                  Under Five mortality rate per 1,000 live births by sex
-                </option>
-                <option>Maternal Mortality Ratio</option>
-                <option>
-                  Proportion of births attended by skilled health personnel
-                </option>
-                <option>
-                  Proportion of women attending first ANC in the first
-                  trimester
-                </option>
-                <option>Total Fertility Rate</option>
-                <option>
-                  Contraceptive Prevalence Rate in reproductive age group
-                  (15-49)
-                </option>
-                <option>
-                  Proportion of the population with health insurance by sex
-                </option>
-                <option>
-                  Adult mortality rates by sex and age groups ( Proxy
-                  Indicator)
-                </option>
-              </select>
             </div>
-          </fieldset>
-        </form>
+          </div>
+        </div>
+
+        <!-- ======================= the indicators selection modal -->
+        <div class="col-md-4 text-center">
+          <!-- Button trigger modal -->
+          <button type="button" class="btn btn-outline-success btn-lg btn-block text-white" data-toggle="modal"
+            data-target="#exampleModalCenter"><i class="fas fa-sign-in-alt"></i>
+            SELECT INDICATOR
+          </button>
+
+          <!-- Modal -->
+          <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog"
+            aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+
+            <!-- Add .modal-dialog-centered to .modal-dialog to vertically center the modal -->
+            <div class="modal-dialog modal-dialog-centered" role="document">
+
+
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title" id="exampleModalLongTitle">Modal title</h5>
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                </div>
+                <div class="modal-body">
+                  ...
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                  <button type="button" class="btn btn-primary">Save changes</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   </div>
 </div>
 
-
 <!-- ============================================================================================================== -->
 <!-- ============================================================================================================== -->
-
-
 
 <section class="py-2 header">
   <div class="uk-container py-2">
