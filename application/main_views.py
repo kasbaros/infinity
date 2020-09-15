@@ -97,7 +97,8 @@ def gallery():
 @app.route("/publication")
 def publication():
     files = publications.query.all()
-    return render_template("./main_pages/publications.html", pubs=files)
+    component = files[0]
+    return render_template("./main_pages/publications.html", pubs=files, id=component)
 
 
 """ The maps routes here """
