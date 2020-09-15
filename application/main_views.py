@@ -15,7 +15,6 @@ from .forms import ContactForm
 
 @app.route("/", methods=("GET", "POST"))
 def home():
-    files = publications.query.all()
     form = ContactForm()
     if form.validate_on_submit():
         return redirect(url_for("home"))
@@ -80,6 +79,25 @@ def social_development():
 @app.route("/water_and_environment")
 def water_and_environment():
     return render_template("./main_pages/water_and_environment.html")
+
+
+""" Gender activities, Publications and Gallery routes """
+
+
+@app.route("/gender_act")
+def gender_acts():
+    pass
+
+
+@app.route("/gallery")
+def gallery():
+    return render_template("./main_pages/gallery.html")
+
+
+@app.route("/publication")
+def publication():
+    files = publications.query.all()
+    return render_template("./main_pages/publications.html", pubs=files)
 
 
 """ The maps routes here """

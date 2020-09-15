@@ -1,0 +1,67 @@
+{% extends './includes/base.html' %}
+{% block content %}
+
+<!-- ======================================================================================================== -->
+<!-- =================================================  Page Content ======================================== -->
+<!-- ======================================================================================================== -->
+
+<section>
+    <div class="uk-height-medium uk-flex uk-flex-center uk-flex-middle uk-background-cover uk-light"
+        data-sizes="(min-width: 650px) 650px, 100vw" uk-img
+        style="background-image: url(./static/img/visuals.jpg); height: 100px">
+        <div class="container">
+            <div class="row text-white">Gender Statistics Portal</div>
+
+            <div class="row">
+                <ul class="uk-breadcrumb">
+                    <li><a href="{{ url_for('home') }}" class="text-white">Home</a></li>
+                    <li>
+                        <a href="{{ url_for('health') }}" class="text-white">Publications</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</section>
+<h2 class="uk-heading-line uk-text-center winter-neva-gradient text-black mt-0">The Gender Statistics Portal</h2>
+<section class="uk-container">
+    <div class="uk-container border border-info mb-3">
+        <h4 class="uk-heading-divider uk-heading-bullet mt-3 uk-text-primary m-3">Gender Publications</h4>
+        <div class="overflow-auto">
+            <table class="uk-table uk-table-small table-striped m-3 py-1">
+                <caption>All publications made in relation to gender activities</caption>
+                <thead>
+                    <tr>
+                        <th>Title</th>
+                        <th>Added on</th>
+                        <th>Size</th>
+                        <th>Times downloaded</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for row in pubs %}
+                    <tr>
+                        <td>{{row["doc_name"]}}</td>
+                        <td>{{row["date_added"]}}</td>
+                        <td>{{ row["size"]}}</td>
+                        <td>{{row["downloads"]}}</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+                <tfoot>
+                    <tr>
+                        <td colspan="7"">Sources: <a
+                            href=" https://www.ubos.org/?pagename=explore-publications&p_id=67" rel="external"
+                            class="text-info">Uganda
+                            Bureau Of Statistic</a>
+                    </tr>
+                </tfoot>
+            </table>
+        </div>
+    </div>
+</section>
+<!-- ======================================================================================================== -->
+<!-- =============================================  end Page Content ======================================== -->
+<!-- ======================================================================================================== -->
+
+{% endblock content %}

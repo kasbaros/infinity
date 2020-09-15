@@ -129,36 +129,41 @@
 
   <!-- ======= Header ======= -->
   <header>
-    <div id="sidenav" class="uk-card uk-card-default uk-card-body" style="padding: 2px 0px 0px 0px; z-index: 980;" uk-sticky="show-on-up: true; animation: uk-animation-slide-top; bottom: #bottom">
+    <div id="sidenav" class="uk-card uk-card-default uk-card-body" style="padding: 2px 0px 0px 0px; z-index: 980;"
+      uk-sticky="show-on-up: true; animation: uk-animation-slide-top; bottom: #bottom">
       <div>
 
         <div class="logo mr-auto" style="border-bottom: 1px solid rgb(59, 166, 253)">
           <a href="/">
-            <img src="/static/img/ubos_logo.png" class="img-fluid mx-auto d-block" style="width: 90%;" alt="Responsive image">
+            <img src="/static/img/ubos_logo.png" class="img-fluid mx-auto d-block" style="width: 90%;"
+              alt="Responsive image">
           </a>
         </div>
 
         <nav class="navbar navbar-expand-sm py-1 navbar-dark">
           <div class=" d-md-flex d-block flex-row mx-md-auto mx-0">
-            <button class="navbar-toggler btn-primary" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <button class="navbar-toggler btn-primary" type="button" data-toggle="collapse" data-target="#navbarNav"
+              aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
               <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarNav">
               <ul class="navbar-nav">
                 <li class="nav-item active">
-                  <a class="nav-link scrollto uk-text-primary" href="#">HOME<span class="sr-only">(current)</span></a>
+                  <a class="nav-link scrollto uk-text-primary" href="{{ url_for('home') }}">HOME<span
+                      class="sr-only">(current)</span></a>
                 </li>
                 <li class="nav-item">
                   <a class="nav-link scrollto uk-text-primary" href="#portal-data">PORTAL DATA</a>
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link scrollto uk-text-primary" href="#">PUBLICATIONS</a>
+                  <a class="nav-link scrollto uk-text-primary" href="{{ url_for('publication') }}">PUBLICATIONS</a>
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link scrollto uk-text-primary" href="#">GENDER ACTIVITIES</a>
+                  <a class="nav-link scrollto uk-text-primary" href="{{ url_for('gender_acts') }}">GENDER
+                    ACTIVITIES</a>
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link scrollto uk-text-primary" href="#">GALLERY</a>
+                  <a class="nav-link scrollto uk-text-primary" href="{{ url_for('gallery') }}">GALLERY</a>
                 </li>
                 <li class="nav-item">
                   <a class="nav-link scrollto uk-text-primary" href="#about-us" uk-toggle>ABOUT US</a>
@@ -290,7 +295,8 @@
       <div class="uk-modal-dialog">
         <button class="uk-modal-close-full uk-close-large" type="button" uk-close></button>
         <div class="uk-grid-collapse uk-child-width-1-2@s uk-flex-middle" uk-grid>
-          <div class="uk-background-cover" style="background-image: url(../../static/img/contactUs.jpeg);" uk-height-viewport></div>
+          <div class="uk-background-cover" style="background-image: url(../../static/img/contactUs.jpeg);"
+            uk-height-viewport></div>
           <div class="mt-2 p-md-5">
             <h1 class="uk-text-lead uk-text-large uk-text-bold uk-text-uppercase uk-text-primary">
               Here is how to get in touch with us:
@@ -311,15 +317,7 @@
                 <strong class="uk-text-success">Email:</strong> ubos@ubos.org
               </li>
             </ul>
-            <!--<h1 class="uk-text-lead">You can contact us directly orchat with us:</h1>
-        <div class="formwrapper">
-          <form method="POST" action="/">
-            <div class="form-control"><label for="name">Name</label> <input id="name" name="name" required size="20" type="text" value=""></div>
-            <div class="form-control"><label for="email">Email</label> <input id="email" name="email" required type="text" value=""></div>
-            <div class="form-control"><label for="body">Message</label> <input id="body" name="body" required type="text" value=""></div>
-            <input id="submit" name="submit" type="submit" value="Submit">
-          </form>
-        </div>-->
+
             <!-- Default form contact -->
             <form class="text-center p-2" action="#!">
               <p class="h5 mb-2">Contact us Directly</p>
@@ -329,7 +327,8 @@
               <input type="email" id="defaultContactFormEmail" class="form-control mb-2" placeholder="E-mail" />
               <!-- Message -->
               <div class="form-group">
-                <textarea class="form-control rounded-0" id="exampleFormControlTextarea2" rows="3" placeholder="Message"></textarea>
+                <textarea class="form-control rounded-0" id="exampleFormControlTextarea2" rows="3"
+                  placeholder="Message"></textarea>
               </div>
               <!-- Send button -->
               <button class="btn btn-info btn-block mb-2" type="submit">
@@ -349,6 +348,20 @@
     <!-- ########################################################################################################## -->
     <!--  end CONTACT US MODAL  -->
     <!-- ########################################################################################################## -->
+
+    <!-- =========================================================================================================== -->
+    <!-- PUBLICATIONS MODAL PAGE -->
+    <!-- =========================================================================================================== -->
+
+    <div id="publications" class="uk-modal-full" uk-modal>
+      <div class="uk-modal-dialog">
+        <button class="uk-modal-close-full uk-close-large" type="button" uk-close></button>
+      </div>
+    </div>
+
+    <!-- =========================================================================================================== -->
+    <!-- end PUBLICATIONS MODAL PAGE -->
+    <!-- =========================================================================================================== -->
 
 
     <div>{% block content %}{% endblock %}</div>

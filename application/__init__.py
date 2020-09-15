@@ -8,3 +8,4 @@ app.config["SQLALCHEMY_DATABASE_URI"] = "sqlite:///genderstatsport.db"
 db = SQLAlchemy(app)
 
 from application import main_views
+

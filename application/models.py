@@ -6,7 +6,7 @@ Create models for all the database tables to be used in the application
 
 # the publications model for the publications table in the database
 
-# drugs taken model
+
 class publications(db.Model):
     _id = db.Column(db.String(10), unique=True, nullable=False, primary_key=True)
     doc_name = db.Column(db.String(150), nullable=False)
@@ -17,3 +17,51 @@ class publications(db.Model):
 
     def __repr__(self):
         return f"publications('{self.doc_name}, {self.date_added}, {self.size}, {self.downloads}, {self.contents}')"
+
+
+# the sectors data model to hold all the data for each particular sector
+
+
+class Sector(db.Model):
+    _id = db.Column(db.String(10), unique=True, nullable=False, primary_key=True)
+    npgei = db.Column(db.String(10), nullable=False)
+    sector = db.Column(db.String(30), nullable=False)
+    indicator = db.Column(db.String(90), nullable=False)
+    source = db.Column(db.String(30), nullable=False)
+    geo = db.Column(db.String(30), nullable=False)
+    tier = db.Column(db.String(10), nullable=False)
+    males_2013 = db.Column(db.String(10), nullable=False)
+    females_2013 = db.Column(db.String(10), nullable=False)
+    total_2013 = db.Column(db.String(10), nullable=False)
+    males_2015 = db.Column(db.String(10), nullable=False)
+    females_2015 = db.Column(db.String(10), nullable=False)
+    total_2015 = db.Column(db.String(10), nullable=False)
+    males_2017 = db.Column(db.String(10), nullable=False)
+    females_2017 = db.Column(db.String(10), nullable=False)
+    total_2017 = db.Column(db.String(10), nullable=False)
+    males_2021 = db.Column(db.String(10), nullable=False)
+    females_2021 = db.Column(db.String(10), nullable=False)
+    total_2021 = db.Column(db.String(10), nullable=False)
+
+    def __repr__(self):
+        return f"Sector('{self._id},{self.npgei},{self.sector},{self.indicator},{self.source},{self.geo},{self.tier},{self.males_2013},{self.females_2013},{self.total_2013},{self.males_2015},{self.females_2015},{self.total_2015},{self.males_2017},{self.females_2017},{self.total_2017},{self.males_2021},{self.females_2021},{self.total_2021}')"
+
+
+# the meta-data model to store all indicators' meta information
+
+
+class Metadata(db.Model):
+    indicator = db.Column(db.String(50), unique=True, nullable=False, primary_key=True)
+    definition = db.Column(db.String(2000), nullable=False)
+    unit = db.Column(db.String(30), nullable=False)
+    method = db.Column(db.String(500), nullable=False)
+    compilation = db.Column(db.String(1000), nullable=False)
+    source = db.Column(db.String(200), nullable=False)
+    disaggregation = db.Column(db.String(50), nullable=False)
+    accessibility = db.Column(db.String(50), nullable=False)
+    periodicity = db.Column(db.String(50), nullable=False)
+    comments = db.Column(db.String(90), nullable=False)
+
+    def __repr__(self):
+        return f"Sector('{self.indicator},{self.definition},{self.unit},{self.method},{self.compilation},{self.source},{self.disaggregation},{self.accessibility},{self.periodicity},{self.comments}')"
+
