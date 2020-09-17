@@ -140,7 +140,7 @@
           </a>
         </div>
 
-        <nav class="navbar navbar-expand-sm py-1 navbar-dark">
+        <nav class="navbar navbar-expand-sm py-1 navbar-dark smooth-scroll">
           <div class=" d-md-flex d-block flex-row mx-md-auto mx-0">
             <button class="navbar-toggler btn-primary" type="button" data-toggle="collapse" data-target="#navbarNav"
               aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
@@ -152,10 +152,7 @@
                   <a class="nav-link scrollto uk-text-primary" href="{{ url_for('home') }}">HOME<span
                       class="sr-only">(current)</span></a>
                 </li>
-                <li class="nav-item">
-                  <a class="nav-link scrollto uk-text-primary" href="#portal-data">PORTAL DATA</a>
-                </li>
-                <li class="nav-item">
+                <li class=" nav-item">
                   <a class="nav-link scrollto uk-text-primary" href="{{ url_for('publication') }}">PUBLICATIONS</a>
                 </li>
                 <li class="nav-item">
@@ -164,12 +161,6 @@
                 </li>
                 <li class="nav-item">
                   <a class="nav-link scrollto uk-text-primary" href="{{ url_for('gallery') }}">GALLERY</a>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link scrollto uk-text-primary" href="#about-us" uk-toggle>ABOUT US</a>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link scrollto uk-text-primary" href="#contact-us" uk-toggle>CONTACT US</a>
                 </li>
               </ul>
             </div>
@@ -375,7 +366,7 @@
 
     <div class="container">
       <div class="row d-flex align-items-center">
-        <div class="col-lg-6 text-lg-left text-center">
+        <div class="col-lg-4 text-lg-left ">
           <div class="copyright">
             &copy; Copyright <strong>Uganda Bureau Of Statistics</strong>. All Rights Reserved
           </div>
@@ -383,12 +374,18 @@
             Designed by <a href="https://i3c.co.ug/">Inifnity Computers and Communications Company Ltd</a>
           </div>
         </div>
-        <div class="col-lg-6">
+        <div class="col-lg-8">
           <nav class="footer-links text-lg-right text-center pt-2 pt-lg-0">
-            <a href="http://www.ubos.org/" class="scrollto">UBOS</a>
-            <a href="http://www.unwomen.org/" class="scrollto">UN Women</a>
-            <a href="http://www.mglsd.go.ug/" class="scrollto">Ministry of Gender - Ug</a>
-            <a href="https://www.worldbank.org/en/topic/gender" class="scrollto">World Bank Gender Portal</a>
+            <a href="http://www.ubos.org/" class="scrollto" title="Uganda bureau of statistics" uk-tooltip>UBOS</a>
+            <a href="http://www.unwomen.org/" class="scrollto" title="United Nations Women" uk-tooltip>UN
+              Women</a>
+            <a href="http://www.mglsd.go.ug/" class="scrollto" title="Ministry of Gender - Uganda" uk-tooltip>MoG -
+              Ug</a>
+            <a href="https://www.worldbank.org/en/topic/gender" class="scrollto" title="World Bank gender portal"
+              uk-tooltip>WB Gender Portal</a>
+            <a href="#about-us" class="scrollto" title="Know more about the portal" uk-tooltip uk-toggle>About the
+              Portal</a>
+            <a href="#contact-us" class="scrollto" title="Contact us here" uk-tooltip uk-toggle>Contact Us</a>
           </nav>
         </div>
       </div>
