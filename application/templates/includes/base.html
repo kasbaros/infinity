@@ -1,424 +1,593 @@
 <!DOCTYPE html>
 <html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Gender Statistical Portal" />
+    <meta name="keywords" content="Gender Statistical Portal" />
+    <meta name="author" content="4Him" />
+    <title>Gender Statistical Portal</title>
 
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="Gender Statistical Portal" />
-  <meta name="keywords" content="Gender Statistical Portal" />
-  <meta name="author" content="4Him" />
-  <title>Gender Statistical Portal</title>
-
-  <!-- Favicons -->
-  <!--<link href="assets/img/favicon.png" rel="icon">
+    <!-- Favicons -->
+    <!--<link href="assets/img/favicon.png" rel="icon">
   <link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon">-->
 
-  <!-- Montseratt Font for the site pages -->
-  <link href='https://fonts.googleapis.com/css?family=Montserrat' rel='stylesheet'>
+    <!-- Montseratt Font for the site pages -->
+    <link
+      href="https://fonts.googleapis.com/css?family=Montserrat"
+      rel="stylesheet"
+    />
 
-  <!-- Font Awesome -->
-  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css" />
-  <!-- Google Fonts -->
-  <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
-  <!-- Bootstrap core CSS -->
-  <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.0/css/bootstrap.min.css" rel="stylesheet" />
-  <!-- Material Design Bootstrap -->
-  <link href="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.19.1/css/mdb.min.css" rel="stylesheet" />
+    <!-- Font Awesome -->
+    <link
+      rel="stylesheet"
+      href="https://use.fontawesome.com/releases/v5.8.2/css/all.css"
+    />
+    <!-- Google Fonts -->
+    <link
+      href="https://fonts.googleapis.com/css?family=Montserrat"
+      rel="stylesheet"
+    />
+    <!-- Bootstrap core CSS -->
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.0/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <!-- Material Design Bootstrap -->
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.19.1/css/mdb.min.css"
+      rel="stylesheet"
+    />
 
-  <!-- UIkit CSS -->
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/uikit@3.5.7/dist/css/uikit.min.css" />
+    <!-- UIkit CSS -->
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/uikit@3.5.7/dist/css/uikit.min.css"
+    />
 
-  <!-- UIkit JS -->
-  <script src="https://cdn.jsdelivr.net/npm/uikit@3.5.7/dist/js/uikit.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/uikit@3.5.7/dist/js/uikit-icons.min.js"></script>
+    <!-- UIkit JS -->
+    <script src="https://cdn.jsdelivr.net/npm/uikit@3.5.7/dist/js/uikit.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/uikit@3.5.7/dist/js/uikit-icons.min.js"></script>
 
-  <!-- JQuery -->
-  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-  <!-- Bootstrap tooltips -->
-  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.4/umd/popper.min.js">
-  </script>
+    <!-- JQuery -->
+    <script
+      type="text/javascript"
+      src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"
+    ></script>
 
-  <!-- Vendor CSS Files -->
-  <!--<link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">-->
-  <link href="/static/assets/vendor/icofont/icofont.min.css" rel="stylesheet">
-  <link href="/static/assets/vendor/remixicon/remixicon.css" rel="stylesheet">
-  <link href="/static/assets/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
-  <link href="/static/assets/vendor/owl.carousel/assets/owl.carousel.min.css" rel="stylesheet">
-  <link href="/static/assets/vendor/venobox/venobox.css" rel="stylesheet">
-  <link href="/static/assets/vendor/aos/aos.css" rel="stylesheet">
+    <!-- Bootstrap tooltips -->
+    <script
+      type="text/javascript"
+      src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.4/umd/popper.min.js"
+    ></script>
 
-  <!-- Template Main CSS File -->
-  <link href="/static/assets/css/style.css" rel="stylesheet">
+    <!-- Vendor CSS Files -->
+    <!--<link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">-->
+    <link
+      href="/static/assets/vendor/icofont/icofont.min.css"
+      rel="stylesheet"
+    />
+    <link
+      href="/static/assets/vendor/remixicon/remixicon.css"
+      rel="stylesheet"
+    />
+    <link
+      href="/static/assets/vendor/boxicons/css/boxicons.min.css"
+      rel="stylesheet"
+    />
+    <link
+      href="/static/assets/vendor/owl.carousel/assets/owl.carousel.min.css"
+      rel="stylesheet"
+    />
+    <link href="/static/assets/vendor/venobox/venobox.css" rel="stylesheet" />
+    <link href="/static/assets/vendor/aos/aos.css" rel="stylesheet" />
 
-  <style>
-    body {
+    <!-- Template Main CSS File -->
+    <link href="/static/assets/css/style.css" rel="stylesheet" />
 
-      font-family: 'Montserrat';
-      font-style: normal;
-      font-weight: 400;
-    }
+    <style>
+      body {
+        font-family: "Montserrat";
+        font-style: normal;
+        font-weight: 400;
+      }
 
-    /* Animation for the link underlines */
-    .scrollto {
-      color: #584E4A;
-      position: relative;
-      text-decoration: none;
-      padding-bottom: 8px;
-    }
+      /* Animation for the link underlines */
+      .scrollto {
+        color: #584e4a;
+        position: relative;
+        text-decoration: none;
+        padding-bottom: 8px;
+      }
 
-    .scrollto:before,
-    .scrollto:after {
-      content: '';
-      position: absolute;
-      bottom: 2px;
-      left: 0;
-      right: 0;
-      height: 2px;
-      background-color: #085af3;
-    }
+      .scrollto:before,
+      .scrollto:after {
+        content: "";
+        position: absolute;
+        bottom: 2px;
+        left: 0;
+        right: 0;
+        height: 2px;
+        background-color: #085af3;
+      }
 
-    .scrollto:before {
-      opacity: 0;
-      -webkit-transform: translateY(-8px);
-      transform: translateY(-8px);
-      -webkit-transition: opacity 0s, -webkit-transform 0s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-      transition: opacity 0s, -webkit-transform 0s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-      transition: transform 0s cubic-bezier(0.175, 0.885, 0.32, 1.275), opacity 0s;
-      transition: transform 0s cubic-bezier(0.175, 0.885, 0.32, 1.275), opacity 0s, -webkit-transform 0s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-    }
+      .scrollto:before {
+        opacity: 0;
+        -webkit-transform: translateY(-8px);
+        transform: translateY(-8px);
+        -webkit-transition: opacity 0s,
+          -webkit-transform 0s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        transition: opacity 0s,
+          -webkit-transform 0s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        transition: transform 0s cubic-bezier(0.175, 0.885, 0.32, 1.275),
+          opacity 0s;
+        transition: transform 0s cubic-bezier(0.175, 0.885, 0.32, 1.275),
+          opacity 0s,
+          -webkit-transform 0s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+      }
 
-    .scrollto:after {
-      opacity: 0;
-      -webkit-transform: translateY(4px);
-      transform: translateY(4px);
-      -webkit-transition: opacity 0.2s, -webkit-transform 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-      transition: opacity 0.2s, -webkit-transform 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-      transition: transform 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275), opacity 0.2s;
-      transition: transform 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275), opacity 0.2s, -webkit-transform 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-    }
+      .scrollto:after {
+        opacity: 0;
+        -webkit-transform: translateY(4px);
+        transform: translateY(4px);
+        -webkit-transition: opacity 0.2s,
+          -webkit-transform 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        transition: opacity 0.2s,
+          -webkit-transform 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        transition: transform 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275),
+          opacity 0.2s;
+        transition: transform 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275),
+          opacity 0.2s,
+          -webkit-transform 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+      }
 
-    .scrollto:hover:before,
-    .scrollto:hover:after,
-    .scrollto:focus:before,
-    .scrollto:focus:after {
-      opacity: 1;
-      -webkit-transform: translateY(0);
-      transform: translateY(0);
-    }
+      .scrollto:hover:before,
+      .scrollto:hover:after,
+      .scrollto:focus:before,
+      .scrollto:focus:after {
+        opacity: 1;
+        -webkit-transform: translateY(0);
+        transform: translateY(0);
+      }
 
-    .scrollto:hover:before,
-    .scrollto:focus:before {
-      -webkit-transition: opacity 0.2s, -webkit-transform 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-      transition: opacity 0.2s, -webkit-transform 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-      transition: transform 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275), opacity 0.2s;
-      transition: transform 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275), opacity 0.2s, -webkit-transform 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-    }
+      .scrollto:hover:before,
+      .scrollto:focus:before {
+        -webkit-transition: opacity 0.2s,
+          -webkit-transform 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        transition: opacity 0.2s,
+          -webkit-transform 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        transition: transform 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275),
+          opacity 0.2s;
+        transition: transform 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275),
+          opacity 0.2s,
+          -webkit-transform 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+      }
 
-    .scrollto:hover:after,
-    .scrollto:focus:after {
-      -webkit-transition: opacity 0s 0.2s, -webkit-transform 0s 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-      transition: opacity 0s 0.2s, -webkit-transform 0s 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-      transition: transform 0s 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275), opacity 0s 0.2s;
-      transition: transform 0s 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275), opacity 0s 0.2s, -webkit-transform 0s 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-    }
-  </style>
+      .scrollto:hover:after,
+      .scrollto:focus:after {
+        -webkit-transition: opacity 0s 0.2s,
+          -webkit-transform 0s 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        transition: opacity 0s 0.2s,
+          -webkit-transform 0s 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        transition: transform 0s 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275),
+          opacity 0s 0.2s;
+        transition: transform 0s 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275),
+          opacity 0s 0.2s,
+          -webkit-transform 0s 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+      }
+    </style>
+  </head>
 
-</head>
-
-<body>
-
-  <!-- ======= Header ======= -->
-  <header>
-    <div id="sidenav" class="uk-card uk-card-default uk-card-body" style="padding: 2px 0px 0px 0px; z-index: 980;"
-      uk-sticky="show-on-up: true; animation: uk-animation-slide-top; bottom: #bottom">
-      <div>
-
-        <div class="logo mr-auto" style="border-bottom: 1px solid rgb(59, 166, 253)">
-          <a href="/">
-            <img src="/static/img/ubos_logo.png" class="img-fluid mx-auto d-block" style="width: 90%;"
-              alt="Responsive image">
-          </a>
-        </div>
-
-        <nav class="navbar navbar-expand-sm py-1 navbar-dark smooth-scroll">
-          <div class=" d-md-flex d-block flex-row mx-md-auto mx-0">
-            <button class="navbar-toggler btn-primary" type="button" data-toggle="collapse" data-target="#navbarNav"
-              aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-              <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarNav">
-              <ul class="navbar-nav">
-                <li class="nav-item active">
-                  <a class="nav-link scrollto uk-text-primary" href="{{ url_for('home') }}">HOME<span
-                      class="sr-only">(current)</span></a>
-                </li>
-                <li class=" nav-item">
-                  <a class="nav-link scrollto uk-text-primary" href="{{ url_for('publication') }}">PUBLICATIONS</a>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link scrollto uk-text-primary" href="{{ url_for('gender_acts') }}">GENDER
-                    ACTIVITIES</a>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link scrollto uk-text-primary" href="{{ url_for('gallery') }}">GALLERY</a>
-                </li>
-              </ul>
-            </div>
+  <body>
+    <!-- ======= Header ======= -->
+    <header>
+      <div
+        id="sidenav"
+        class="uk-card uk-card-default uk-card-body"
+        style="padding: 2px 0px 0px 0px; z-index: 980"
+        uk-sticky="show-on-up: true; animation: uk-animation-slide-top; bottom: #bottom"
+      >
+        <div>
+          <div
+            class="logo mr-auto"
+            style="border-bottom: 1px solid rgb(59, 166, 253)"
+          >
+            <a href="/">
+              <img
+                src="/static/img/ubos_logo.png"
+                class="img-fluid mx-auto d-block"
+                style="width: 90%"
+                alt="Responsive image"
+              />
+            </a>
           </div>
-        </nav>
-      </div>
-    </div>
-  </header>
-  <!-- End Header -->
-  <main>
 
-    <!-- ############################################################################################################### -->
-    <!-- #################################### MODALS FOR THE DIFFERENT MENU ITEMS ###################################### -->
-
-    <!-- ABOUT US MODAL -->
-    <div id="about-us" class="uk-modal-container" uk-modal>
-      <div class="uk-modal-dialog">
-        <div class="uk-modal-header" style="background-image: url('./static/img/aboutUs.jpg');">
-          <h2 class="uk-modal-title uk-text-light uk-text-primary">About Us</h2>
-        </div>
-        <div class="uk-modal-body uk-text-justify" uk-overflow-auto>
-          <h4 class="uk-heading-bullet">Overview</h4>
-          <p>
-            Gender is an important variable that systematically structures a
-            person’s economic and social position and prospects in society. It
-            describes attitudes, roles and responsibilities assigned to males and
-            females, that often result in different opportunities and behavior for
-            both men and women. The concept of gender emerged out of the study of
-            social dynamics between the sexes, hence the expression “gender
-            dynamics”. Gender aspects are determined by society and vary within
-            and between societies.
-          </p>
-
-          <p>
-            The aspects are dynamic and usually influenced by cultural, economic,
-            political and environmental factors. Hence, the different roles men
-            and women create differences in need as well as access to and control
-            over resources.
-          </p>
-
-          <p>
-            The trend of mainstreaming gender in statistics development evolved
-            since the 1995 Beijing Declaration at the Beijing Platform for Action
-            (BPfA) and has continued to expand and entrench itself in various
-            development frameworks and policies at international, continental and
-            national level. Some of these include: the 1985 Convention on the
-            Elimination of all forms of Discrimination against Women (CEDAW), the
-            1987 International Covenant on Economic, Social and Cultural Rights,
-            the 1995 International Covenant on Civil and Political Rights, the
-            1986 Convention against Torture, the 1990 Convention on the Rights of
-            the Child, the Agenda 2030 on Sustainable Development, Africa Agenda
-            2063 and the National Development Plan (NDP), to mention but a few.
-            All these require data to measure progress towards the country’s
-            commitment on gender equality and women’s empowerment.
-          </p>
-          <p>
-            Overall, efforts related to policy formulation and programme design,
-            implementation and monitoring require detailed, reliable and timely
-            gender statistics. Uganda is part of the global framework and is
-            expected to respond and adhere to all international resolutions
-            Principles, Standards and Classifications at international level meant
-            for statistics.
-          </p>
-          <p>
-            Empirical evidence shows that Uganda has made efforts to implement the
-            actions recommended in the Beijing Platform of Action, objective H3
-            through increased sex disaggregation of data, improved analysis of
-            data from a gender perspective and identification of gaps in
-            statistical products. The Plan for National Statistical Development
-            (PNSD) is Uganda’s framework for strengthening statistical production
-            and development in the National Statistical System (NSS).
-          </p>
-          <p>
-            The PNSD, and Uganda Bureau of Statistics (UBOS) Strategic Plan
-            underscore the need for gender statistics and gender and equity
-            responsive statistics in all census, survey and administrative data
-            reports. The current initiatives to mainstream gender in UBOS
-            notwithstanding, more work needs to be done to attain a gender
-            responsive National Statistical System (NSS). UBOS has made great
-            strides in mainstreaming gender in the organization, and promoting the
-            production and use of gender statistics in the NSS, as a whole.
-          </p>
-          <h4 class="uk-heading-bullet">
-            The National Priority Gender Equality Indicators (NPGEIs)
-          </h4>
-          <p>
-            The Uganda Bureau of Statistics (UBOS) as the agency coordinating the
-            development and maintenance of the NSS in collaboration with
-            Ministries, Departments and Agencies (MDAs) developed the National
-            Priority Gender Equality Indicators (NPGEIs). The NPGEIs are intended
-            to guide development and production of gender responsive indicators in
-            the country. The NPGEIs are aligned to the NDP, Sector Development
-            Plans (SDPs) and the Sustainable Development Goals (SDGs). The NPGEIs
-            are presented by sector and categorized by tiers. The categories of
-            tiers are based on the availability of data and methodology as
-            follows;
-          </p>
-          <ul class="uk-list uk-list-square">
-            <li>Tier I: Indicators with available methodology and data.</li>
-            <li>
-              Tier II: Indicators with available methodology but data is not being
-              produced.
-            </li>
-            <li>Tier III: Indicators with neither methodology nor data.</li>
-          </ul>
-        </div>
-
-        <div class="uk-modal-footer uk-text-right">
-          <button class="uk-button uk-button-default uk-modal-close" type="button">
-            Close
-          </button>
-        </div>
-      </div>
-    </div>
-    <!-- END ABOUT US MODAL -->
-    <!-- ########################################################################################################## -->
-    <!-- ########################################################################################################## -->
-
-    <!-- ########################################################################################################## -->
-    <!--  CONTACT US MODAL  -->
-    <!-- ########################################################################################################## -->
-    <div id="contact-us" class="uk-modal-full" uk-modal>
-      <div class="uk-modal-dialog">
-        <button class="uk-modal-close-full uk-close-large" type="button" uk-close></button>
-        <div class="uk-grid-collapse uk-child-width-1-2@s uk-flex-middle" uk-grid>
-          <div class="uk-background-cover" style="background-image: url(../../static/img/contactUs.jpeg);"
-            uk-height-viewport></div>
-          <div class="mt-2 p-md-5">
-            <h1 class="uk-text-lead uk-text-large uk-text-bold uk-text-uppercase uk-text-primary">
-              Here is how to get in touch with us:
-            </h1>
-            <ul class="uk-list uk-list-divider">
-              <li class="uk-text-small">
-                <strong class="uk-text-success">Address:</strong> Statistics
-                House, Plot 9 Colville Street
-              </li>
-              <li class="uk-text-small">
-                <strong class="uk-text-success">Posta:</strong> P.O. Box 7186,
-                Kampala
-              </li>
-              <li class="uk-text-small">
-                <strong class="uk-text-success">Phone:</strong> +256 414 706000
-              </li>
-              <li class="uk-text-small">
-                <strong class="uk-text-success">Email:</strong> ubos@ubos.org
-              </li>
-            </ul>
-
-            <!-- Default form contact -->
-            <form class="text-center p-2" action="#!">
-              <p class="h5 mb-2">Contact us Directly</p>
-              <!-- Name -->
-              <input type="text" id="defaultContactFormName" class="form-control mb-2" placeholder="Name" />
-              <!-- Email -->
-              <input type="email" id="defaultContactFormEmail" class="form-control mb-2" placeholder="E-mail" />
-              <!-- Message -->
-              <div class="form-group">
-                <textarea class="form-control rounded-0" id="exampleFormControlTextarea2" rows="3"
-                  placeholder="Message"></textarea>
-              </div>
-              <!-- Send button -->
-              <button class="btn btn-info btn-block mb-2" type="submit">
-                Send
+          <nav class="navbar navbar-expand-sm py-1 navbar-dark smooth-scroll">
+            <div class="d-md-flex d-block flex-row mx-md-auto mx-0">
+              <button
+                class="navbar-toggler btn-primary"
+                type="button"
+                data-toggle="collapse"
+                data-target="#navbarNav"
+                aria-controls="navbarNav"
+                aria-expanded="false"
+                aria-label="Toggle navigation"
+              >
+                <span class="navbar-toggler-icon"></span>
               </button>
-              <!-- Social login -->
-              <a href="#" class="mx-2" role="button"><i class="fab fa-facebook-f light-blue-text"></i></a>
-              <a href="#" class="mx-2" role="button"><i class="fab fa-twitter light-blue-text"></i></a>
-              <a href="#" class="mx-2" role="button"><i class="fab fa-linkedin-in light-blue-text"></i></a>
-              <a href="#" class="mx-2" role="button"><i class="fab fa-github light-blue-text"></i></a>
-            </form>
-            <!-- Default form contact -->
-          </div>
-        </div>
-      </div>
-    </div>
-    <!-- ########################################################################################################## -->
-    <!--  end CONTACT US MODAL  -->
-    <!-- ########################################################################################################## -->
-
-    <!-- =========================================================================================================== -->
-    <!-- PUBLICATIONS MODAL PAGE -->
-    <!-- =========================================================================================================== -->
-
-    <div id="publications" class="uk-modal-full" uk-modal>
-      <div class="uk-modal-dialog">
-        <button class="uk-modal-close-full uk-close-large" type="button" uk-close></button>
-      </div>
-    </div>
-
-    <!-- =========================================================================================================== -->
-    <!-- end PUBLICATIONS MODAL PAGE -->
-    <!-- =========================================================================================================== -->
-
-
-    <div>{% block content %}{% endblock %}</div>
-  </main>
-  <!-- ======= Footer ======= -->
-  <!-- Copyright -->
-  <div class="footer-copyright text-center py-2 mt-0" style="background: #262627;">
-  </div>
-  <!-- Copyright -->
-  <footer id="footer">
-
-    <div class="container">
-      <div class="row d-flex align-items-center">
-        <div class="col-lg-4 text-lg-left ">
-          <div class="copyright">
-            &copy; Copyright <strong>Uganda Bureau Of Statistics</strong>. All Rights Reserved
-          </div>
-          <div class="credits">
-            Designed by <a href="https://i3c.co.ug/">Inifnity Computers and Communications Company Ltd</a>
-          </div>
-        </div>
-        <div class="col-lg-8">
-          <nav class="footer-links text-lg-right text-center pt-2 pt-lg-0">
-            <a href="http://www.ubos.org/" class="scrollto" title="Uganda bureau of statistics" uk-tooltip>UBOS</a>
-            <a href="http://www.unwomen.org/" class="scrollto" title="United Nations Women" uk-tooltip>UN
-              Women</a>
-            <a href="http://www.mglsd.go.ug/" class="scrollto" title="Ministry of Gender - Uganda" uk-tooltip>MoG -
-              Ug</a>
-            <a href="https://www.worldbank.org/en/topic/gender" class="scrollto" title="World Bank gender portal"
-              uk-tooltip>WB Gender Portal</a>
-            <a href="#about-us" class="scrollto" title="Know more about the portal" uk-tooltip uk-toggle>About the
-              Portal</a>
-            <a href="#contact-us" class="scrollto" title="Contact us here" uk-tooltip uk-toggle>Contact Us</a>
+              <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav">
+                  <li class="nav-item active">
+                    <a
+                      class="nav-link scrollto uk-text-primary"
+                      href="{{ url_for('home') }}"
+                      >HOME<span class="sr-only">(current)</span></a
+                    >
+                  </li>
+                  <li class="nav-item">
+                    <a
+                      class="nav-link scrollto uk-text-primary"
+                      href="{{ url_for('publication') }}"
+                      >PUBLICATIONS</a
+                    >
+                  </li>
+                  <li class="nav-item">
+                    <a
+                      class="nav-link scrollto uk-text-primary"
+                      href="{{ url_for('gender_acts') }}"
+                      >GENDER ACTIVITIES</a
+                    >
+                  </li>
+                  <li class="nav-item">
+                    <a
+                      class="nav-link scrollto uk-text-primary"
+                      href="{{ url_for('gallery') }}"
+                      >GALLERY</a
+                    >
+                  </li>
+                </ul>
+              </div>
+            </div>
           </nav>
         </div>
       </div>
-    </div>
-  </footer><!-- End Footer -->
+    </header>
+    <!-- End Header -->
+    <main>
+      <!-- ############################################################################################################### -->
+      <!-- #################################### MODALS FOR THE DIFFERENT MENU ITEMS ###################################### -->
 
-  <a href="#" class="back-to-top"><i class="icofont-simple-up"></i></a>
+      <!-- ABOUT US MODAL -->
+      <div id="about-us" class="uk-modal-container" uk-modal>
+        <div class="uk-modal-dialog">
+          <div
+            class="uk-modal-header"
+            style="background-image: url('./static/img/aboutUs.jpg')"
+          >
+            <h2 class="uk-modal-title uk-text-light uk-text-primary">
+              About Us
+            </h2>
+          </div>
+          <div class="uk-modal-body uk-text-justify" uk-overflow-auto>
+            <h4 class="uk-heading-bullet">Overview</h4>
+            <p>
+              Gender is an important variable that systematically structures a
+              person’s economic and social position and prospects in society. It
+              describes attitudes, roles and responsibilities assigned to males
+              and females, that often result in different opportunities and
+              behavior for both men and women. The concept of gender emerged out
+              of the study of social dynamics between the sexes, hence the
+              expression “gender dynamics”. Gender aspects are determined by
+              society and vary within and between societies.
+            </p>
 
-  <!-- Vendor JS Files -->
-  <script src="/static//assets/vendor/jquery/jquery.min.js"></script>
-  <script src="/static//assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-  <script src="/static//assets/vendor/jquery.easing/jquery.easing.min.js"></script>
-  <script src="/static//assets/vendor/php-email-form/validate.js"></script>
-  <script src="/static//assets/vendor/waypoints/jquery.waypoints.min.js"></script>
-  <script src="/static//assets/vendor/counterup/counterup.min.js"></script>
-  <script src="/static//assets/vendor/owl.carousel/owl.carousel.min.js"></script>
-  <script src="/static//assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
-  <script src="/static//assets/vendor/venobox/venobox.min.js"></script>
-  <script src="/static//assets/vendor/aos/aos.js"></script>
+            <p>
+              The aspects are dynamic and usually influenced by cultural,
+              economic, political and environmental factors. Hence, the
+              different roles men and women create differences in need as well
+              as access to and control over resources.
+            </p>
 
-  <!-- Template Main JS File -->
-  <script src="/static//assets/js/main.js"></script>
+            <p>
+              The trend of mainstreaming gender in statistics development
+              evolved since the 1995 Beijing Declaration at the Beijing Platform
+              for Action (BPfA) and has continued to expand and entrench itself
+              in various development frameworks and policies at international,
+              continental and national level. Some of these include: the 1985
+              Convention on the Elimination of all forms of Discrimination
+              against Women (CEDAW), the 1987 International Covenant on
+              Economic, Social and Cultural Rights, the 1995 International
+              Covenant on Civil and Political Rights, the 1986 Convention
+              against Torture, the 1990 Convention on the Rights of the Child,
+              the Agenda 2030 on Sustainable Development, Africa Agenda 2063 and
+              the National Development Plan (NDP), to mention but a few. All
+              these require data to measure progress towards the country’s
+              commitment on gender equality and women’s empowerment.
+            </p>
+            <p>
+              Overall, efforts related to policy formulation and programme
+              design, implementation and monitoring require detailed, reliable
+              and timely gender statistics. Uganda is part of the global
+              framework and is expected to respond and adhere to all
+              international resolutions Principles, Standards and
+              Classifications at international level meant for statistics.
+            </p>
+            <p>
+              Empirical evidence shows that Uganda has made efforts to implement
+              the actions recommended in the Beijing Platform of Action,
+              objective H3 through increased sex disaggregation of data,
+              improved analysis of data from a gender perspective and
+              identification of gaps in statistical products. The Plan for
+              National Statistical Development (PNSD) is Uganda’s framework for
+              strengthening statistical production and development in the
+              National Statistical System (NSS).
+            </p>
+            <p>
+              The PNSD, and Uganda Bureau of Statistics (UBOS) Strategic Plan
+              underscore the need for gender statistics and gender and equity
+              responsive statistics in all census, survey and administrative
+              data reports. The current initiatives to mainstream gender in UBOS
+              notwithstanding, more work needs to be done to attain a gender
+              responsive National Statistical System (NSS). UBOS has made great
+              strides in mainstreaming gender in the organization, and promoting
+              the production and use of gender statistics in the NSS, as a
+              whole.
+            </p>
+            <h4 class="uk-heading-bullet">
+              The National Priority Gender Equality Indicators (NPGEIs)
+            </h4>
+            <p>
+              The Uganda Bureau of Statistics (UBOS) as the agency coordinating
+              the development and maintenance of the NSS in collaboration with
+              Ministries, Departments and Agencies (MDAs) developed the National
+              Priority Gender Equality Indicators (NPGEIs). The NPGEIs are
+              intended to guide development and production of gender responsive
+              indicators in the country. The NPGEIs are aligned to the NDP,
+              Sector Development Plans (SDPs) and the Sustainable Development
+              Goals (SDGs). The NPGEIs are presented by sector and categorized
+              by tiers. The categories of tiers are based on the availability of
+              data and methodology as follows;
+            </p>
+            <ul class="uk-list uk-list-square">
+              <li>Tier I: Indicators with available methodology and data.</li>
+              <li>
+                Tier II: Indicators with available methodology but data is not
+                being produced.
+              </li>
+              <li>Tier III: Indicators with neither methodology nor data.</li>
+            </ul>
+          </div>
 
-  <!-- ScrollSpy -->
-  <script>
-    var spyNav = UIkit.scrollspyNav('#sidenav', {
-      closest: 'li',
-      scroll: true,
-      offset: 170,
-      cls: 'uk-active'
-    });
-  </script>
+          <div class="uk-modal-footer uk-text-right">
+            <button
+              class="uk-button uk-button-default uk-modal-close"
+              type="button"
+            >
+              Close
+            </button>
+          </div>
+        </div>
+      </div>
+      <!-- END ABOUT US MODAL -->
+      <!-- ########################################################################################################## -->
+      <!-- ########################################################################################################## -->
 
-</body>
+      <!-- ########################################################################################################## -->
+      <!--  CONTACT US MODAL  -->
+      <!-- ########################################################################################################## -->
+      <div id="contact-us" class="uk-modal-full" uk-modal>
+        <div class="uk-modal-dialog">
+          <button
+            class="uk-modal-close-full uk-close-large"
+            type="button"
+            uk-close
+          ></button>
+          <div
+            class="uk-grid-collapse uk-child-width-1-2@s uk-flex-middle"
+            uk-grid
+          >
+            <div
+              class="uk-background-cover"
+              style="background-image: url(../../static/img/contactUs.jpeg)"
+              uk-height-viewport
+            ></div>
+            <div class="mt-2 p-md-5">
+              <h1
+                class="uk-text-lead uk-text-large uk-text-bold uk-text-uppercase uk-text-primary"
+              >
+                Here is how to get in touch with us:
+              </h1>
+              <ul class="uk-list uk-list-divider">
+                <li class="uk-text-small">
+                  <strong class="uk-text-success">Address:</strong> Statistics
+                  House, Plot 9 Colville Street
+                </li>
+                <li class="uk-text-small">
+                  <strong class="uk-text-success">Posta:</strong> P.O. Box 7186,
+                  Kampala
+                </li>
+                <li class="uk-text-small">
+                  <strong class="uk-text-success">Phone:</strong> +256 414
+                  706000
+                </li>
+                <li class="uk-text-small">
+                  <strong class="uk-text-success">Email:</strong> ubos@ubos.org
+                </li>
+              </ul>
 
+              <!-- Default form contact -->
+              <form class="text-center p-2" action="#!">
+                <p class="h5 mb-2">Contact us Directly</p>
+                <!-- Name -->
+                <input
+                  type="text"
+                  id="defaultContactFormName"
+                  class="form-control mb-2"
+                  placeholder="Name"
+                />
+                <!-- Email -->
+                <input
+                  type="email"
+                  id="defaultContactFormEmail"
+                  class="form-control mb-2"
+                  placeholder="E-mail"
+                />
+                <!-- Message -->
+                <div class="form-group">
+                  <textarea
+                    class="form-control rounded-0"
+                    id="exampleFormControlTextarea2"
+                    rows="3"
+                    placeholder="Message"
+                  ></textarea>
+                </div>
+                <!-- Send button -->
+                <button class="btn btn-info btn-block mb-2" type="submit">
+                  Send
+                </button>
+                <!-- Social login -->
+                <a href="#" class="mx-2" role="button"
+                  ><i class="fab fa-facebook-f light-blue-text"></i
+                ></a>
+                <a href="#" class="mx-2" role="button"
+                  ><i class="fab fa-twitter light-blue-text"></i
+                ></a>
+                <a href="#" class="mx-2" role="button"
+                  ><i class="fab fa-linkedin-in light-blue-text"></i
+                ></a>
+                <a href="#" class="mx-2" role="button"
+                  ><i class="fab fa-github light-blue-text"></i
+                ></a>
+              </form>
+              <!-- Default form contact -->
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- ########################################################################################################## -->
+      <!--  end CONTACT US MODAL  -->
+      <!-- ########################################################################################################## -->
+
+      <!-- =========================================================================================================== -->
+      <!-- PUBLICATIONS MODAL PAGE -->
+      <!-- =========================================================================================================== -->
+
+      <div id="publications" class="uk-modal-full" uk-modal>
+        <div class="uk-modal-dialog">
+          <button
+            class="uk-modal-close-full uk-close-large"
+            type="button"
+            uk-close
+          ></button>
+        </div>
+      </div>
+
+      <!-- =========================================================================================================== -->
+      <!-- end PUBLICATIONS MODAL PAGE -->
+      <!-- =========================================================================================================== -->
+
+      <div>{% block content %}{% endblock %}</div>
+    </main>
+    <!-- ======= Footer ======= -->
+    <!-- Copyright -->
+    <div
+      class="footer-copyright text-center py-2 mt-0"
+      style="background: #262627"
+    ></div>
+    <!-- Copyright -->
+    <footer id="footer">
+      <div class="container">
+        <div class="row d-flex align-items-center">
+          <div class="col-lg-4 text-lg-left">
+            <div class="copyright">
+              &copy; Copyright <strong>Uganda Bureau Of Statistics</strong>. All
+              Rights Reserved
+            </div>
+            <div class="credits">
+              Designed by
+              <a href="https://i3c.co.ug/"
+                >Inifnity Computers and Communications Company Ltd</a
+              >
+            </div>
+          </div>
+          <div class="col-lg-8">
+            <nav class="footer-links text-lg-right text-center pt-2 pt-lg-0">
+              <a
+                href="http://www.ubos.org/"
+                class="scrollto"
+                title="Uganda bureau of statistics"
+                uk-tooltip
+                >UBOS</a
+              >
+              <a
+                href="http://www.unwomen.org/"
+                class="scrollto"
+                title="United Nations Women"
+                uk-tooltip
+                >UN Women</a
+              >
+              <a
+                href="http://www.mglsd.go.ug/"
+                class="scrollto"
+                title="Ministry of Gender - Uganda"
+                uk-tooltip
+                >MoG - Ug</a
+              >
+              <a
+                href="https://www.worldbank.org/en/topic/gender"
+                class="scrollto"
+                title="World Bank gender portal"
+                uk-tooltip
+                >WB Gender Portal</a
+              >
+              <a
+                href="#about-us"
+                class="scrollto"
+                title="Know more about the portal"
+                uk-tooltip
+                uk-toggle
+                >About the Portal</a
+              >
+              <a
+                href="#contact-us"
+                class="scrollto"
+                title="Contact us here"
+                uk-tooltip
+                uk-toggle
+                >Contact Us</a
+              >
+            </nav>
+          </div>
+        </div>
+      </div>
+    </footer>
+    <!-- End Footer -->
+
+    <a href="#" class="back-to-top"><i class="icofont-simple-up"></i></a>
+
+    <!-- Vendor JS Files -->
+    <script src="/static//assets/vendor/jquery/jquery.min.js"></script>
+    <script src="/static//assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="/static//assets/vendor/jquery.easing/jquery.easing.min.js"></script>
+    <script src="/static//assets/vendor/php-email-form/validate.js"></script>
+    <script src="/static//assets/vendor/waypoints/jquery.waypoints.min.js"></script>
+    <script src="/static//assets/vendor/counterup/counterup.min.js"></script>
+    <script src="/static//assets/vendor/owl.carousel/owl.carousel.min.js"></script>
+    <script src="/static//assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
+    <script src="/static//assets/vendor/venobox/venobox.min.js"></script>
+    <script src="/static//assets/vendor/aos/aos.js"></script>
+
+    <!-- Template Main JS File -->
+    <script src="/static//assets/js/main.js"></script>
+
+    <!-- ScrollSpy -->
+    <script>
+      var spyNav = UIkit.scrollspyNav("#sidenav", {
+        closest: "li",
+        scroll: true,
+        offset: 170,
+        cls: "uk-active",
+      });
+    </script>
+  </body>
 </html>
