@@ -1,9 +1,39 @@
-{% extends './includes/base.html' %}
-{% block content %}
+{% extends './includes/base.html' %} {% block content %}
 <!-- ======================================================================================================== -->
 <!-- =================================================  Page Content ======================================== -->
 <!-- ======================================================================================================== -->
+<section>
+  <div
+    class="uk-height-medium uk-flex uk-flex-center uk-flex-middle uk-background-cover uk-light"
+    data-sizes="(min-width: 650px) 650px, 100vw"
+    uk-img
+    style="background-image: url(../../static/img/activs.jpg); height: 100px"
+  >
+    <div class="container">
+      <div class="row text-white">Gender Statistics Portal</div>
 
+      <div class="row">
+        <ul class="uk-breadcrumb">
+          <li><a href="{{ url_for('home') }}" class="text-white">Home</a></li>
+          <li>
+            <a href="{{ url_for('gender_acts') }}" class="text-white"
+              >Gender Activities</a
+            >
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+<h3 class="uk-heading-line uk-text-center blue-gradient text-white mt-0">
+  The Gender Statistics Portal
+</h3>
+<section class="uk-container">
+  <div class="card mt-5 mr-5 ml-5 mb-5 py-5">
+    <p class="m-5">Gender activities page</p>
+    <h1 class="uk-heading-2xlarge text-center">Coming Soon</h1>
+  </div>
+</section>
 <!-- ======================================================================================================== -->
 <!-- ============================================== end Page Content ======================================== -->
 <!-- ======================================================================================================== -->

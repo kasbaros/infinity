@@ -86,7 +86,7 @@ def water_and_environment():
 
 @app.route("/gender_act")
 def gender_acts():
-    pass
+    return render_template("./main_pages/gender_acts.html")
 
 
 @app.route("/gallery")
