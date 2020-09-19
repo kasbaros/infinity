@@ -408,7 +408,371 @@
         border: 0 solid #ff0000;
       }
 
-      /* Preloader CSS */
+      /* ================================= Preloader CSS ==================================== */
+      /* ==================================================================================== */
+      #loader-wrapper {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        z-index: 1000;
+      }
+      #loader {
+        display: block;
+        position: relative;
+        top: 50%;
+        left: 50%;
+        width: 150px;
+        height: 150px;
+        margin: -75px 0 0 -75px;
+        border: 3px solid transparent;
+        border-top-color: white;
+        border-radius: 100%;
+        -webkit-animation: spin 2s linear infinite;
+        animation: spin 2s linear infinite;
+        z-index: 1001;
+      }
+      #loader:before {
+        content: "";
+        position: absolute;
+        top: 5px;
+        left: 5px;
+        right: 5px;
+        bottom: 5px;
+        border: 3px solid transparent;
+        border-top-color: yellow;
+        border-radius: 100%;
+        -webkit-animation: spin 3s linear infinite;
+        animation: spin 3s linear infinite;
+      }
+      #loader:after {
+        content: "";
+        position: absolute;
+        top: 12px;
+        left: 12px;
+        right: 12px;
+        bottom: 12px;
+        border: 3px solid transparent;
+        border-top-color: orange;
+        border-radius: 100%;
+        -webkit-animation: spin 1.5s linear infinite;
+        animation: spin 1.5s linear infinite;
+      }
+      @-webkit-keyframes spin {
+        0% {
+          -webkit-transform: rotate(0deg);
+          -ms-transform: rotate(0deg);
+          transform: rotate(0deg);
+        }
+        100% {
+          -webkit-transform: rotate(360deg);
+          -ms-transform: rotate(360deg);
+          transform: rotate(360deg);
+        }
+      }
+      @keyframes spin {
+        0% {
+          -webkit-transform: rotate(0deg);
+          -ms-transform: rotate(0deg);
+          transform: rotate(0deg);
+        }
+        100% {
+          -webkit-transform: rotate(360deg);
+          -ms-transform: rotate(360deg);
+          transform: rotate(360deg);
+        }
+      }
+
+      #loader-wrapper .loader-section {
+        position: fixed;
+        top: 0;
+        background: #333;
+        width: 51%;
+        height: 100%;
+        z-index: 1000;
+      }
+
+      #loader-wrapper .loader-section.section-left {
+        left: 0;
+      }
+      #loader-wrapper .loader-section.section-right {
+        right: 0;
+      }
+
+      /* Loaded Styles */
+      .loaded #loader-wrapper .loader-section.section-left {
+        transform: translateX(-100%);
+        transition: all 0.7s 0.3s cubic-bezier(0.645, 0.045, 0.355, 1);
+      }
+      .loaded #loader-wrapper .loader-section.section-right {
+        transform: translateX(100%);
+        transition: all 0.7s 0.3s cubic-bezier(0.645, 0.045, 0.355, 1);
+      }
+      .loaded #loader {
+        opacity: 0;
+        transition: all 0.3s ease-out;
+      }
+      .loaded #loader-wrapper {
+        visibility: hidden;
+        transform: translateY(-100%);
+        transition: all 0.3s 1s ease-out;
+      }
+      /* ==================================================================================== */
+      /* =============================== end Preloader CSS ================================== */
+
+      /* Accordion */
+      .myaccordion {
+        max-width: 500px;
+        margin: 50px auto;
+        box-shadow: 0 0 1px rgba(0, 0, 0, 0.1);
+      }
+
+      .myaccordion .card,
+      .myaccordion .card:last-child .card-header {
+        border: none;
+      }
+
+      .myaccordion .card-header {
+        border-bottom-color: #edeff0;
+        background: transparent;
+      }
+
+      .myaccordion .fa-stack {
+        font-size: 18px;
+      }
+
+      .myaccordion .btn {
+        width: 100%;
+        font-weight: bold;
+        color: #004987;
+        padding: 0;
+      }
+
+      .myaccordion .btn-link:hover,
+      .myaccordion .btn-link:focus {
+        text-decoration: none;
+      }
+
+      .myaccordion li + li {
+        margin-top: 10px;
+      }
+
+      /* Card CSS */
+      /*PEN STYLES*/
+
+      .blog-card {
+        display: flex;
+        flex-direction: column;
+        margin: 1rem auto;
+        box-shadow: 0 3px 7px -1px rgba(0, 0, 0, 0.1);
+        margin-bottom: 1.6%;
+        background: #fff;
+        line-height: 1.4;
+        font-family: sans-serif;
+        border-radius: 5px;
+        overflow: hidden;
+        z-index: 0;
+      }
+
+      .blog-card a {
+        color: inherit;
+      }
+
+      .blog-card a:hover {
+        color: #5ad67d;
+      }
+
+      .blog-card:hover .photo {
+        transform: scale(1.3) rotate(3deg);
+      }
+
+      .blog-card .meta {
+        position: relative;
+        z-index: 0;
+        height: 200px;
+      }
+
+      .blog-card .photo {
+        position: absolute;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        background-size: cover;
+        background-position: center;
+        transition: transform 0.2s;
+      }
+
+      .blog-card .details,
+      .blog-card .details ul {
+        margin: auto;
+        padding: 0;
+        list-style: none;
+      }
+
+      .blog-card .details {
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        left: -100%;
+        margin: auto;
+        transition: left 0.2s;
+        background: rgba(0, 0, 0, 0.6);
+        color: #fff;
+        padding: 10px;
+        width: 100%;
+        font-size: 0.9rem;
+      }
+
+      .blog-card .details a {
+        text-decoration: dotted underline;
+      }
+
+      .blog-card .details ul li {
+        display: inline-block;
+      }
+
+      .blog-card .details .author:before {
+        font-family: FontAwesome;
+        margin-right: 10px;
+        content: "\f007";
+      }
+
+      .blog-card .details .date:before {
+        font-family: FontAwesome;
+        margin-right: 10px;
+        content: "\f133";
+      }
+
+      .blog-card .details .tags ul:before {
+        font-family: FontAwesome;
+        content: "\f02b";
+        margin-right: 10px;
+      }
+
+      .blog-card .details .tags li {
+        margin-right: 2px;
+      }
+
+      .blog-card .details .tags li:first-child {
+        margin-left: -4px;
+      }
+
+      .blog-card .description {
+        padding: 1rem;
+        background: #fff;
+        position: relative;
+        z-index: 1;
+      }
+
+      .blog-card .description h1,
+      .blog-card .description h2 {
+        font-family: Poppins, sans-serif;
+      }
+
+      .blog-card .description h1 {
+        line-height: 1;
+        margin: 0;
+        font-size: 1.7rem;
+      }
+
+      .blog-card .description h2 {
+        font-size: 1rem;
+        font-weight: 300;
+        text-transform: uppercase;
+        color: #a2a2a2;
+        margin-top: 5px;
+      }
+
+      .blog-card .description .read-more {
+        text-align: right;
+      }
+
+      .blog-card .description .read-more a {
+        color: #5ad67d;
+        display: inline-block;
+        position: relative;
+      }
+
+      .blog-card .description .read-more a:after {
+        content: "\f061";
+        font-family: FontAwesome;
+        margin-left: -10px;
+        opacity: 0;
+        vertical-align: middle;
+        transition: margin 0.3s, opacity 0.3s;
+      }
+
+      .blog-card .description .read-more a:hover:after {
+        margin-left: 5px;
+        opacity: 1;
+      }
+
+      .blog-card p {
+        position: relative;
+        margin: 1rem 0 0;
+      }
+
+      .blog-card p:first-of-type {
+        margin-top: 1.25rem;
+      }
+
+      .blog-card p:first-of-type:before {
+        content: "";
+        position: absolute;
+        height: 5px;
+        background: #5ad67d;
+        width: 35px;
+        top: -0.75rem;
+        border-radius: 3px;
+      }
+
+      .blog-card:hover .details {
+        left: 0%;
+      }
+
+      @media (min-width: 640px) {
+        .blog-card {
+          flex-direction: row;
+          max-width: 700px;
+        }
+
+        .blog-card .meta {
+          flex-basis: 40%;
+          height: auto;
+        }
+
+        .blog-card .description {
+          flex-basis: 60%;
+        }
+
+        .blog-card .description:before {
+          transform: skewX(-3deg);
+          content: "";
+          background: #fff;
+          width: 30px;
+          position: absolute;
+          left: -10px;
+          top: 0;
+          bottom: 0;
+          z-index: -1;
+        }
+
+        .blog-card.alt {
+          flex-direction: row-reverse;
+        }
+
+        .blog-card.alt .description:before {
+          left: inherit;
+          right: -10px;
+          transform: skew(3deg);
+        }
+
+        .blog-card.alt .details {
+          padding-left: 25px;
+        }
+      }
     </style>
 
     <script>
@@ -439,1114 +803,1198 @@
         });
       });
     </script>
+    <script>
+      window.addEventListener("load", function () {
+        document.querySelector("body").classList.add("loaded");
+      });
+    </script>
   </head>
 
   <body>
     <!-- ============== Preloader ============== -->
+    <div id="loader-wrapper">
+      <div id="loader"></div>
+      <div class="loader-section section-left"></div>
+      <div class="loader-section section-right"></div>
+    </div>
+    <!-- ============== Preloader ============== -->
 
     <!-- ======= Header ======= -->
-    <header>
-      <div
-        id="sidenav"
-        class="uk-card uk-card-default uk-card-body"
-        style="padding: 2px 0px 0px 0px; z-index: 980"
-        uk-sticky="show-on-up: true; animation: uk-animation-slide-top; bottom: #bottom"
-      >
-        <div>
-          <div
-            class="logo mr-auto"
-            style="border-bottom: 1px solid rgb(59, 166, 253)"
-          >
-            <a href="/">
-              <img
-                src="/static/img/ubos_logo.png"
-                class="img-fluid mx-auto d-block"
-                style="width: 90%"
-                alt="Responsive image"
-              />
-            </a>
-          </div>
-
-          <nav class="navbar navbar-expand-sm py-1 navbar-dark smooth-scroll">
-            <div class="d-md-flex d-block flex-row mx-md-auto mx-0">
-              <button
-                class="navbar-toggler btn-primary"
-                type="button"
-                data-toggle="collapse"
-                data-target="#navbarNav"
-                aria-controls="navbarNav"
-                aria-expanded="false"
-                aria-label="Toggle navigation"
-              >
-                <span class="navbar-toggler-icon"></span>
-              </button>
-              <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav smooth-scroll">
-                  <li class="nav-item active">
-                    <a
-                      class="nav-link scrollto uk-text-primary active"
-                      href="{{ url_for('home') }}"
-                      >HOME</a
-                    >
-                  </li>
-
-                  <a
-                    class="nav-link scrollto uk-text-primary"
-                    href="#portal-data"
-                  >
-                    <li class="nav-item">PORTAL DATA</li>
-                  </a>
-
-                  <li class="nav-item">
-                    <a
-                      class="nav-link scrollto uk-text-primary"
-                      href="{{ url_for('publication') }}"
-                      >PUBLICATIONS</a
-                    >
-                  </li>
-                  <li class="nav-item">
-                    <a
-                      class="nav-link scrollto uk-text-primary"
-                      href="{{ url_for('gender_acts') }}"
-                      >GENDER ACTIVITIES</a
-                    >
-                  </li>
-                  <li class="nav-item">
-                    <a
-                      class="nav-link scrollto uk-text-primary"
-                      href="{{ url_for('gallery') }}"
-                      >GALLERY</a
-                    >
-                  </li>
-                </ul>
-              </div>
-            </div>
-          </nav>
-        </div>
-      </div>
-    </header>
-    <!-- End Header -->
-    <main>
-      <!-- ############################################################################################################### -->
-      <!-- #################################### MODALS FOR THE DIFFERENT MENU ITEMS ###################################### -->
-
-      <!-- ABOUT US MODAL -->
-      <div id="about-us" class="uk-modal-container" uk-modal>
-        <div class="uk-modal-dialog">
-          <div
-            class="uk-modal-header"
-            style="background-image: url('./static/img/aboutUs.jpg')"
-          >
-            <h2 class="uk-modal-title uk-text-light uk-text-primary">
-              About Us
-            </h2>
-          </div>
-          <div class="uk-modal-body uk-text-justify" uk-overflow-auto>
-            <h4 class="uk-heading-bullet">Overview</h4>
-            <p>
-              Gender is an important variable that systematically structures a
-              person’s economic and social position and prospects in society. It
-              describes attitudes, roles and responsibilities assigned to males
-              and females, that often result in different opportunities and
-              behavior for both men and women. The concept of gender emerged out
-              of the study of social dynamics between the sexes, hence the
-              expression “gender dynamics”. Gender aspects are determined by
-              society and vary within and between societies.
-            </p>
-
-            <p>
-              The aspects are dynamic and usually influenced by cultural,
-              economic, political and environmental factors. Hence, the
-              different roles men and women create differences in need as well
-              as access to and control over resources.
-            </p>
-
-            <p>
-              The trend of mainstreaming gender in statistics development
-              evolved since the 1995 Beijing Declaration at the Beijing Platform
-              for Action (BPfA) and has continued to expand and entrench itself
-              in various development frameworks and policies at international,
-              continental and national level. Some of these include: the 1985
-              Convention on the Elimination of all forms of Discrimination
-              against Women (CEDAW), the 1987 International Covenant on
-              Economic, Social and Cultural Rights, the 1995 International
-              Covenant on Civil and Political Rights, the 1986 Convention
-              against Torture, the 1990 Convention on the Rights of the Child,
-              the Agenda 2030 on Sustainable Development, Africa Agenda 2063 and
-              the National Development Plan (NDP), to mention but a few. All
-              these require data to measure progress towards the country’s
-              commitment on gender equality and women’s empowerment.
-            </p>
-            <p>
-              Overall, efforts related to policy formulation and programme
-              design, implementation and monitoring require detailed, reliable
-              and timely gender statistics. Uganda is part of the global
-              framework and is expected to respond and adhere to all
-              international resolutions Principles, Standards and
-              Classifications at international level meant for statistics.
-            </p>
-            <p>
-              Empirical evidence shows that Uganda has made efforts to implement
-              the actions recommended in the Beijing Platform of Action,
-              objective H3 through increased sex disaggregation of data,
-              improved analysis of data from a gender perspective and
-              identification of gaps in statistical products. The Plan for
-              National Statistical Development (PNSD) is Uganda’s framework for
-              strengthening statistical production and development in the
-              National Statistical System (NSS).
-            </p>
-            <p>
-              The PNSD, and Uganda Bureau of Statistics (UBOS) Strategic Plan
-              underscore the need for gender statistics and gender and equity
-              responsive statistics in all census, survey and administrative
-              data reports. The current initiatives to mainstream gender in UBOS
-              notwithstanding, more work needs to be done to attain a gender
-              responsive National Statistical System (NSS). UBOS has made great
-              strides in mainstreaming gender in the organization, and promoting
-              the production and use of gender statistics in the NSS, as a
-              whole.
-            </p>
-            <h4 class="uk-heading-bullet">
-              The National Priority Gender Equality Indicators (NPGEIs)
-            </h4>
-            <p>
-              The Uganda Bureau of Statistics (UBOS) as the agency coordinating
-              the development and maintenance of the NSS in collaboration with
-              Ministries, Departments and Agencies (MDAs) developed the National
-              Priority Gender Equality Indicators (NPGEIs). The NPGEIs are
-              intended to guide development and production of gender responsive
-              indicators in the country. The NPGEIs are aligned to the NDP,
-              Sector Development Plans (SDPs) and the Sustainable Development
-              Goals (SDGs). The NPGEIs are presented by sector and categorized
-              by tiers. The categories of tiers are based on the availability of
-              data and methodology as follows;
-            </p>
-            <ul class="uk-list uk-list-square">
-              <li>Tier I: Indicators with available methodology and data.</li>
-              <li>
-                Tier II: Indicators with available methodology but data is not
-                being produced.
-              </li>
-              <li>Tier III: Indicators with neither methodology nor data.</li>
-            </ul>
-          </div>
-
-          <div class="uk-modal-footer uk-text-right">
-            <button
-              class="uk-button uk-button-default uk-modal-close"
-              type="button"
-            >
-              Close
-            </button>
-          </div>
-        </div>
-      </div>
-      <!-- END ABOUT US MODAL -->
-      <!-- ########################################################################################################## -->
-      <!-- ########################################################################################################## -->
-
-      <!-- ########################################################################################################## -->
-      <!--  CONTACT US MODAL  -->
-      <!-- ########################################################################################################## -->
-      <div id="contact-us" class="uk-modal-full" uk-modal>
-        <div class="uk-modal-dialog">
-          <button
-            class="uk-modal-close-full uk-close-large"
-            type="button"
-            uk-close
-          ></button>
-          <div
-            class="uk-grid-collapse uk-child-width-1-2@s uk-flex-middle"
-            uk-grid
-          >
+    <div id="content">
+      <header>
+        <div
+          id="sidenav"
+          class="uk-card uk-card-default uk-card-body"
+          style="padding: 2px 0px 0px 0px; z-index: 980"
+          uk-sticky="show-on-up: true; animation: uk-animation-slide-top; bottom: #bottom"
+        >
+          <div>
             <div
-              class="uk-background-cover"
-              style="background-image: url(../../static/img/contactUs.jpeg)"
-              uk-height-viewport
-            ></div>
-            <div class="mt-2 p-md-5">
-              <h1
-                class="uk-text-lead uk-text-large uk-text-bold uk-text-uppercase uk-text-primary"
-              >
-                Here is how to get in touch with us:
-              </h1>
-              <ul class="uk-list uk-list-divider">
-                <li class="uk-text-small">
-                  <strong class="uk-text-success">Address:</strong> Statistics
-                  House, Plot 9 Colville Street
-                </li>
-                <li class="uk-text-small">
-                  <strong class="uk-text-success">Posta:</strong> P.O. Box 7186,
-                  Kampala
-                </li>
-                <li class="uk-text-small">
-                  <strong class="uk-text-success">Phone:</strong> +256 414
-                  706000
-                </li>
-                <li class="uk-text-small">
-                  <strong class="uk-text-success">Email:</strong> ubos@ubos.org
-                </li>
-              </ul>
+              class="logo mr-auto"
+              style="border-bottom: 1px solid rgb(59, 166, 253)"
+            >
+              <a href="/">
+                <img
+                  src="/static/img/ubos_logo.png"
+                  class="img-fluid mx-auto d-block"
+                  style="width: 85%"
+                  alt="Responsive image"
+                />
+              </a>
+            </div>
 
-              <!-- Default form contact -->
-              <form class="text-center p-2" action="#!">
-                <p class="h5 mb-2">Contact us Directly</p>
-                <!-- Name -->
-                <input
-                  type="text"
-                  id="defaultContactFormName"
-                  class="form-control mb-2"
-                  placeholder="Name"
-                />
-                <!-- Email -->
-                <input
-                  type="email"
-                  id="defaultContactFormEmail"
-                  class="form-control mb-2"
-                  placeholder="E-mail"
-                />
-                <!-- Message -->
-                <div class="form-group">
-                  <textarea
-                    class="form-control rounded-0"
-                    id="exampleFormControlTextarea2"
-                    rows="3"
-                    placeholder="Message"
-                  ></textarea>
-                </div>
-                <!-- Send button -->
-                <button class="btn btn-info btn-block mb-2" type="submit">
-                  Send
+            <nav class="navbar navbar-expand-sm py-1 navbar-dark smooth-scroll">
+              <div class="d-md-flex d-block flex-row mx-md-auto mx-0">
+                <button
+                  class="navbar-toggler btn-primary"
+                  type="button"
+                  data-toggle="collapse"
+                  data-target="#navbarNav"
+                  aria-controls="navbarNav"
+                  aria-expanded="false"
+                  aria-label="Toggle navigation"
+                >
+                  <span class="navbar-toggler-icon"></span>
                 </button>
-                <!-- Social login -->
-                <a href="#" class="mx-2" role="button"
-                  ><i class="fab fa-facebook-f light-blue-text"></i
-                ></a>
-                <a href="#" class="mx-2" role="button"
-                  ><i class="fab fa-twitter light-blue-text"></i
-                ></a>
-                <a href="#" class="mx-2" role="button"
-                  ><i class="fab fa-linkedin-in light-blue-text"></i
-                ></a>
-                <a href="#" class="mx-2" role="button"
-                  ><i class="fab fa-github light-blue-text"></i
-                ></a>
-              </form>
-              <!-- Default form contact -->
-            </div>
-          </div>
-        </div>
-      </div>
-      <!-- ########################################################################################################## -->
-      <!--  end CONTACT US MODAL  -->
-      <!-- ########################################################################################################## -->
+                <div class="collapse navbar-collapse" id="navbarNav">
+                  <ul class="navbar-nav smooth-scroll">
+                    <li class="nav-item active">
+                      <a
+                        class="nav-link scrollto uk-text-primary active"
+                        href="{{ url_for('home') }}"
+                        >HOME</a
+                      >
+                    </li>
 
-      <!--Carousel Wrapper-->
-      <section>
-        <div
-          class="uk-position-relative uk-visible-toggle"
-          tabindex="-1"
-          uk-slideshow="animation: push"
-          style="height: 100vh"
-        >
-          <ul class="uk-slideshow-items">
-            <li>
-              <div
-                class="uk-position-cover uk-animation-kenburns uk-animation-reverse uk-transform-origin-center-left"
-              >
-                <img src="/static/./img/tea1.jpeg" alt="" uk-cover />
-                <div class="inners">
-                  <h2
-                    class="titles text-white"
-                    style="text-shadow: 2px 6px 2px back"
-                  >
-                    Gender Statistics Portal
-                  </h2>
-                  <h5 class="subtitles">
-                    We maintain records of various gender realated statistics
-                    for the Republic of Uganda
-                  </h5>
-                </div>
-                <div
-                  style="
-                    position: absolute;
-                    top: 0px;
-                    left: 0px;
-                    width: 100%;
-                    height: 100%;
-                    background: rgba(0, 0, 0, 0);
-                  "
-                ></div>
-              </div>
-            </li>
-            <li>
-              <div
-                class="uk-position-cover uk-animation-kenburns uk-animation-reverse uk-transform-origin-center-left"
-              >
-                <img src="/static/./img/tea2.jpeg" alt="" uk-cover />
-                <div class="inners">
-                  <h2
-                    class="titles text-white"
-                    style="text-shadow: 2px 6px 2px back"
-                  >
-                    Gender Statistics Portal
-                  </h2>
-                  <h5 class="subtitles">
-                    We maintain records of various gender realated statistics
-                    for the Republic of Uganda
-                  </h5>
-                </div>
-                <div
-                  style="
-                    position: absolute;
-                    top: 0px;
-                    left: 0px;
-                    width: 100%;
-                    height: 100%;
-                    background: rgba(0, 0, 0, 0);
-                  "
-                ></div>
-              </div>
-            </li>
-            <li>
-              <div
-                class="uk-position-cover uk-animation-kenburns uk-animation-reverse uk-transform-origin-center-left"
-              >
-                <img src="/static/./img/tea3.jpeg" alt="" uk-cover />
-                <div class="inners">
-                  <h2
-                    class="titles text-white"
-                    style="text-shadow: 2px 6px 2px back"
-                  >
-                    Gender Statistics Portal
-                  </h2>
-                  <h5 class="subtitles">
-                    We maintain records of various gender realated statistics
-                    for the Republic of Uganda
-                  </h5>
-                </div>
-                <div
-                  style="
-                    position: absolute;
-                    top: 0px;
-                    left: 0px;
-                    width: 100%;
-                    height: 100%;
-                    background: rgba(0, 0, 0, 0);
-                  "
-                ></div>
-              </div>
-            </li>
-            <li>
-              <div
-                class="uk-position-cover uk-animation-kenburns uk-animation-reverse uk-transform-origin-center-left"
-              >
-                <img src="/static/./img/tea4.jpeg" alt="" uk-cover />
-                <div class="inners">
-                  <h2
-                    class="titles text-white"
-                    style="text-shadow: 2px 6px 2px back"
-                  >
-                    Gender Statistics Portal
-                  </h2>
-                  <h5 class="subtitles">
-                    We maintain records of various gender realated statistics
-                    for the Republic of Uganda
-                  </h5>
-                </div>
-                <div
-                  style="
-                    position: absolute;
-                    top: 0px;
-                    left: 0px;
-                    width: 100%;
-                    height: 100%;
-                    background: rgba(0, 0, 0, 0);
-                  "
-                ></div>
-              </div>
-            </li>
-            <li>
-              <div
-                class="uk-position-cover uk-animation-kenburns uk-animation-reverse uk-transform-origin-center-left"
-              >
-                <img src="/static/./img/tea5.jpeg" alt="" uk-cover />
-                <div class="inners">
-                  <h2
-                    class="titles text-white"
-                    style="text-shadow: 2px 6px 2px back"
-                  >
-                    Gender Statistics Portal
-                  </h2>
-                  <h5 class="subtitles">
-                    We maintain records of various gender realated statistics
-                    for the Republic of Uganda
-                  </h5>
-                </div>
-                <div
-                  style="
-                    position: absolute;
-                    top: 0px;
-                    left: 0px;
-                    width: 100%;
-                    height: 100%;
-                    background: rgba(0, 0, 0, 0);
-                  "
-                ></div>
-              </div>
-            </li>
-            <li>
-              <div
-                class="uk-position-cover uk-animation-kenburns uk-animation-reverse uk-transform-origin-center-left"
-              >
-                <img src="/static/./img/tea6.jpeg" alt="" uk-cover />
-                <div class="inners">
-                  <h2
-                    class="titles text-white"
-                    style="text-shadow: 2px 6px 2px back"
-                  >
-                    Gender Statistics Portal
-                  </h2>
-                  <h5 class="subtitles">
-                    We maintain records of various gender realated statistics
-                    for the Republic of Uganda
-                  </h5>
-                </div>
-                <div
-                  style="
-                    position: absolute;
-                    top: 0px;
-                    left: 0px;
-                    width: 100%;
-                    height: 100%;
-                    background: rgba(0, 0, 0, 0);
-                  "
-                ></div>
-              </div>
-            </li>
-            <li>
-              <div
-                class="uk-position-cover uk-animation-kenburns uk-animation-reverse uk-transform-origin-center-left"
-              >
-                <img src="/static/./img/tea7.jpeg" alt="" uk-cover />
-                <div class="inners">
-                  <h2
-                    class="titles text-white"
-                    style="text-shadow: 2px 6px 2px back"
-                  >
-                    Gender Statistics Portal
-                  </h2>
-                  <h5 class="subtitles">
-                    We maintain records of various gender realated statistics
-                    for the Republic of Uganda
-                  </h5>
-                </div>
-                <div
-                  style="
-                    position: absolute;
-                    top: 0px;
-                    left: 0px;
-                    width: 100%;
-                    height: 100%;
-                    background: rgba(0, 0, 0, 0);
-                  "
-                ></div>
-              </div>
-            </li>
-          </ul>
+                    <a
+                      class="nav-link scrollto uk-text-primary"
+                      href="#portal-data"
+                    >
+                      <li class="nav-item">PORTAL DATA</li>
+                    </a>
 
-          <div class="uk-light">
-            <a
-              class="uk-position-center-left uk-position-small uk-hidden-hover"
-              href="#"
-              uk-slidenav-previous
-              uk-slideshow-item="previous"
-            ></a>
-            <a
-              class="uk-position-center-right uk-position-small uk-hidden-hover"
-              href="#"
-              uk-slidenav-next
-              uk-slideshow-item="next"
-            ></a>
-          </div>
-        </div>
-      </section>
-      <!--/.Carousel Wrapper-->
-      <section id="portal-data">
-        <div
-          class="uk-container"
-          style="padding-top: -30px; padding-bottom: -30px"
-        >
-          <br />
-          <div class="uk-container">
-            <h3 class="uk-heading-bullet text-black">Portal Data</h3>
-            <p class="note note-primary">
-              <strong>Important Information:</strong> By clicking on any of the
-              sector cards below, you will be redirected to a page that will
-              allow you to view data of the corresponding sector in form of
-              tables, maps and graphs. You will find also more information there
-              ...
-            </p>
-          </div>
-          <br />
-          <!-- Header for the Trending section -->
-          <div class="card border-info">
-            <div class="card-body text-info">
-              <!-- Testing cards -->
-              <div
-                class="uk-section uk-container"
-                style="
-                  margin-top: -48px;
-                  margin-bottom: -48px;
-                  margin-right: 10px;
-                "
-              >
-                <div
-                  class="uk-child-width-expand@s uk-text-center"
-                  uk-grid
-                  style="margin-top: -20px"
-                >
-                  <div>
-                    <div
-                      class="col-lg-4 col-md-4 col-sm-6 col-xs-12 container_foto"
-                      style="
-                        -webkit-box-shadow: 10px 10px 17px -3px rgba(0, 0, 0, 0.44);
-                        -moz-box-shadow: 10px 10px 17px -3px rgba(0, 0, 0, 0.44);
-                        box-shadow: 10px 10px 17px -3px rgba(0, 0, 0, 0.44);
-                      "
-                    >
-                      <div class="ver_mas text-center">
-                        <a href="/accountability"
-                          ><span
-                            class="bx bx-dollar-circle"
-                            uk-tooltip="Click on icon to view this sector"
-                          ></span
-                        ></a>
-                      </div>
-                      <article class="text-left">
-                        <h2 style="font-size: 22px">
-                          Accountability<br />Sector
-                        </h2>
-                      </article>
-                      <img
-                        src="/static/../../static/img/accountability.jpg"
-                        alt=""
-                      />
-                    </div>
-                  </div>
-                  <div>
-                    <!-- Card -->
-                    <div
-                      class="col-lg-4 col-md-4 col-sm-6 col-xs-12 container_foto"
-                      style="
-                        -webkit-box-shadow: 10px 10px 17px -3px rgba(0, 0, 0, 0.44);
-                        -moz-box-shadow: 10px 10px 17px -3px rgba(0, 0, 0, 0.44);
-                        box-shadow: 10px 10px 17px -3px rgba(0, 0, 0, 0.44);
-                      "
-                    >
-                      <div class="ver_mas text-center">
-                        <a href="/agriculture"
-                          ><span
-                            class="bx bx-spa"
-                            uk-tooltip="Click on icon to view this sector"
-                          ></span
-                        ></a>
-                      </div>
-                      <article class="text-left">
-                        <h2 style="font-size: 22px">Agriculture<br />Sector</h2>
-                      </article>
-                      <img
-                        src="/static/../../static/img/agriculture.jpg"
-                        alt=""
-                      />
-                    </div>
-                    <!-- Card -->
-                  </div>
-                  <div>
-                    <!-- Card -->
-                    <div
-                      class="col-lg-4 col-md-4 col-sm-6 col-xs-12 container_foto"
-                      style="
-                        -webkit-box-shadow: 10px 10px 17px -3px rgba(0, 0, 0, 0.44);
-                        -moz-box-shadow: 10px 10px 17px -3px rgba(0, 0, 0, 0.44);
-                        box-shadow: 10px 10px 17px -3px rgba(0, 0, 0, 0.44);
-                      "
-                    >
-                      <div class="ver_mas text-center">
-                        <span
-                          class="bx bx-book"
-                          uk-tooltip="Click on icon to view this sector"
-                        ></span>
-                      </div>
-                      <article class="text-left">
-                        <h2 style="font-size: 22px">Education<br />Sector</h2>
-                      </article>
-                      <img
-                        src="/static/../../static/img/education.jpg"
-                        alt=""
-                      />
-                    </div>
-                    <!-- Card -->
-                  </div>
-                  <div>
-                    <!-- Card -->
-                    <div
-                      class="col-lg-4 col-md-4 col-sm-6 col-xs-12 container_foto"
-                      style="
-                        -webkit-box-shadow: 10px 10px 17px -3px rgba(0, 0, 0, 0.44);
-                        -moz-box-shadow: 10px 10px 17px -3px rgba(0, 0, 0, 0.44);
-                        box-shadow: 10px 10px 17px -3px rgba(0, 0, 0, 0.44);
-                      "
-                    >
-                      <div class="ver_mas text-center">
-                        <span
-                          class="bx bx-diamond"
-                          uk-tooltip="Click on icon to view this sector"
-                        ></span>
-                      </div>
-                      <article class="text-left">
-                        <h2 style="font-size: 22px">
-                          Energy & Mineral <br />Development Sector
-                        </h2>
-                      </article>
-                      <img src="/static/../../static/img/mining.jpg" alt="" />
-                    </div>
-                    <!-- Card -->
-                  </div>
-                </div>
-                <br />
-                <div class="uk-child-width-expand@s uk-text-center" uk-grid>
-                  <div>
-                    <!-- Card -->
-                    <div
-                      class="col-lg-4 col-md-4 col-sm-6 col-xs-12 container_foto"
-                      style="
-                        -webkit-box-shadow: 10px 10px 17px -3px rgba(0, 0, 0, 0.44);
-                        -moz-box-shadow: 10px 10px 17px -3px rgba(0, 0, 0, 0.44);
-                        box-shadow: 10px 10px 17px -3px rgba(0, 0, 0, 0.44);
-                      "
-                    >
-                      <div class="ver_mas text-center">
-                        <a href="{{ url_for('health') }}"
-                          ><span
-                            class="bx bx-health"
-                            uk-tooltip="Click on icon to view this sector"
-                          ></span
-                        ></a>
-                      </div>
-                      <article class="text-left">
-                        <h2 style="font-size: 22px">Health<br />Sector</h2>
-                      </article>
-                      <img src="/static/../../static/img/health.jpg" alt="" />
-                    </div>
-                    <!-- Card -->
-                  </div>
-                  <div>
-                    <!-- Card -->
-                    <div
-                      class="col-lg-4 col-md-4 col-sm-6 col-xs-12 container_foto"
-                      style="
-                        -webkit-box-shadow: 10px 10px 17px -3px rgba(0, 0, 0, 0.44);
-                        -moz-box-shadow: 10px 10px 17px -3px rgba(0, 0, 0, 0.44);
-                        box-shadow: 10px 10px 17px -3px rgba(0, 0, 0, 0.44);
-                      "
-                    >
-                      <div class="ver_mas text-center">
-                        <span
-                          class="bx bx-code-block"
-                          uk-tooltip="Click on icon to view this sector"
-                        ></span>
-                      </div>
-                      <article class="text-left">
-                        <h2 style="font-size: 22px">
-                          ICT & National <br />Guidance Sector
-                        </h2>
-                      </article>
-                      <img src="/static/../../static/img/ict.jpg" alt="" />
-                    </div>
-                    <!-- Card -->
-                  </div>
-                  <div>
-                    <!-- Card -->
-                    <div
-                      class="col-lg-4 col-md-4 col-sm-6 col-xs-12 container_foto"
-                      style="
-                        -webkit-box-shadow: 10px 10px 17px -3px rgba(0, 0, 0, 0.44);
-                        -moz-box-shadow: 10px 10px 17px -3px rgba(0, 0, 0, 0.44);
-                        box-shadow: 10px 10px 17px -3px rgba(0, 0, 0, 0.44);
-                      "
-                    >
-                      <div class="ver_mas text-center">
-                        <span
-                          class="bx bx-key"
-                          uk-tooltip="Click on icon to view this sector"
-                        ></span>
-                      </div>
-                      <article class="text-left">
-                        <h2 style="font-size: 22px">
-                          Justice, Law <br />& Order Sector
-                        </h2>
-                      </article>
-                      <img src="/static/../../static/img/justice.jpg" alt="" />
-                    </div>
-                    <!-- Card -->
-                  </div>
-                  <div>
-                    <!-- Card -->
-                    <div
-                      class="col-lg-4 col-md-4 col-sm-6 col-xs-12 container_foto"
-                      style="
-                        -webkit-box-shadow: 10px 10px 17px -3px rgba(0, 0, 0, 0.44);
-                        -moz-box-shadow: 10px 10px 17px -3px rgba(0, 0, 0, 0.44);
-                        box-shadow: 10px 10px 17px -3px rgba(0, 0, 0, 0.44);
-                      "
-                    >
-                      <div class="ver_mas text-center">
-                        <span
-                          class="bx bx-building-house"
-                          uk-tooltip="Click on icon to view this sector"
-                        ></span>
-                      </div>
-                      <article class="text-left">
-                        <h2 style="font-size: 22px">
-                          Lands & Housing<br />Sector
-                        </h2>
-                      </article>
-                      <img src="/static/../../static/img/housing.jpg" alt="" />
-                    </div>
-                    <!-- Card -->
-                  </div>
-                </div>
-                <br />
-                <div
-                  class="uk-child-width-expand@s uk-text-center"
-                  uk-grid
-                  style="margin-bottom: -20px"
-                >
-                  <div>
-                    <!-- Card -->
-                    <div
-                      class="col-lg-4 col-md-4 col-sm-6 col-xs-12 container_foto"
-                      style="
-                        -webkit-box-shadow: 10px 10px 17px -3px rgba(0, 0, 0, 0.44);
-                        -moz-box-shadow: 10px 10px 17px -3px rgba(0, 0, 0, 0.44);
-                        box-shadow: 10px 10px 17px -3px rgba(0, 0, 0, 0.44);
-                      "
-                    >
-                      <div class="ver_mas text-center">
-                        <span
-                          class="bx bx-directions"
-                          uk-tooltip="Click on icon to view this sector"
-                        ></span>
-                      </div>
-                      <article class="text-left">
-                        <h2 style="font-size: 22px">
-                          Public Sector<br />Management Sector
-                        </h2>
-                      </article>
-                      <img src="/static/../../static/img/public.jpg" alt="" />
-                    </div>
-                    <!-- Card -->
-                  </div>
-                  <div>
-                    <!-- Card -->
-                    <div
-                      class="col-lg-4 col-md-4 col-sm-6 col-xs-12 container_foto"
-                      style="
-                        -webkit-box-shadow: 10px 10px 17px -3px rgba(0, 0, 0, 0.44);
-                        -moz-box-shadow: 10px 10px 17px -3px rgba(0, 0, 0, 0.44);
-                        box-shadow: 10px 10px 17px -3px rgba(0, 0, 0, 0.44);
-                      "
-                    >
-                      <div class="ver_mas text-center">
-                        <span
-                          class="bx bx-terminal"
-                          uk-tooltip="Click on icon to view this sector"
-                        ></span>
-                      </div>
-                      <article class="text-left">
-                        <h2 style="font-size: 22px">
-                          Science, Technology<br />& Innovation Sector
-                        </h2>
-                      </article>
-                      <img src="/static/../../static/img/tech.jpg" alt="" />
-                    </div>
-                    <!-- Card -->
-                  </div>
-                  <div>
-                    <!-- Card -->
-                    <div
-                      class="col-lg-4 col-md-4 col-sm-6 col-xs-12 container_foto"
-                      style="
-                        -webkit-box-shadow: 10px 10px 17px -3px rgba(0, 0, 0, 0.44);
-                        -moz-box-shadow: 10px 10px 17px -3px rgba(0, 0, 0, 0.44);
-                        box-shadow: 10px 10px 17px -3px rgba(0, 0, 0, 0.44);
-                      "
-                    >
-                      <div class="ver_mas text-center">
-                        <span
-                          class="bx bx-plus-medical"
-                          uk-tooltip="Click on icon to view this sector"
-                        ></span>
-                      </div>
-                      <article class="text-left">
-                        <h2 style="font-size: 22px">
-                          Social Development<br />Sector
-                        </h2>
-                      </article>
-                      <img src="/static/../../static/img/social.jpg" alt="" />
-                    </div>
-                    <!-- Card -->
-                  </div>
-                  <div>
-                    <!-- Card -->
-                    <div
-                      class="col-lg-4 col-md-4 col-sm-6 col-xs-12 container_foto"
-                      style="
-                        -webkit-box-shadow: 10px 10px 17px -3px rgba(0, 0, 0, 0.44);
-                        -moz-box-shadow: 10px 10px 17px -3px rgba(0, 0, 0, 0.44);
-                        box-shadow: 10px 10px 17px -3px rgba(0, 0, 0, 0.44);
-                      "
-                    >
-                      <div class="ver_mas text-center">
-                        <span
-                          class="bx bx-droplet"
-                          uk-tooltip="Click on icon to view this sector"
-                        ></span>
-                      </div>
-                      <article class="text-left">
-                        <h2 style="font-size: 22px">
-                          Water & Enviroment<br />Sector
-                        </h2>
-                      </article>
-                      <img src="/static/../../static/img/water.jpg" alt="" />
-                    </div>
-                    <!-- Card -->
-                  </div>
+                    <li class="nav-item">
+                      <a
+                        class="nav-link scrollto uk-text-primary"
+                        href="{{ url_for('publication') }}"
+                        >PUBLICATIONS</a
+                      >
+                    </li>
+                    <li class="nav-item">
+                      <a
+                        class="nav-link scrollto uk-text-primary"
+                        href="{{ url_for('gender_acts') }}"
+                        >GENDER ACTIVITIES</a
+                      >
+                    </li>
+                    <li class="nav-item">
+                      <a
+                        class="nav-link scrollto uk-text-primary"
+                        href="{{ url_for('gallery') }}"
+                        >GALLERY</a
+                      >
+                    </li>
+                  </ul>
                 </div>
               </div>
-              <!-- end of Testing cards -->
-            </div>
-          </div>
-        </div>
-      </section>
-      <br />
-      <section class="uk-container">
-        <!-- ======= What's New Section ======= -->
-
-        <h3 class="uk-heading-bullet text-dark">News and Events</h3>
-
-        <p class="note note-primary">
-          <strong>Some of the latest trending news:</strong> You can watch and
-          read some of the currently popular and widely discussed topics online,
-          via media streams and more, below.
-        </p>
-      </section>
-      <br />
-      <section>
-        <div class="uk-container">
-          <!-- Header for the Trending section -->
-          <div class="card border-info mb-2 mr-2 ml-2">
-            <div class="card-body text-info">
-              <div>
-                <ul uk-accordion>
-                  <li class="uk-open">
-                    <a class="uk-accordion-title text-info" href="#"
-                      >Breakfast Meeting On The Relevance Of Quality Statistics
-                      In National Development</a
-                    >
-                    <div class="uk-accordion-content">
-                      <div class="uk-panel">
-                        <p class="uk-text-secondary text-dark">
-                          Guest: Dr. Chris Ndatira Mukiza , Executive Director,
-                          Uganda Bureau of Statistics This breakfast meeting was
-                          held on Wednesday, 9th September 2020 at 9.00 am on
-                          NBS TV.
-                          <a
-                            class="uk-link-toggle"
-                            href="https://youtu.be/FdExo9kVilI"
-                          >
-                            <span class="uk-link-heading text-info scrollto"
-                              >Watch it from here</span
-                            >
-                          </a>
-                        </p>
-                      </div>
-                    </div>
-                  </li>
-                  <li>
-                    <a class="uk-accordion-title text-info" href="#"
-                      >Uganda Wood Asset and Forest Resources Account Report
-                      2020</a
-                    >
-                    <div class="uk-accordion-content">
-                      <div class="uk-panel">
-                        <p class="uk-text-secondary">
-                          Uganda’s wood assets include standing stock in the
-                          five forest land cover classes of broadleaved
-                          plantations, coniferous plantations, Tropical High
-                          Forest (well-stocked and low-stocked) and woodlands.
-                          Additional wood stocks are found in the non-forest
-                          land covers (bushlands, grasslands, wetlands,
-                          farmlands, built-up areas and impediments).
-                          <a
-                            class="uk-link-toggle"
-                            href="../../static/data/news/09_2020Report_2020_Uganda_Wood_&_Forest_Resources_Accounts.pdf"
-                            target="_blank"
-                          >
-                            <span class="uk-link-heading text-info scrollto"
-                              >More ...</span
-                            >
-                          </a>
-                        </p>
-                        <a
-                          class="uk-link-toggle"
-                          href="../../static/data/news/09_2020Report_2020_Uganda_Wood_&_Forest_Resources_Accounts.pdf"
-                          download
-                        >
-                          <span class="uk-link-heading text-success scrollto"
-                            >Download document</span
-                          >
-                        </a>
-                      </div>
-                    </div>
-                  </li>
-                  <li>
-                    <a class="uk-accordion-title text-info" href="#"
-                      >UBOS Bulletin August Vol 4, 31 August – 6th September
-                      2020</a
-                    >
-                    <div class="uk-accordion-content">
-                      <div class="uk-panel">
-                        <p class="uk-text-secondary">
-                          You can go right ahead and download the UBOS bulletin
-                          Vol 1 of September 2020-1
-                        </p>
-                        <a
-                          class="uk-link-toggle"
-                          href="../../static/data/news/UBOS-BULLETIN-VOL-1-SEPT-2020-1.pdf"
-                          download
-                        >
-                          <span class="uk-link-heading text-success scrollto"
-                            >Download bulletin</span
-                          >
-                        </a>
-                      </div>
-                    </div>
-                  </li>
-                  <li>
-                    <a class="uk-accordion-title text-info" href="#"
-                      >CPI Publication for August 2020</a
-                    >
-                    <div class="uk-accordion-content">
-                      <div class="uk-panel">
-                        <p class="uk-text-secondary">
-                          The Annual Headline Inflation for the year ending
-                          August 2020 declined to 4.6 percent compared to the
-                          4.7 percent registered for the year ended July 2020.<a
-                            class="uk-link-toggle"
-                            href="../../static/data/news/09_2020CPI_Publication_for_August_2020.pdf"
-                            target="_blank"
-                          >
-                            <span class="uk-link-heading text-info scrollto"
-                              >More ...</span
-                            >
-                          </a>
-                        </p>
-                        <a
-                          class="uk-link-toggle"
-                          href="../../static/data/news/09_2020CPI_Publication_for_August_2020.pdf"
-                          download
-                        >
-                          <span class="uk-link-heading text-success scrollto"
-                            >Download document</span
-                          >
-                        </a>
-                      </div>
-                    </div>
-                  </li>
-                </ul>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-      <br />
-    </main>
-    <!-- ======= Footer ======= -->
-    <!-- Copyright -->
-    <div
-      class="footer-copyright text-center py-2 mt-0"
-      style="background: #262627"
-    ></div>
-    <!-- Copyright -->
-    <footer id="footer">
-      <div class="container">
-        <div class="row d-flex align-items-center">
-          <div class="col-lg-4 text-lg-left">
-            <div class="copyright">
-              &copy; Copyright <strong>Uganda Bureau Of Statistics</strong>. All
-              Rights Reserved
-            </div>
-            <div class="credits">
-              Designed by
-              <a href="https://i3c.co.ug/"
-                >Inifnity Computers and Communications Company Ltd</a
-              >
-            </div>
-          </div>
-          <div class="col-lg-8">
-            <nav class="footer-links text-lg-right text-center pt-2 pt-lg-0">
-              <a
-                href="http://www.ubos.org/"
-                class="scrollto"
-                title="Uganda bureau of statistics"
-                uk-tooltip
-                >UBOS</a
-              >
-              <a
-                href="http://www.unwomen.org/"
-                class="scrollto"
-                title="United Nations Women"
-                uk-tooltip
-                >UN Women</a
-              >
-              <a
-                href="http://www.mglsd.go.ug/"
-                class="scrollto"
-                title="Ministry of Gender - Uganda"
-                uk-tooltip
-                >MoG - Ug</a
-              >
-              <a
-                href="https://www.worldbank.org/en/topic/gender"
-                class="scrollto"
-                title="World Bank gender portal"
-                uk-tooltip
-                >WB Gender Portal</a
-              >
-              <a
-                href="#about-us"
-                class="scrollto"
-                title="Know more about the portal"
-                uk-tooltip
-                uk-toggle
-                >About the Portal</a
-              >
-              <a
-                href="#contact-us"
-                class="scrollto"
-                title="Contact us here"
-                uk-tooltip
-                uk-toggle
-                >Contact Us</a
-              >
             </nav>
           </div>
         </div>
-      </div>
-    </footer>
-    <!-- End Footer -->
+      </header>
+      <!-- End Header -->
+      <main>
+        <!-- ############################################################################################################### -->
+        <!-- #################################### MODALS FOR THE DIFFERENT MENU ITEMS ###################################### -->
+
+        <!-- ABOUT US MODAL -->
+        <div id="about-us" class="uk-modal-container" uk-modal>
+          <div class="uk-modal-dialog">
+            <div
+              class="uk-modal-header"
+              style="background-image: url('./static/img/aboutUs.jpg')"
+            >
+              <h2 class="uk-modal-title uk-text-light uk-text-primary">
+                About Us
+              </h2>
+            </div>
+            <div class="uk-modal-body uk-text-justify" uk-overflow-auto>
+              <h4 class="uk-heading-bullet">Overview</h4>
+              <p>
+                Gender is an important variable that systematically structures a
+                person’s economic and social position and prospects in society.
+                It describes attitudes, roles and responsibilities assigned to
+                males and females, that often result in different opportunities
+                and behavior for both men and women. The concept of gender
+                emerged out of the study of social dynamics between the sexes,
+                hence the expression “gender dynamics”. Gender aspects are
+                determined by society and vary within and between societies.
+              </p>
+
+              <p>
+                The aspects are dynamic and usually influenced by cultural,
+                economic, political and environmental factors. Hence, the
+                different roles men and women create differences in need as well
+                as access to and control over resources.
+              </p>
+
+              <p>
+                The trend of mainstreaming gender in statistics development
+                evolved since the 1995 Beijing Declaration at the Beijing
+                Platform for Action (BPfA) and has continued to expand and
+                entrench itself in various development frameworks and policies
+                at international, continental and national level. Some of these
+                include: the 1985 Convention on the Elimination of all forms of
+                Discrimination against Women (CEDAW), the 1987 International
+                Covenant on Economic, Social and Cultural Rights, the 1995
+                International Covenant on Civil and Political Rights, the 1986
+                Convention against Torture, the 1990 Convention on the Rights of
+                the Child, the Agenda 2030 on Sustainable Development, Africa
+                Agenda 2063 and the National Development Plan (NDP), to mention
+                but a few. All these require data to measure progress towards
+                the country’s commitment on gender equality and women’s
+                empowerment.
+              </p>
+              <p>
+                Overall, efforts related to policy formulation and programme
+                design, implementation and monitoring require detailed, reliable
+                and timely gender statistics. Uganda is part of the global
+                framework and is expected to respond and adhere to all
+                international resolutions Principles, Standards and
+                Classifications at international level meant for statistics.
+              </p>
+              <p>
+                Empirical evidence shows that Uganda has made efforts to
+                implement the actions recommended in the Beijing Platform of
+                Action, objective H3 through increased sex disaggregation of
+                data, improved analysis of data from a gender perspective and
+                identification of gaps in statistical products. The Plan for
+                National Statistical Development (PNSD) is Uganda’s framework
+                for strengthening statistical production and development in the
+                National Statistical System (NSS).
+              </p>
+              <p>
+                The PNSD, and Uganda Bureau of Statistics (UBOS) Strategic Plan
+                underscore the need for gender statistics and gender and equity
+                responsive statistics in all census, survey and administrative
+                data reports. The current initiatives to mainstream gender in
+                UBOS notwithstanding, more work needs to be done to attain a
+                gender responsive National Statistical System (NSS). UBOS has
+                made great strides in mainstreaming gender in the organization,
+                and promoting the production and use of gender statistics in the
+                NSS, as a whole.
+              </p>
+              <h4 class="uk-heading-bullet">
+                The National Priority Gender Equality Indicators (NPGEIs)
+              </h4>
+              <p>
+                The Uganda Bureau of Statistics (UBOS) as the agency
+                coordinating the development and maintenance of the NSS in
+                collaboration with Ministries, Departments and Agencies (MDAs)
+                developed the National Priority Gender Equality Indicators
+                (NPGEIs). The NPGEIs are intended to guide development and
+                production of gender responsive indicators in the country. The
+                NPGEIs are aligned to the NDP, Sector Development Plans (SDPs)
+                and the Sustainable Development Goals (SDGs). The NPGEIs are
+                presented by sector and categorized by tiers. The categories of
+                tiers are based on the availability of data and methodology as
+                follows;
+              </p>
+              <ul class="uk-list uk-list-square">
+                <li>Tier I: Indicators with available methodology and data.</li>
+                <li>
+                  Tier II: Indicators with available methodology but data is not
+                  being produced.
+                </li>
+                <li>Tier III: Indicators with neither methodology nor data.</li>
+              </ul>
+            </div>
+
+            <div class="uk-modal-footer uk-text-right">
+              <button
+                class="uk-button uk-button-default uk-modal-close"
+                type="button"
+              >
+                Close
+              </button>
+            </div>
+          </div>
+        </div>
+        <!-- END ABOUT US MODAL -->
+        <!-- ########################################################################################################## -->
+        <!-- ########################################################################################################## -->
+
+        <!-- ########################################################################################################## -->
+        <!--  CONTACT US MODAL  -->
+        <!-- ########################################################################################################## -->
+        <div id="contact-us" class="uk-modal-full" uk-modal>
+          <div class="uk-modal-dialog">
+            <button
+              class="uk-modal-close-full uk-close-large"
+              type="button"
+              uk-close
+            ></button>
+            <div
+              class="uk-grid-collapse uk-child-width-1-2@s uk-flex-middle"
+              uk-grid
+            >
+              <div
+                class="uk-background-cover"
+                style="background-image: url(../../static/img/contactUs.jpeg)"
+                uk-height-viewport
+              ></div>
+              <div class="mt-2 p-md-5">
+                <h1
+                  class="uk-text-lead uk-text-large uk-text-bold uk-text-uppercase uk-text-primary"
+                >
+                  Here is how to get in touch with us:
+                </h1>
+                <ul class="uk-list uk-list-divider">
+                  <li class="uk-uk-">
+                    <strong class="uk-text-success">Address:</strong> Statistics
+                    House, Plot 9 Colville Street
+                  </li>
+                  <li class="uk-text-small">
+                    <strong class="uk-text-success">Posta:</strong> P.O. Box
+                    7186, Kampala
+                  </li>
+                  <li class="uk-text-small">
+                    <strong class="uk-text-success">Phone:</strong> +256 414
+                    706000
+                  </li>
+                  <li class="uk-text-small">
+                    <strong class="uk-text-success">Email:</strong>
+                    ubos@ubos.org
+                  </li>
+                </ul>
+
+                <!-- Default form contact -->
+                <form class="text-center p-2" action="#!">
+                  <p class="h5 mb-2">Contact us Directly</p>
+                  <!-- Name -->
+                  <input
+                    type="text"
+                    id="defaultContactFormName"
+                    class="form-control mb-2"
+                    placeholder="Name"
+                  />
+                  <!-- Email -->
+                  <input
+                    type="email"
+                    id="defaultContactFormEmail"
+                    class="form-control mb-2"
+                    placeholder="E-mail"
+                  />
+                  <!-- Message -->
+                  <div class="form-group">
+                    <textarea
+                      class="form-control rounded-0"
+                      id="exampleFormControlTextarea2"
+                      rows="3"
+                      placeholder="Message"
+                    ></textarea>
+                  </div>
+                  <!-- Send button -->
+                  <button class="btn btn-info btn-block mb-2" type="submit">
+                    Send
+                  </button>
+                  <!-- Social login -->
+                  <a href="#" class="mx-2" role="button"
+                    ><i class="fab fa-facebook-f light-blue-text"></i
+                  ></a>
+                  <a href="#" class="mx-2" role="button"
+                    ><i class="fab fa-twitter light-blue-text"></i
+                  ></a>
+                  <a href="#" class="mx-2" role="button"
+                    ><i class="fab fa-linkedin-in light-blue-text"></i
+                  ></a>
+                  <a href="#" class="mx-2" role="button"
+                    ><i class="fab fa-github light-blue-text"></i
+                  ></a>
+                </form>
+                <!-- Default form contact -->
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- ########################################################################################################## -->
+        <!--  end CONTACT US MODAL  -->
+        <!-- ########################################################################################################## -->
+
+        <!--Carousel Wrapper-->
+        <section>
+          <div
+            class="uk-position-relative uk-visible-toggle"
+            tabindex="-1"
+            uk-slideshow="animation: push"
+            style="height: 100vh"
+          >
+            <ul class="uk-slideshow-items">
+              <li>
+                <div
+                  class="uk-position-cover uk-animation-kenburns uk-animation-reverse uk-transform-origin-center-left"
+                >
+                  <img src="/static/./img/tea1.jpg" alt="" uk-cover />
+                  <div class="inners">
+                    <h2
+                      class="titles text-white"
+                      style="text-shadow: 2px 6px 2px back"
+                    >
+                      Gender Statistics Portal
+                    </h2>
+                    <h5 class="subtitles">
+                      We maintain records of various gender realated statistics
+                      for the Republic of Uganda
+                    </h5>
+                  </div>
+                  <div
+                    style="
+                      position: absolute;
+                      top: 0px;
+                      left: 0px;
+                      width: 100%;
+                      height: 100%;
+                      background: rgba(0, 0, 0, 0);
+                    "
+                  ></div>
+                </div>
+              </li>
+              <li>
+                <div
+                  class="uk-position-cover uk-animation-kenburns uk-animation-reverse uk-transform-origin-center-left"
+                >
+                  <img src="/static/./img/tea2.jpg" alt="" uk-cover />
+                  <div class="inners">
+                    <h2
+                      class="titles text-white"
+                      style="text-shadow: 2px 6px 2px back"
+                    >
+                      Gender Statistics Portal
+                    </h2>
+                    <h5 class="subtitles">
+                      We maintain records of various gender realated statistics
+                      for the Republic of Uganda
+                    </h5>
+                  </div>
+                  <div
+                    style="
+                      position: absolute;
+                      top: 0px;
+                      left: 0px;
+                      width: 100%;
+                      height: 100%;
+                      background: rgba(0, 0, 0, 0);
+                    "
+                  ></div>
+                </div>
+              </li>
+              <li>
+                <div
+                  class="uk-position-cover uk-animation-kenburns uk-animation-reverse uk-transform-origin-center-left"
+                >
+                  <img src="/static/./img/tea3.jpg" alt="" uk-cover />
+                  <div class="inners">
+                    <h2
+                      class="titles text-white"
+                      style="text-shadow: 2px 6px 2px back"
+                    >
+                      Gender Statistics Portal
+                    </h2>
+                    <h5 class="subtitles">
+                      We maintain records of various gender realated statistics
+                      for the Republic of Uganda
+                    </h5>
+                  </div>
+                  <div
+                    style="
+                      position: absolute;
+                      top: 0px;
+                      left: 0px;
+                      width: 100%;
+                      height: 100%;
+                      background: rgba(0, 0, 0, 0);
+                    "
+                  ></div>
+                </div>
+              </li>
+              <li>
+                <div
+                  class="uk-position-cover uk-animation-kenburns uk-animation-reverse uk-transform-origin-center-left"
+                >
+                  <img src="/static/./img/tea4.jpg" alt="" uk-cover />
+                  <div class="inners">
+                    <h2
+                      class="titles text-white"
+                      style="text-shadow: 2px 6px 2px back"
+                    >
+                      Gender Statistics Portal
+                    </h2>
+                    <h5 class="subtitles">
+                      We maintain records of various gender realated statistics
+                      for the Republic of Uganda
+                    </h5>
+                  </div>
+                  <div
+                    style="
+                      position: absolute;
+                      top: 0px;
+                      left: 0px;
+                      width: 100%;
+                      height: 100%;
+                      background: rgba(0, 0, 0, 0);
+                    "
+                  ></div>
+                </div>
+              </li>
+              <li>
+                <div
+                  class="uk-position-cover uk-animation-kenburns uk-animation-reverse uk-transform-origin-center-left"
+                >
+                  <img src="/static/./img/tea5.jpeg" alt="" uk-cover />
+                  <div class="inners">
+                    <h2
+                      class="titles text-white"
+                      style="text-shadow: 2px 6px 2px back"
+                    >
+                      Gender Statistics Portal
+                    </h2>
+                    <h5 class="subtitles">
+                      We maintain records of various gender realated statistics
+                      for the Republic of Uganda
+                    </h5>
+                  </div>
+                  <div
+                    style="
+                      position: absolute;
+                      top: 0px;
+                      left: 0px;
+                      width: 100%;
+                      height: 100%;
+                      background: rgba(0, 0, 0, 0);
+                    "
+                  ></div>
+                </div>
+              </li>
+              <li>
+                <div
+                  class="uk-position-cover uk-animation-kenburns uk-animation-reverse uk-transform-origin-center-left"
+                >
+                  <img src="/static/./img/tea6.jpeg" alt="" uk-cover />
+                  <div class="inners">
+                    <h2
+                      class="titles text-white"
+                      style="text-shadow: 2px 6px 2px back"
+                    >
+                      Gender Statistics Portal
+                    </h2>
+                    <h5 class="subtitles">
+                      We maintain records of various gender realated statistics
+                      for the Republic of Uganda
+                    </h5>
+                  </div>
+                  <div
+                    style="
+                      position: absolute;
+                      top: 0px;
+                      left: 0px;
+                      width: 100%;
+                      height: 100%;
+                      background: rgba(0, 0, 0, 0);
+                    "
+                  ></div>
+                </div>
+              </li>
+              <li>
+                <div
+                  class="uk-position-cover uk-animation-kenburns uk-animation-reverse uk-transform-origin-center-left"
+                >
+                  <img src="/static/./img/tea7.jpeg" alt="" uk-cover />
+                  <div class="inners">
+                    <h2
+                      class="titles text-white"
+                      style="text-shadow: 2px 6px 2px back"
+                    >
+                      Gender Statistics Portal
+                    </h2>
+                    <h5 class="subtitles">
+                      We maintain records of various gender realated statistics
+                      for the Republic of Uganda
+                    </h5>
+                  </div>
+                  <div
+                    style="
+                      position: absolute;
+                      top: 0px;
+                      left: 0px;
+                      width: 100%;
+                      height: 100%;
+                      background: rgba(0, 0, 0, 0);
+                    "
+                  ></div>
+                </div>
+              </li>
+            </ul>
+
+            <div class="uk-light">
+              <a
+                class="uk-position-center-left uk-position-small uk-hidden-hover"
+                href="#"
+                uk-slidenav-previous
+                uk-slideshow-item="previous"
+              ></a>
+              <a
+                class="uk-position-center-right uk-position-small uk-hidden-hover"
+                href="#"
+                uk-slidenav-next
+                uk-slideshow-item="next"
+              ></a>
+            </div>
+          </div>
+        </section>
+        <!--/.Carousel Wrapper-->
+        <section id="portal-data">
+          <div
+            class="uk-container"
+            style="padding-top: -30px; padding-bottom: -30px"
+          >
+            <br />
+            <div class="uk-container">
+              <h3 class="uk-heading-bullet text-black">Portal Data</h3>
+              <p class="note note-primary">
+                <strong>Important Information:</strong> By clicking on any of
+                the sector cards below, you will be redirected to a page that
+                will allow you to view data of the corresponding sector in form
+                of tables, maps and graphs. You will find also more information
+                there ...
+              </p>
+            </div>
+            <br />
+            <!-- Header for the Trending section -->
+            <div class="card border-info">
+              <div class="card-body text-info">
+                <!-- Testing cards -->
+                <div
+                  class="uk-section uk-container"
+                  style="
+                    margin-top: -48px;
+                    margin-bottom: -48px;
+                    margin-right: 10px;
+                  "
+                >
+                  <div
+                    class="uk-child-width-expand@s uk-text-center"
+                    uk-grid
+                    style="margin-top: -20px"
+                  >
+                    <div>
+                      <div
+                        class="col-lg-4 col-md-4 col-sm-6 col-xs-12 container_foto"
+                        style="
+                          -webkit-box-shadow: 10px 10px 17px -3px rgba(0, 0, 0, 0.44);
+                          -moz-box-shadow: 10px 10px 17px -3px rgba(0, 0, 0, 0.44);
+                          box-shadow: 10px 10px 17px -3px rgba(0, 0, 0, 0.44);
+                        "
+                      >
+                        <div class="ver_mas text-center">
+                          <a href="/accountability"
+                            ><span
+                              class="bx bx-dollar-circle"
+                              uk-tooltip="Click on icon to view this sector"
+                            ></span
+                          ></a>
+                        </div>
+                        <article class="text-left">
+                          <h2 style="font-size: 22px">
+                            Accountability<br />Sector
+                          </h2>
+                        </article>
+                        <img
+                          src="/static/../../static/img/accountability.jpg"
+                          alt=""
+                        />
+                      </div>
+                    </div>
+                    <div>
+                      <!-- Card -->
+                      <div
+                        class="col-lg-4 col-md-4 col-sm-6 col-xs-12 container_foto"
+                        style="
+                          -webkit-box-shadow: 10px 10px 17px -3px rgba(0, 0, 0, 0.44);
+                          -moz-box-shadow: 10px 10px 17px -3px rgba(0, 0, 0, 0.44);
+                          box-shadow: 10px 10px 17px -3px rgba(0, 0, 0, 0.44);
+                        "
+                      >
+                        <div class="ver_mas text-center">
+                          <a href="/agriculture"
+                            ><span
+                              class="bx bx-spa"
+                              uk-tooltip="Click on icon to view this sector"
+                            ></span
+                          ></a>
+                        </div>
+                        <article class="text-left">
+                          <h2 style="font-size: 22px">
+                            Agriculture<br />Sector
+                          </h2>
+                        </article>
+                        <img
+                          src="/static/../../static/img/agriculture.jpg"
+                          alt=""
+                        />
+                      </div>
+                      <!-- Card -->
+                    </div>
+                    <div>
+                      <!-- Card -->
+                      <div
+                        class="col-lg-4 col-md-4 col-sm-6 col-xs-12 container_foto"
+                        style="
+                          -webkit-box-shadow: 10px 10px 17px -3px rgba(0, 0, 0, 0.44);
+                          -moz-box-shadow: 10px 10px 17px -3px rgba(0, 0, 0, 0.44);
+                          box-shadow: 10px 10px 17px -3px rgba(0, 0, 0, 0.44);
+                        "
+                      >
+                        <div class="ver_mas text-center">
+                          <span
+                            class="bx bx-book"
+                            uk-tooltip="Click on icon to view this sector"
+                          ></span>
+                        </div>
+                        <article class="text-left">
+                          <h2 style="font-size: 22px">Education<br />Sector</h2>
+                        </article>
+                        <img
+                          src="/static/../../static/img/education.jpg"
+                          alt=""
+                        />
+                      </div>
+                      <!-- Card -->
+                    </div>
+                    <div>
+                      <!-- Card -->
+                      <div
+                        class="col-lg-4 col-md-4 col-sm-6 col-xs-12 container_foto"
+                        style="
+                          -webkit-box-shadow: 10px 10px 17px -3px rgba(0, 0, 0, 0.44);
+                          -moz-box-shadow: 10px 10px 17px -3px rgba(0, 0, 0, 0.44);
+                          box-shadow: 10px 10px 17px -3px rgba(0, 0, 0, 0.44);
+                        "
+                      >
+                        <div class="ver_mas text-center">
+                          <span
+                            class="bx bx-diamond"
+                            uk-tooltip="Click on icon to view this sector"
+                          ></span>
+                        </div>
+                        <article class="text-left">
+                          <h2 style="font-size: 22px">
+                            Energy & Mineral <br />Development Sector
+                          </h2>
+                        </article>
+                        <img src="/static/../../static/img/mining.jpg" alt="" />
+                      </div>
+                      <!-- Card -->
+                    </div>
+                  </div>
+                  <br />
+                  <div class="uk-child-width-expand@s uk-text-center" uk-grid>
+                    <div>
+                      <!-- Card -->
+                      <div
+                        class="col-lg-4 col-md-4 col-sm-6 col-xs-12 container_foto"
+                        style="
+                          -webkit-box-shadow: 10px 10px 17px -3px rgba(0, 0, 0, 0.44);
+                          -moz-box-shadow: 10px 10px 17px -3px rgba(0, 0, 0, 0.44);
+                          box-shadow: 10px 10px 17px -3px rgba(0, 0, 0, 0.44);
+                        "
+                      >
+                        <div class="ver_mas text-center">
+                          <a href="{{ url_for('health') }}"
+                            ><span
+                              class="bx bx-health"
+                              uk-tooltip="Click on icon to view this sector"
+                            ></span
+                          ></a>
+                        </div>
+                        <article class="text-left">
+                          <h2 style="font-size: 22px">Health<br />Sector</h2>
+                        </article>
+                        <img src="/static/../../static/img/health.jpg" alt="" />
+                      </div>
+                      <!-- Card -->
+                    </div>
+                    <div>
+                      <!-- Card -->
+                      <div
+                        class="col-lg-4 col-md-4 col-sm-6 col-xs-12 container_foto"
+                        style="
+                          -webkit-box-shadow: 10px 10px 17px -3px rgba(0, 0, 0, 0.44);
+                          -moz-box-shadow: 10px 10px 17px -3px rgba(0, 0, 0, 0.44);
+                          box-shadow: 10px 10px 17px -3px rgba(0, 0, 0, 0.44);
+                        "
+                      >
+                        <div class="ver_mas text-center">
+                          <span
+                            class="bx bx-code-block"
+                            uk-tooltip="Click on icon to view this sector"
+                          ></span>
+                        </div>
+                        <article class="text-left">
+                          <h2 style="font-size: 22px">
+                            ICT & National <br />Guidance Sector
+                          </h2>
+                        </article>
+                        <img src="/static/../../static/img/ict.jpg" alt="" />
+                      </div>
+                      <!-- Card -->
+                    </div>
+                    <div>
+                      <!-- Card -->
+                      <div
+                        class="col-lg-4 col-md-4 col-sm-6 col-xs-12 container_foto"
+                        style="
+                          -webkit-box-shadow: 10px 10px 17px -3px rgba(0, 0, 0, 0.44);
+                          -moz-box-shadow: 10px 10px 17px -3px rgba(0, 0, 0, 0.44);
+                          box-shadow: 10px 10px 17px -3px rgba(0, 0, 0, 0.44);
+                        "
+                      >
+                        <div class="ver_mas text-center">
+                          <span
+                            class="bx bx-key"
+                            uk-tooltip="Click on icon to view this sector"
+                          ></span>
+                        </div>
+                        <article class="text-left">
+                          <h2 style="font-size: 22px">
+                            Justice, Law <br />& Order Sector
+                          </h2>
+                        </article>
+                        <img
+                          src="/static/../../static/img/justice.jpg"
+                          alt=""
+                        />
+                      </div>
+                      <!-- Card -->
+                    </div>
+                    <div>
+                      <!-- Card -->
+                      <div
+                        class="col-lg-4 col-md-4 col-sm-6 col-xs-12 container_foto"
+                        style="
+                          -webkit-box-shadow: 10px 10px 17px -3px rgba(0, 0, 0, 0.44);
+                          -moz-box-shadow: 10px 10px 17px -3px rgba(0, 0, 0, 0.44);
+                          box-shadow: 10px 10px 17px -3px rgba(0, 0, 0, 0.44);
+                        "
+                      >
+                        <div class="ver_mas text-center">
+                          <span
+                            class="bx bx-building-house"
+                            uk-tooltip="Click on icon to view this sector"
+                          ></span>
+                        </div>
+                        <article class="text-left">
+                          <h2 style="font-size: 22px">
+                            Lands & Housing<br />Sector
+                          </h2>
+                        </article>
+                        <img
+                          src="/static/../../static/img/housing.jpg"
+                          alt=""
+                        />
+                      </div>
+                      <!-- Card -->
+                    </div>
+                  </div>
+                  <br />
+                  <div
+                    class="uk-child-width-expand@s uk-text-center"
+                    uk-grid
+                    style="margin-bottom: -20px"
+                  >
+                    <div>
+                      <!-- Card -->
+                      <div
+                        class="col-lg-4 col-md-4 col-sm-6 col-xs-12 container_foto"
+                        style="
+                          -webkit-box-shadow: 10px 10px 17px -3px rgba(0, 0, 0, 0.44);
+                          -moz-box-shadow: 10px 10px 17px -3px rgba(0, 0, 0, 0.44);
+                          box-shadow: 10px 10px 17px -3px rgba(0, 0, 0, 0.44);
+                        "
+                      >
+                        <div class="ver_mas text-center">
+                          <span
+                            class="bx bx-directions"
+                            uk-tooltip="Click on icon to view this sector"
+                          ></span>
+                        </div>
+                        <article class="text-left">
+                          <h2 style="font-size: 22px">
+                            Public Sector<br />Management Sector
+                          </h2>
+                        </article>
+                        <img src="/static/../../static/img/public.jpg" alt="" />
+                      </div>
+                      <!-- Card -->
+                    </div>
+                    <div>
+                      <!-- Card -->
+                      <div
+                        class="col-lg-4 col-md-4 col-sm-6 col-xs-12 container_foto"
+                        style="
+                          -webkit-box-shadow: 10px 10px 17px -3px rgba(0, 0, 0, 0.44);
+                          -moz-box-shadow: 10px 10px 17px -3px rgba(0, 0, 0, 0.44);
+                          box-shadow: 10px 10px 17px -3px rgba(0, 0, 0, 0.44);
+                        "
+                      >
+                        <div class="ver_mas text-center">
+                          <span
+                            class="bx bx-terminal"
+                            uk-tooltip="Click on icon to view this sector"
+                          ></span>
+                        </div>
+                        <article class="text-left">
+                          <h2 style="font-size: 22px">
+                            Science, Technology<br />& Innovation Sector
+                          </h2>
+                        </article>
+                        <img src="/static/../../static/img/tech.jpg" alt="" />
+                      </div>
+                      <!-- Card -->
+                    </div>
+                    <div>
+                      <!-- Card -->
+                      <div
+                        class="col-lg-4 col-md-4 col-sm-6 col-xs-12 container_foto"
+                        style="
+                          -webkit-box-shadow: 10px 10px 17px -3px rgba(0, 0, 0, 0.44);
+                          -moz-box-shadow: 10px 10px 17px -3px rgba(0, 0, 0, 0.44);
+                          box-shadow: 10px 10px 17px -3px rgba(0, 0, 0, 0.44);
+                        "
+                      >
+                        <div class="ver_mas text-center">
+                          <span
+                            class="bx bx-plus-medical"
+                            uk-tooltip="Click on icon to view this sector"
+                          ></span>
+                        </div>
+                        <article class="text-left">
+                          <h2 style="font-size: 22px">
+                            Social Development<br />Sector
+                          </h2>
+                        </article>
+                        <img src="/static/../../static/img/social.jpg" alt="" />
+                      </div>
+                      <!-- Card -->
+                    </div>
+                    <div>
+                      <!-- Card -->
+                      <div
+                        class="col-lg-4 col-md-4 col-sm-6 col-xs-12 container_foto"
+                        style="
+                          -webkit-box-shadow: 10px 10px 17px -3px rgba(0, 0, 0, 0.44);
+                          -moz-box-shadow: 10px 10px 17px -3px rgba(0, 0, 0, 0.44);
+                          box-shadow: 10px 10px 17px -3px rgba(0, 0, 0, 0.44);
+                        "
+                      >
+                        <div class="ver_mas text-center">
+                          <span
+                            class="bx bx-droplet"
+                            uk-tooltip="Click on icon to view this sector"
+                          ></span>
+                        </div>
+                        <article class="text-left">
+                          <h2 style="font-size: 22px">
+                            Water & Enviroment<br />Sector
+                          </h2>
+                        </article>
+                        <img src="/static/../../static/img/water.jpg" alt="" />
+                      </div>
+                      <!-- Card -->
+                    </div>
+                  </div>
+                </div>
+                <!-- end of Testing cards -->
+              </div>
+            </div>
+          </div>
+        </section>
+        <br />
+        <section class="uk-container">
+          <!-- ======= What's New Section ======= -->
+
+          <h3 class="uk-heading-bullet text-dark">News and Events</h3>
+
+          <p class="note note-primary">
+            <strong>Some of the latest trending news and upcoming:</strong> You
+            can watch and read some of the currently popular and widely
+            discussed topics online, via media streams and more, below.
+          </p>
+        </section>
+        <br />
+        <section class="uk-container">
+          <div class="card border-info fluid mb-3">
+            <div class="card-header winter-neva-gradient">Trending News</div>
+            <div class="card-body text-info">
+              <h5 class="card-title">
+                You can read some of the trending news about gender related
+                topics
+              </h5>
+              <!-- <p class="card-text"> -->
+              <!-- Card group -->
+              <div uk-slider="center: true">
+                <div
+                  class="uk-position-relative uk-visible-toggle uk-light"
+                  tabindex="-1"
+                >
+                  <ul class="uk-slider-items uk-child-width-1-2@s uk-grid">
+                    <li>
+                      <div class="blog-card black-text">
+                        <div class="meta">
+                          <div
+                            class="photo"
+                            style="
+                              background-image: url(../../static/img/tea6.jpeg);
+                            "
+                          ></div>
+                        </div>
+                        <div class="description">
+                          <h1 class="black-text">News article</h1>
+                          <h2>
+                            Impact of COVID-19 on Key Economic Activities in
+                            Uganda ...
+                          </h2>
+                          <p>
+                            The first part of this presentation covers the
+                            diagnosis of the structure of Uganda’s economy,
+                            based on
+                          </p>
+                          <p class="read-more">
+                            <a href="#modal-center" uk-toggle
+                              >Read More <i class="fas fa-glasses"></i
+                            ></a>
+                          </p>
+                        </div>
+                      </div>
+                    </li>
+                    <li>
+                      <div class="blog-card black-text">
+                        <div class="meta">
+                          <div
+                            class="photo"
+                            style="
+                              background-image: url(../../static/img/tea5.jpeg);
+                            "
+                          ></div>
+                        </div>
+                        <div class="description">
+                          <h1 class="black-text">News article</h1>
+                          <h2>
+                            National Hero’s Day Celebrations Brochure, June 09
+                            2020
+                          </h2>
+                          <p>
+                            National Theme: Celebrating a memorable day as we
+                            reflect on the selflessness of the Heroes / Heroines
+                          </p>
+                          <p class="read-more">
+                            <a href="#modal-center" uk-toggle
+                              >Read More <i class="fas fa-glasses"></i
+                            ></a>
+                          </p>
+                        </div>
+                      </div>
+                    </li>
+                    <li>
+                      <div class="blog-card black-text">
+                        <div class="meta">
+                          <div
+                            class="photo"
+                            style="
+                              background-image: url(../../static/img/tea4.jpeg);
+                            "
+                          ></div>
+                        </div>
+                        <div class="description">
+                          <h1 class="black-text">News article</h1>
+                          <h2>
+                            The Economic Performance of Uganda’s Economy In FY
+                            2019/20
+                          </h2>
+                          <p>
+                            The preliminary estimates of Gross Domestic Product
+                            (GDP) during the Fiscal Year (FY) 2019/2020 indicate
+                            that the
+                          </p>
+                          <p class="read-more">
+                            <a href="#modal-center" uk-toggle
+                              >Read More <i class="fas fa-glasses"></i
+                            ></a>
+                          </p>
+                        </div>
+                      </div>
+                    </li>
+                    <li>
+                      <div class="blog-card black-text">
+                        <div class="meta">
+                          <div
+                            class="photo"
+                            style="
+                              background-image: url(../../static/img/tea7.jpeg);
+                            "
+                          ></div>
+                        </div>
+                        <div class="description">
+                          <h1 class="black-text">News article</h1>
+                          <h2>
+                            Key Economic Indicators 116th Issue: Q2 2019/20
+                          </h2>
+                          <p>
+                            The 116th publication of Key Economic Indicators,
+                            reflecting the performance of the economy during the
+                            second
+                          </p>
+                          <p class="read-more">
+                            <a href="#modal-center" uk-toggle
+                              >Read More <i class="fas fa-glasses"></i
+                            ></a>
+                          </p>
+                        </div>
+                      </div>
+                    </li>
+                  </ul>
+
+                  <a
+                    class="uk-position-center-left uk-position-small uk-hidden-hover"
+                    href="#"
+                    uk-slidenav-previous
+                    uk-slider-item="previous"
+                  ></a>
+                  <a
+                    class="uk-position-center-right uk-position-small uk-hidden-hover"
+                    href="#"
+                    uk-slidenav-next
+                    uk-slider-item="next"
+                  ></a>
+                </div>
+
+                <ul
+                  class="uk-slider-nav uk-dotnav uk-flex-center uk-margin"
+                ></ul>
+              </div>
+              <!-- Card group -->
+              <!--  News article in progress modal -->
+              <div id="modal-center" class="uk-flex-top" uk-modal>
+                <div
+                  class="uk-modal-dialog uk-modal-body uk-margin-auto-vertical"
+                >
+                  <button
+                    class="uk-modal-close-default"
+                    type="button"
+                    uk-close
+                  ></button>
+
+                  <p>
+                    Assess to this news article is still in development phase.
+                    Sorry for any inconviniences caused.
+                  </p>
+                </div>
+              </div>
+              <!-- </p> -->
+            </div>
+          </div>
+        </section>
+        <br />
+        <section class="uk-container">
+          <div class="card border-warning fluid mb-3">
+            <div class="card-header sunny-morning-gradient">
+              Upcoming Events
+            </div>
+            <div class="card-body text-warning">
+              <h5 class="card-title">
+                Here is a list of all upcoming events we have scheduled
+              </h5>
+              <div class="card-text">
+                <p>No upcoming events ...</p>
+              </div>
+            </div>
+          </div>
+        </section>
+        <br />
+      </main>
+      <!-- ======= Footer ======= -->
+      <!-- Copyright -->
+      <div
+        class="footer-copyright text-center py-2 mt-0"
+        style="background: #262627"
+      ></div>
+      <!-- Copyright -->
+      <footer id="footer">
+        <div class="container">
+          <div class="row d-flex align-items-center">
+            <div class="col-lg-4 text-lg-left">
+              <div class="copyright">
+                &copy; Copyright <strong>Uganda Bureau Of Statistics</strong>.
+                All Rights Reserved
+              </div>
+              <div class="credits">
+                Designed by
+                <a href="https://i3c.co.ug/"
+                  >Inifnity Computers and Communications Company Ltd</a
+                >
+              </div>
+            </div>
+            <div class="col-lg-8">
+              <nav class="footer-links text-lg-right text-center pt-2 pt-lg-0">
+                <a
+                  href="http://www.ubos.org/"
+                  class="scrollto"
+                  title="Uganda bureau of statistics"
+                  uk-tooltip
+                  >UBOS</a
+                >
+                <a
+                  href="http://www.unwomen.org/"
+                  class="scrollto"
+                  title="United Nations Women"
+                  uk-tooltip
+                  >UN Women</a
+                >
+                <a
+                  href="http://www.mglsd.go.ug/"
+                  class="scrollto"
+                  title="Ministry of Gender - Uganda"
+                  uk-tooltip
+                  >MoG - Ug</a
+                >
+                <a
+                  href="https://www.worldbank.org/en/topic/gender"
+                  class="scrollto"
+                  title="World Bank gender portal"
+                  uk-tooltip
+                  >WB Gender Portal</a
+                >
+                <a
+                  href="#about-us"
+                  class="scrollto"
+                  title="Know more about the portal"
+                  uk-tooltip
+                  uk-toggle
+                  >About the Portal</a
+                >
+                <a
+                  href="#contact-us"
+                  class="scrollto"
+                  title="Contact us here"
+                  uk-tooltip
+                  uk-toggle
+                  >Contact Us</a
+                >
+              </nav>
+            </div>
+          </div>
+        </div>
+      </footer>
+      <!-- End Footer -->
+    </div>
 
     <a href="#" class="back-to-top"><i class="icofont-simple-up"></i></a>
 
