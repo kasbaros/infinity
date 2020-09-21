@@ -521,43 +521,6 @@
       /* ==================================================================================== */
       /* =============================== end Preloader CSS ================================== */
 
-      /* Accordion */
-      .myaccordion {
-        max-width: 500px;
-        margin: 50px auto;
-        box-shadow: 0 0 1px rgba(0, 0, 0, 0.1);
-      }
-
-      .myaccordion .card,
-      .myaccordion .card:last-child .card-header {
-        border: none;
-      }
-
-      .myaccordion .card-header {
-        border-bottom-color: #edeff0;
-        background: transparent;
-      }
-
-      .myaccordion .fa-stack {
-        font-size: 18px;
-      }
-
-      .myaccordion .btn {
-        width: 100%;
-        font-weight: bold;
-        color: #004987;
-        padding: 0;
-      }
-
-      .myaccordion .btn-link:hover,
-      .myaccordion .btn-link:focus {
-        text-decoration: none;
-      }
-
-      .myaccordion li + li {
-        margin-top: 10px;
-      }
-
       /* Card CSS */
       /*PEN STYLES*/
 
@@ -775,34 +738,7 @@
       }
     </style>
 
-    <script>
-      var options = {
-        accessibility: true,
-        prevNextButtons: true,
-        pageDots: true,
-        setGallerySize: false,
-        arrowShape: {
-          x0: 10,
-          x1: 60,
-          y1: 50,
-          x2: 60,
-          y2: 45,
-          x3: 15,
-        },
-      };
-
-      var carousel = document.querySelector("[data-carousel]");
-      var slides = document.getElementsByClassName("carousel-cell");
-      var flkty = new Flickity(carousel, options);
-
-      flkty.on("scroll", function () {
-        flkty.slides.forEach(function (slide, i) {
-          var image = slides[i];
-          var x = ((slide.target + flkty.x) * -1) / 3;
-          image.style.backgroundPosition = x + "px";
-        });
-      });
-    </script>
+    <!-- ==================== Loader JS ==================== -->
     <script>
       window.addEventListener("load", function () {
         document.querySelector("body").classList.add("loaded");
