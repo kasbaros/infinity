@@ -1,5 +1,3 @@
-import pymysql
-from sqlalchemy.sql.schema import PrimaryKeyConstraint
 from application import db
 from datetime import datetime
 
