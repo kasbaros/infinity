@@ -96,7 +96,7 @@ def gallery():
 
 @app.route("/publication")
 def publication():
-    files = publications.query.all()
+    files = Publications.query.all()
     component = files[0]
     return render_template("./main_pages/publications.html", pubs=files, id=component)
 
