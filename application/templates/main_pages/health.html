@@ -640,8 +640,8 @@
           >
             <h4 class="font-italic mb-4">Map</h4>
             <p class="font-italic text-muted mb-2">
-              Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do
-              eiusmod tempor incididunt ut labore et dolore magna aliqua.
+              The Map below displays information about gender categorised in
+              Sub-regions of Uganda
             </p>
             <hr />
             <iframe
@@ -660,15 +660,50 @@
           >
             <h4 class="font-italic mb-4">Meta-data</h4>
             <p class="font-italic text-muted mb-2">
-              Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do
-              eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
-              enim ad minim veniam, quis nostrud exercitation ullamco laboris
-              nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in
-              reprehenderit in voluptate velit esse cillum dolore eu fugiat
-              nulla pariatur. Excepteur sint occaecat cupidatat non proident,
-              sunt in culpa qui officia deserunt mollit anim id est laborum.
+              The table below details all the necessary information needed to be
+              known about the indicator whose data is being displayed:
             </p>
-            <div id="metadata_table"></div>
+            <div class="table table-responsive table-sm table-striped">
+              <table
+                id="dtBasicExample"
+                class="table table-sm"
+                width="100%"
+                height="80%"
+              >
+                <thead class="blue text-white">
+                  <tr>
+                    <th class="th-lg">Indicator Name</th>
+                    <th class="th-lg">
+                      Definition and Standard Classifications
+                    </th>
+                    <th class="th-lg">Unit of Measure</th>
+                    <th class="th-lg">Disaggregation</th>
+                    <th class="th-lg">Compilation Practices</th>
+                    <th class="th-lg">Sources of data</th>
+                    <th class="th-lg">Computation Method</th>
+                    <th class="th-lg">
+                      Accessibility and Availability of data
+                    </th>
+                    <th class="th-lg">Periodicity of Production</th>
+                    <th class="th-lg">Comments and limitations</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
           </div>
         </div>
       </div>
@@ -907,67 +942,5 @@
     $(".msg").html(msg + input + "</span>");
   });
 </script>
-
-<!-- =================================== TABLES FOR METADATA ======================================= -->
-<script>
-  var values = [
-    ["Salaries", "Office", "Merchandise", "Legal", "<b>TOTAL<br>EXPENSES</b>"],
-    [
-      "Lorem ipsum dolor sit amet, tollit discere inermis pri ut. Eos ea iusto timeam, an prima laboramus vim. Id usu aeterno adversarium, summo mollis timeam vel ad ",
-      "Lorem ipsum dolor sit amet, tollit discere inermis pri ut. Eos ea iusto timeam, an prima laboramus vim. Id usu aeterno adversarium, summo mollis timeam vel ad ",
-      "Lorem ipsum dolor sit amet, tollit discere inermis pri ut. Eos ea iusto timeam, an prima laboramus vim. Id usu aeterno adversarium, summo mollis timeam vel ad ",
-      "Lorem ipsum dolor sit amet, tollit discere inermis pri ut. Eos ea iusto timeam, an prima laboramus vim. Id usu aeterno adversarium, summo mollis timeam vel ad ",
-      "Lorem ipsum dolor sit amet, tollit discere inermis pri ut. Eos ea iusto timeam, an prima laboramus vim. Id usu aeterno adversarium, summo mollis timeam vel ad ",
-    ],
-  ];
-
-  var data = [
-    {
-      type: "table",
-      columnorder: [1, 2],
-      columnwidth: [80, 400],
-      header: {
-        values: [
-          ["<b>EXPENSES</b><br>as of July 2017"],
-          ["<b>DESCRIPTION</b>"],
-        ],
-        align: ["left", "center"],
-        height: 40,
-        line: {
-          width: 1,
-          color: "#506784",
-        },
-        fill: {
-          color: "#119DFF",
-        },
-        font: {
-          family: "Arial",
-          size: 12,
-          color: "white",
-        },
-      },
-      cells: {
-        values: values,
-        align: ["left", "center"],
-        height: 30,
-        line: {
-          color: "#506784",
-          width: 1,
-        },
-        fill: {
-          color: ["#25FEFD", "white"],
-        },
-        font: {
-          family: "Arial",
-          size: 11,
-          color: ["#506784"],
-        },
-      },
-    },
-  ];
-
-  Plotly.newPlot("metadata_table", data);
-</script>
-<!-- ================================= END TABLES FOR METADATA ===================================== -->
 
 {% endblock %}
