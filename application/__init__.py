@@ -7,7 +7,7 @@ from flask_migrate import Migrate, migrate
 # from sqlalchemy import create_engine
 
 app = Flask(__name__, template_folder="templates")
-app.config["SECRET_KEY"] = "11606633055e40cbe882f08f27fec5c2501f8978"
+app.config["SECRET_KEY"] = os.getenv("SECRET_KEY")
 app.config["SQLALCHEMY_ECHO"] = False
 app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = False
 app.config["SQLALCHEMY_DATABASE_URI"] = os.getenv("DATABASE_URL")
