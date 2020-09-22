@@ -14,7 +14,7 @@ class Publications(db.Model):
     date_added = db.Column(db.DateTime(), default=datetime.utcnow)
     size = db.Column(db.Integer(), nullable=False)
     downloads = db.Column(db.Integer())
-    contents = db.Column(db.String(20000000), nullable=False)
+    contents = db.Column(db.String(200000), nullable=False)
 
     def __repr__(self):
         return f"Publications('{self.doc_name}, {self.date_added}, {self.size}, {self.downloads}, {self.contents}')"
