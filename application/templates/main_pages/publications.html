@@ -48,7 +48,13 @@
         <tbody>
           {% for row in pubs %}
           <tr>
-            <td><a href="#">{{row["doc_name"]}}</a></td>
+            <td>
+              <a
+                href="../../static/data/publications/04_2018Agriculture_Sector_Gender_Statistics_Profile.pdf"
+                target="_blank"
+                >{{row["doc_name"]}}</a
+              >
+            </td>
             <td>{{row["date_added"]}}</td>
             <td>{{ row["size"]}}</td>
             <td>{{row["downloads"]}}</td>

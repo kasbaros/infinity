@@ -1,0 +1,957 @@
+{% extends './includes/base.html' %} {% block content %}
+
+<!-- MAPBOX -->
+<script src="https://api.mapbox.com/mapbox-gl-js/v1.12.0/mapbox-gl.js"></script>
+<link
+  href="https://api.mapbox.com/mapbox-gl-js/v1.12.0/mapbox-gl.css"
+  rel="stylesheet"
+/>
+
+<!-- end MAPBOX -->
+
+<script
+  src="https://code.jquery.com/jquery-3.5.1.min.js"
+  integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0="
+  crossorigin="anonymous"
+></script>
+
+<link
+  rel="stylesheet"
+  href="https://cdn.datatables.net/1.10.21/css/jquery.dataTables.css"
+/>
+<script src="https://cdn.datatables.net/1.10.21/js/jquery.dataTables.js"></script>
+
+<!-- CHARTJS -->
+<link
+  rel="stylesheet"
+  href="//cdn.jsdelivr.net/chartist.js/latest/chartist.min.css"
+/>
+
+<style>
+  /*
+  *
+  * ==========================================
+  * CUSTOM UTIL CLASSES FOR VERTICAL PILL
+  * ==========================================
+  */
+  .nav-pills-custom .nav-link {
+    color: #aaa;
+    background: #fff;
+    position: relative;
+  }
+
+  .nav-pills-custom .nav-link.active {
+    color: #45b649;
+    background: #fff;
+  }
+
+  /* Add indicator arrow for the active tab */
+  @media (min-width: 992px) {
+    .nav-pills-custom .nav-link::before {
+      content: "";
+      display: block;
+      border-top: 8px solid transparent;
+      border-left: 10px solid #fff;
+      border-bottom: 8px solid transparent;
+      position: absolute;
+      top: 50%;
+      right: -10px;
+      transform: translateY(-50%);
+      opacity: 0;
+    }
+  }
+
+  .nav-pills-custom .nav-link.active::before {
+    opacity: 1;
+  }
+
+  /*
+  *
+  * ==========================================
+  * FOR VERTICAL PILLS
+  * ==========================================
+  */
+
+  /* 
+  * ==========================================
+  * Dropdown for the selection of sectors
+  * ==========================================
+  */
+
+  /*Styling Selectbox*/
+  .dropdown {
+    width: 300px;
+    display: inline-block;
+    background-color: #fff;
+    border-radius: 2px;
+    box-shadow: 0 0 2px rgb(204, 204, 204);
+    transition: all 0.5s ease;
+    position: relative;
+    font-size: 14px;
+    color: #474747;
+    height: 100%;
+    text-align: left;
+  }
+
+  .dropdown .select {
+    cursor: pointer;
+    display: block;
+    padding: 10px;
+  }
+
+  .dropdown .select > i {
+    font-size: 13px;
+    color: #888;
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+    float: right;
+    line-height: 20px;
+  }
+
+  .dropdown:hover {
+    box-shadow: 0 0 4px rgb(204, 204, 204);
+  }
+
+  .dropdown:active {
+    background-color: #f8f8f8;
+  }
+
+  .dropdown.active:hover,
+  .dropdown.active {
+    box-shadow: 0 0 4px rgb(204, 204, 204);
+    border-radius: 2px 2px 0 0;
+    background-color: #f8f8f8;
+  }
+
+  .dropdown.active .select > i {
+    transform: rotate(-90deg);
+  }
+
+  .dropdown .dropdown-menu {
+    position: absolute;
+    background-color: #fff;
+    width: 100%;
+    left: 0;
+    margin-top: 1px;
+    box-shadow: 0 1px 2px rgb(204, 204, 204);
+    border-radius: 0 1px 2px 2px;
+    overflow: hidden;
+    display: none;
+    max-height: 144px;
+    overflow-y: auto;
+    z-index: 9;
+  }
+
+  .dropdown .dropdown-menu li {
+    padding: 10px;
+    transition: all 0.2s ease-in-out;
+    cursor: pointer;
+  }
+
+  .dropdown .dropdown-menu {
+    padding: 0;
+    list-style: none;
+  }
+
+  .dropdown .dropdown-menu li:hover {
+    background-color: #f2f2f2;
+  }
+
+  .dropdown .dropdown-menu li:active {
+    background-color: #e2e2e2;
+  }
+</style>
+
+<section>
+  <div
+    class="uk-height-medium uk-flex uk-flex-center uk-flex-middle uk-background-cover uk-light"
+    data-sizes="(min-width: 650px) 650px, 100vw"
+    uk-img
+    style="background-image: url(./static/img/visuals.jpg); height: 100px"
+  >
+    <div class="container">
+      <div class="row text-white">Gender Statistics Portal</div>
+
+      <div class="row">
+        <ul class="uk-breadcrumb">
+          <li><a href="{{ url_for('home') }}" class="text-white">Home</a></li>
+          <li>
+            <a href="{{ url_for('health') }}" class="text-white"
+              >Health Sector</a
+            >
+          </li>
+          <li><span></span></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+<h4 class="uk-heading-line uk-text-center winter-neva-gradient text-black mt-0">
+  The Gender Statistics Portal
+</h4>
+<!-- ============================================================================================================== -->
+<!-- ============================================================================================================== -->
+<div class="uk-container mt-4">
+  <div class="card border border-primary">
+    <div class="card-body">
+      <div class="row">
+        <div class="col-md-4">
+          You can quickly choose which sector to view or which indicator by
+          clicking on the corresponding buttons:
+        </div>
+        <!-- ======================= the sector selection modal ========================== -->
+        <div class="col-md-4 text-center">
+          <!-- Button trigger modal -->
+          <button
+            type="button"
+            class="btn btn-primary btn-lg btn-block text-white"
+            data-toggle="modal"
+            data-target="#exampleModalCenter"
+          >
+            <i class="fas fa-angle-double-right"></i>
+            SELECT SECTOR
+          </button>
+
+          <!-- Modal -->
+          <div
+            class="modal fade"
+            id="exampleModalCenter"
+            tabindex="-1"
+            role="dialog"
+            aria-labelledby="exampleModalCenterTitle"
+            aria-hidden="true"
+          >
+            <div class="modal-dialog modal-notify modal-info" role="document">
+              <!--Content-->
+              <div class="modal-content">
+                <!--Header-->
+                <div class="modal-header">
+                  <p class="heading lead">Select sector</p>
+
+                  <button
+                    type="button"
+                    class="close"
+                    data-dismiss="modal"
+                    aria-label="Close"
+                  >
+                    <span aria-hidden="true" class="white-text">&times;</span>
+                  </button>
+                </div>
+
+                <!--Body-->
+                <div class="modal-body">
+                  <div class="text-center">
+                    <i
+                      class="fas fa-angle-double-right fa-4x mb-3 animated rotateIn"
+                    ></i>
+
+                    <div class="container">
+                      <span class="choose"
+                        >Use dropdown below to select a sector</span
+                      >
+                      <hr />
+                      <div class="dropdown">
+                        <div class="select">
+                          <span>Select sector</span>
+                          <i class="fa fa-chevron-left"></i>
+                        </div>
+                        <input type="hidden" name="gender" />
+                        <ul class="dropdown-menu">
+                          <a href="{{ url_for('accountability') }}">
+                            <li>Accountability</li>
+                          </a>
+                          <a href="{{ url_for('agriculture') }}">
+                            <li>Agriculture</li>
+                          </a>
+                          <a href="{{ url_for('education') }}">
+                            <li>Education</li>
+                          </a>
+                          <a
+                            href="{{ url_for('energy_and_mineral_development') }}"
+                          >
+                            <li>Energy and Mineral Development</li>
+                          </a>
+                          <a href="{{ url_for('ict_and_national_guidance') }}">
+                            <li>ICT and National Guidance</li>
+                          </a>
+                          <a href="{{ url_for('justice_law_and_order') }}">
+                            <li>Justice, Law and Order</li>
+                          </a>
+                          <a href="{{ url_for('lands_and_housing') }}">
+                            <li>Lands and Housing</li>
+                          </a>
+                          <a href="{{ url_for('public_sector_management') }}">
+                            <li>Public Sector Management</li>
+                          </a>
+                          <a
+                            href="{{ url_for('science_technology_and_innovation') }}"
+                          >
+                            <li>Science, Technology and Innovation</li>
+                          </a>
+                          <a href="{{ url_for('social_development') }}">
+                            <li>Social Development</li>
+                          </a>
+                          <a href="{{ url_for('water_and_environment') }}">
+                            <li>Water and Environment</li>
+                          </a>
+                        </ul>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <!--Footer-->
+                <div class="modal-footer justify-content-center">
+                  <a
+                    type="button"
+                    class="btn btn-outline-primary btn-sm waves-effect"
+                    data-dismiss="modal"
+                    >Cancle selection</a
+                  >
+                </div>
+              </div>
+              <!--/.Content-->
+            </div>
+          </div>
+        </div>
+
+        <!-- ======================= the indicators selection modal -->
+        <div class="col-md-4 text-center">
+          <!-- Button trigger modal -->
+          <button
+            type="button"
+            class="btn btn-outline-primary btn-lg btn-block text-white"
+            data-toggle="modal"
+            data-target="#centralModalInfo"
+          >
+            <i class="fas fa-sign-in-alt"></i>
+            SELECT INDICATOR
+          </button>
+
+          <!-- Central Modal Medium Info -->
+          <div
+            class="modal fade"
+            id="centralModalInfo"
+            tabindex="-1"
+            role="dialog"
+            aria-labelledby="myModalLabel"
+            aria-hidden="true"
+          >
+            <div
+              class="modal-dialog modal-dialog-scrollable modal-notify modal-info"
+              role="document"
+            >
+              <!--Content-->
+              <div class="modal-content">
+                <!--Header-->
+                <div class="modal-header">
+                  <p class="heading lead">Select Indicator</p>
+                  <button
+                    type="button"
+                    class="close"
+                    data-dismiss="modal"
+                    aria-label="Close"
+                  >
+                    <span aria-hidden="true" class="white-text">&times;</span>
+                  </button>
+                </div>
+                <!--Body-->
+                <div class="modal-body">
+                  <div class="text-center">
+                    <i
+                      class="fas fa-sign-in-alt fa-4x mb-3 animated rotateIn"
+                    ></i>
+                    <p>
+                      Select from the list below which indicator you wish to
+                      view data for:
+                    </p>
+                    <hr />
+                    <!-- ============== indicator selection form on the modal =============== -->
+                    <form action="" method="post">
+                      <!-- Group of default radios - option 1 -->
+                      <div class="custom-control custom-radio">
+                        <input
+                          type="radio"
+                          class="custom-control-input"
+                          id="defaultGroupExample1"
+                          name="groupOfDefaultRadios"
+                        />
+                        <label
+                          class="custom-control-label"
+                          for="defaultGroupExample1"
+                          >Proportion of children who are exclusively breastfeed
+                          for six months</label
+                        >
+                      </div>
+                      <div class="custom-control custom-radio">
+                        <input
+                          type="radio"
+                          class="custom-control-input"
+                          id="defaultGroupExample1"
+                          name="groupOfDefaultRadios"
+                        />
+                        <label
+                          class="custom-control-label"
+                          for="defaultGroupExample1"
+                          >Proportion of children who are exclusively breastfeed
+                          for six months</label
+                        >
+                      </div>
+                      <div class="custom-control custom-radio">
+                        <input
+                          type="radio"
+                          class="custom-control-input"
+                          id="defaultGroupExample1"
+                          name="groupOfDefaultRadios"
+                        />
+                        <label
+                          class="custom-control-label"
+                          for="defaultGroupExample1"
+                          >Proportion of children who are exclusively breastfeed
+                          for six months</label
+                        >
+                      </div>
+                    </form>
+                    <!-- ============== indicator selection form on the modal =============== -->
+                  </div>
+                </div>
+
+                <!--Footer-->
+                <div class="modal-footer justify-content-center">
+                  <a
+                    type="button"
+                    class="btn btn-outline-primary btn-sm waves-effect"
+                    data-dismiss="modal"
+                    >Cancle selection</a
+                  >
+                </div>
+              </div>
+              <!--/.Content-->
+            </div>
+          </div>
+          <!-- Central Modal Medium Info-->
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ============================================================================================================== -->
+<!-- ============================================================================================================== -->
+<div class="uk-container py-2">
+  <h2
+    class="uk-heading-line uk-text-center blue-gradient text-white pt-1 mt-2 mb-3"
+  >
+    Health Sector
+  </h2>
+  <div class="row">
+    <div class="col-4 uk-text-center">col-4</div>
+    <div class="col-8 uk-text-center">col-8</div>
+  </div>
+</div>
+<section class="py-2 header">
+  <div class="uk-container py-2">
+    <div class="row">
+      <div class="col-md-3">
+        <!-- Tabs nav -->
+        <div
+          class="nav flex-column nav-pills nav-pills-custom"
+          id="v-pills-tab"
+          role="tablist"
+          aria-orientation="vertical"
+        >
+          <a
+            class="nav-link mb-3 p-3 shadow active"
+            id="v-pills-home-tab"
+            data-toggle="pill"
+            href="#v-pills-home"
+            role="tab"
+            aria-controls="v-pills-home"
+            aria-selected="true"
+          >
+            <i class="far fa-chart-bar mr-2"></i>
+            <span class="font-weight-bold small text-uppercase">Graphs</span></a
+          >
+
+          <a
+            class="nav-link mb-3 p-3 shadow"
+            id="v-pills-profile-tab"
+            data-toggle="pill"
+            href="#v-pills-profile"
+            role="tab"
+            aria-controls="v-pills-profile"
+            aria-selected="false"
+          >
+            <i class="fas fa-table mr-2"></i>
+            <span class="font-weight-bold small text-uppercase">Tables</span></a
+          >
+
+          <a
+            class="nav-link mb-3 p-3 shadow"
+            id="v-pills-messages-tab"
+            data-toggle="pill"
+            href="#v-pills-messages"
+            role="tab"
+            aria-controls="v-pills-messages"
+            aria-selected="false"
+          >
+            <i class="fas fa-globe-africa mr-2"></i>
+            <span class="font-weight-bold small text-uppercase">Maps</span></a
+          >
+
+          <a
+            class="nav-link mb-3 p-3 shadow"
+            id="v-pills-settings-tab"
+            data-toggle="pill"
+            href="#v-pills-settings"
+            role="tab"
+            aria-controls="v-pills-settings"
+            aria-selected="false"
+          >
+            <i class="fas fa-server mr-2"></i>
+            <span class="font-weight-bold small text-uppercase text-black"
+              >Meta-data</span
+            ></a
+          >
+        </div>
+      </div>
+
+      <div class="col-md-9">
+        <!-- Tabs content -->
+        <div class="tab-content" id="v-pills-tabContent">
+          <!-- ======================================== The Charts secton here =================================== -->
+          <div
+            class="tab-pane fade shadow rounded bg-white show active p-5"
+            id="v-pills-home"
+            role="tabpanel"
+            aria-labelledby="v-pills-home-tab"
+          >
+            <h4 class="mb-2">
+              Graph Visuals for Gender records in the health sector
+            </h4>
+            <p class="text-muted mb-2 text-black">
+              You are able to view different graphs for the data collected in
+              relation to gender demographics. There are 3 graphs to view here:
+            </p>
+            <hr />
+            <div class="uk-child-width-1-1@s mt-3" uk-grid>
+              <div>
+                <div uk-grid>
+                  <div class="uk-width-auto@m">
+                    <ul
+                      class="uk-tab-left"
+                      uk-tab="connect: #component-tab-left; animation: uk-animation-fade"
+                    >
+                      <li><a href="#">Bar Chart</a></li>
+                      <li><a href="#">Pie Chart</a></li>
+                      <li><a href="#">Boxplot Chart</a></li>
+                    </ul>
+                  </div>
+                  <div class="uk-width-expand@m">
+                    <ul id="component-tab-left" class="uk-switcher">
+                      <li>
+                        <div
+                          id="myChart"
+                          style="overflow-y: scroll; width: 100%"
+                        />
+                      </li>
+                      <li>
+                        <div
+                          id="healthPie"
+                          style="overflow-y: scroll; width: 100%"
+                        ></div>
+                      </li>
+                      <li>
+                        <div
+                          id="healthBox"
+                          style="overflow-y: scroll; width: 100%"
+                        ></div>
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- ======================================== The Tables secton here =================================== -->
+          <div
+            class="tab-pane fade shadow rounded bg-white p-5"
+            id="v-pills-profile"
+            role="tabpanel"
+            aria-labelledby="v-pills-profile-tab"
+          >
+            <h4 class="mb-4">
+              Data Tables for the gender records in the health sector
+            </h4>
+            <p class="text-muted mb-2">
+              The table depicted below contains records collected over time
+              concenring gender records and more.
+            </p>
+            <hr />
+            <div class="table table-responsive table-sm table-striped">
+              <table
+                id="dtBasicExample"
+                class="table table-sm"
+                width="100%"
+                height="80%"
+              >
+                <thead class="blue text-white">
+                  <tr>
+                    <th class="th-lg">NPGEI No</th>
+                    <th class="th-lg">Name of Indicator</th>
+                    <th class="th-lg">Source</th>
+                    <th class="th-lg">Geography</th>
+                    <th class="th-lg">Tier</th>
+                    <th class="th-lg">Males 2013</th>
+                    <th class="th-lg">Females 2013</th>
+                    <th class="th-lg">Total 2013</th>
+                    <th class="th-lg">Males 2015</th>
+                    <th class="th-lg">Females 2015</th>
+                    <th class="th-lg">Total 2015</th>
+                    <th class="th-lg">Males 2017</th>
+                    <th class="th-lg">Females 2017</th>
+                    <th class="th-lg">Total 2017</th>
+                    <th class="th-lg">Males 2021</th>
+                    <th class="th-lg">Females 2021</th>
+                    <th class="th-lg">Total 2021</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+
+          <!-- ======================================== The Maps secton here =================================== -->
+          <div
+            class="tab-pane fade shadow rounded bg-white p-5"
+            id="v-pills-messages"
+            role="tabpanel"
+            aria-labelledby="v-pills-messages-tab"
+          >
+            <h4 class="font-italic mb-4">Map</h4>
+            <p class="font-italic text-muted mb-2">
+              The Map below displays information about gender categorised in
+              Sub-regions of Uganda
+            </p>
+            <hr />
+            <iframe
+              src="{{ url_for('edu_map') }}"
+              width="100%"
+              height="600vh"
+            ></iframe>
+          </div>
+
+          <!-- ======================================== The Meta-data secton here =================================== -->
+          <div
+            class="tab-pane fade shadow rounded bg-white p-5"
+            id="v-pills-settings"
+            role="tabpanel"
+            aria-labelledby="v-pills-settings-tab"
+          >
+            <h4 class="font-italic mb-4">Meta-data</h4>
+            <p class="font-italic text-muted mb-2">
+              The table below details all the necessary information needed to be
+              known about the indicator whose data is being displayed:
+            </p>
+            <div class="table table-responsive table-sm table-striped">
+              <table
+                id="dtBasicExample"
+                class="table table-sm"
+                width="100%"
+                height="80%"
+              >
+                <thead class="blue text-white">
+                  <tr>
+                    <th class="th-lg">Indicator Name</th>
+                    <th class="th-lg">
+                      Definition and Standard Classifications
+                    </th>
+                    <th class="th-lg">Unit of Measure</th>
+                    <th class="th-lg">Disaggregation</th>
+                    <th class="th-lg">Compilation Practices</th>
+                    <th class="th-lg">Sources of data</th>
+                    <th class="th-lg">Computation Method</th>
+                    <th class="th-lg">
+                      Accessibility and Availability of data
+                    </th>
+                    <th class="th-lg">Periodicity of Production</th>
+                    <th class="th-lg">Comments and limitations</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<!--  ================================================================================================================================  -->
+
+<br />
+
+<!-- PLOTLY MAP FOR THE HEALTH SECTOR -->
+<script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+
+<!-- =========================== CHARTS FOR THE HEALTH SECTOR =============================== -->
+
+<script>
+  var trace1 = {
+    x: [
+      "Age in months",
+      "Sex",
+      "Birth interval in months",
+      "Birth order",
+      "Size at birth",
+      "Mother's interview status",
+    ],
+    y: [11.8, 30.9, 28, 0, 39.3, 28.2],
+    type: "bar",
+    text: ["<6", "male", "first birth", "1", "very small", "interviewed"],
+    marker: {
+      color: "rgb(255, 66, 236)",
+    },
+  };
+  var trace2 = {
+    x: [
+      "Age in months",
+      "Sex",
+      "Birth interval in months",
+      "Birth order",
+      "Size at birth",
+      "Mother's interview status",
+    ],
+    y: [16.1, 26.9, 32.5, 0, 34.3, 24.5],
+    type: "bar",
+    text: [
+      "6-8",
+      "female",
+      "<24",
+      "2-3",
+      "small",
+      "not interviewed but in household",
+    ],
+    marker: {
+      color: "rgb(66, 224, 255)",
+    },
+  };
+
+  var data = [trace1, trace2];
+
+  var layout = {
+    title: "Prevalence of stunting in children under 5 years of age (%)",
+    font: {
+      family: "Raleway, sans-serif",
+      size: 10,
+    },
+    showlegend: true,
+    xaxis: {
+      title: {
+        text: "Background characteristic",
+        font: {
+          family: "Courier New, monospace",
+          size: 18,
+          color: "#7f7f7f",
+        },
+      },
+    },
+    yaxis: {
+      title: {
+        text: "2016 Percent - age below -2 SD2 ",
+        font: {
+          family: "Courier New, monospace",
+          size: 18,
+          color: "#7f7f7f",
+        },
+      },
+    },
+    bargap: 0.1,
+  };
+  var config = {
+    responsive: true,
+  };
+
+  Plotly.newPlot("myChart", data, layout);
+</script>
+
+<script>
+  var data = [
+    {
+      type: "pie",
+      values: [2, 3, 4, 4],
+      labels: ["Wages", "Operating expenses", "Cost of sales", "Insurance"],
+      textinfo: "label+percent",
+      insidetextorientation: "radial",
+    },
+  ];
+
+  var layout = [
+    {
+      height: 700,
+      width: 700,
+    },
+  ];
+
+  Plotly.newPlot("healthPie", data, layout);
+</script>
+
+<script>
+  var xData = [
+    "Carmelo<br>Anthony",
+    "Dwyane<br>Wade",
+    "Deron<br>Williams",
+    "Brook<br>Lopez",
+    "Damian<br>Lillard",
+    "David<br>West",
+    "Blake<br>Griffin",
+    "David<br>Lee",
+    "Demar<br>Derozan",
+  ];
+
+  function getrandom(num, mul) {
+    var value = [];
+    for (i = 0; i <= num; i++) {
+      var rand = Math.random() * mul;
+      value.push(rand);
+    }
+    return value;
+  }
+
+  var yData = [
+    getrandom(30, 10),
+    getrandom(30, 20),
+    getrandom(30, 25),
+    getrandom(30, 40),
+    getrandom(30, 45),
+    getrandom(30, 30),
+    getrandom(30, 20),
+    getrandom(30, 15),
+    getrandom(30, 43),
+  ];
+  var colors = [
+    "rgba(93, 164, 214, 0.5)",
+    "rgba(255, 144, 14, 0.5)",
+    "rgba(44, 160, 101, 0.5)",
+    "rgba(255, 65, 54, 0.5)",
+    "rgba(207, 114, 255, 0.5)",
+    "rgba(127, 96, 0, 0.5)",
+    "rgba(255, 140, 184, 0.5)",
+    "rgba(79, 90, 117, 0.5)",
+    "rgba(222, 223, 0, 0.5)",
+  ];
+
+  var data = [];
+
+  for (var i = 0; i < xData.length; i++) {
+    var result = {
+      type: "box",
+      y: yData[i],
+      name: xData[i],
+      boxpoints: "all",
+      jitter: 0.5,
+      whiskerwidth: 0.2,
+      fillcolor: "cls",
+      marker: {
+        size: 2,
+      },
+      line: {
+        width: 1,
+      },
+    };
+    data.push(result);
+  }
+
+  layout = {
+    title: "Points Scored by the Top 9 Scoring NBA Players in 2012",
+    yaxis: {
+      autorange: true,
+      showgrid: true,
+      zeroline: true,
+      dtick: 5,
+      gridcolor: "rgb(255, 255, 255)",
+      gridwidth: 1,
+      zerolinecolor: "rgb(255, 255, 255)",
+      zerolinewidth: 2,
+    },
+    margin: {
+      l: 40,
+      r: 30,
+      b: 80,
+      t: 100,
+    },
+    paper_bgcolor: "rgb(243, 243, 243)",
+    plot_bgcolor: "rgb(243, 243, 243)",
+    showlegend: false,
+  };
+
+  Plotly.newPlot("healthBox", data, layout);
+</script>
+
+<!--  ===================================== end of CHARTS =======================================  -->
+
+<script>
+  /*Dropdown Menu*/
+  $(".dropdown").click(function () {
+    $(this).attr("tabindex", 1).focus();
+    $(this).toggleClass("active");
+    $(this).find(".dropdown-menu").slideToggle(300);
+  });
+  $(".dropdown").focusout(function () {
+    $(this).removeClass("active");
+    $(this).find(".dropdown-menu").slideUp(300);
+  });
+  $(".dropdown .dropdown-menu li").click(function () {
+    $(this).parents(".dropdown").find("span").text($(this).text());
+    $(this)
+      .parents(".dropdown")
+      .find("input")
+      .attr("value", $(this).attr("id"));
+  });
+  /*End Dropdown Menu*/
+
+  $(".dropdown-menu li").click(function () {
+    var input =
+        "<strong>" +
+        $(this).parents(".dropdown").find("input").val() +
+        "</strong>",
+      msg = '<span class="msg">Hidden input value: ';
+    $(".msg").html(msg + input + "</span>");
+  });
+</script>
+
+{% endblock %}

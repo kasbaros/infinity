@@ -43,7 +43,8 @@ def energy_and_mineral_development():
 
 @app.route("/health")
 def health():
-    return render_template("./main_pages/health.html")
+    fetch_all = Sector.query.filter(Sector.sector == "health")
+    return render_template("./main_pages/health.html", health_data=fetch_all)
 
 
 @app.route("/ict_and_national_guidance")
