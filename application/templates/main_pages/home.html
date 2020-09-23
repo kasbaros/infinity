@@ -749,6 +749,23 @@
 
     <!-- ==================== Carosuel JS ===================== -->
     <script></script>
+
+    <!-- ==================== Mailto JS ======================= -->
+    <script>
+      function sendMail() {
+        var name = getElementById("name").value;
+        var email = getElementById("email").value;
+        var message = getElementById("textarea").value;
+        window.location.href =
+          "mailto:invinsiblebaros@gmail.com?subject=The subject - " +
+          name +
+          " (" +
+          email +
+          ")" +
+          "&body=" +
+          message;
+      }
+    </script>
   </head>
 
   <body>
@@ -1009,35 +1026,23 @@
                 </ul>
 
                 <!-- Default form contact -->
-                <form class="text-center p-2" action="#!">
-                  <p class="h5 mb-2">Contact us Directly</p>
-                  <!-- Name -->
-                  <input
-                    type="text"
-                    id="defaultContactFormName"
-                    class="form-control mb-2"
-                    placeholder="Name"
-                  />
-                  <!-- Email -->
-                  <input
-                    type="email"
-                    id="defaultContactFormEmail"
-                    class="form-control mb-2"
-                    placeholder="E-mail"
-                  />
-                  <!-- Message -->
-                  <div class="form-group">
-                    <textarea
-                      class="form-control rounded-0"
-                      id="exampleFormControlTextarea2"
-                      rows="3"
-                      placeholder="Message"
-                    ></textarea>
-                  </div>
-                  <!-- Send button -->
-                  <button class="btn btn-info btn-block mb-2" type="submit">
-                    Send
+                <form
+                  class="text-center p-2"
+                  action="mailto:invinsiblebaros@gmail.com"
+                  method="GET"
+                >
+                  <input type="text" id="name" name="name" />
+                  <input type="email" id="email" name="email" />
+                  <textarea id="textarea" rows="5"></textarea>
+
+                  <button
+                    type="submit"
+                    class="btn btn-primary"
+                    onclick="sendMail()"
+                  >
+                    Contact us
                   </button>
+
                   <!-- Social login -->
                   <a href="#" class="mx-2" role="button"
                     ><i class="fab fa-facebook-f light-blue-text"></i
