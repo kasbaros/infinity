@@ -15,10 +15,10 @@ from .forms import ContactForm
 
 @app.route("/", methods=("GET", "POST"))
 def home():
-    form = ContactForm()
-    if form.validate_on_submit():
-        return redirect(url_for("home"))
-    return render_template("./main_pages/home.html", form=form)
+    # form = ContactForm()
+    # if form.validate_on_submit():
+    #   return redirect(url_for("home"))
+    return render_template("./main_pages/home.html")
 
 
 @app.route("/accountability")
