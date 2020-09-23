@@ -416,7 +416,7 @@
   <div class="row">
     <div class="col-4 uk-text-center">Indicator:</div>
     <div class="col-8 uk-text-center">
-      {% for row in health_data %} {{ row.indicator|first }} {% endfor %}
+      Name of Indicator choosen will be displayed here
     </div>
   </div>
 </div>
@@ -702,6 +702,7 @@
 <!-- =========================== CHARTS FOR THE HEALTH SECTOR =============================== -->
 
 <script>
+  /* Bar graph */
   var trace1 = {
     x: [
       "Age in months",
@@ -781,11 +782,50 @@
 </script>
 
 <script>
+  /* Piechart */
   var data = [
     {
       type: "pie",
-      values: [2, 3, 4, 4],
-      labels: ["Wages", "Operating expenses", "Cost of sales", "Insurance"],
+      values: [
+        pie13m,
+        pie13f,
+        pie13t,
+        pie14m,
+        pie14f,
+        pie14t,
+        pie15m,
+        pie15f,
+        pie15t,
+        pie16m,
+        pie16f,
+        pie16t,
+        pie17m,
+        pie17f,
+        pie17t,
+        pie21m,
+        pie21f,
+        pie21t,
+      ],
+      labels: [
+        "2013 males",
+        "2013 females",
+        "2013 total",
+        "2013 males",
+        "2013 females",
+        "2013 total",
+        "2013 males",
+        "2013 females",
+        "2013 total",
+        "2013 males",
+        "2013 females",
+        "2013 total",
+        "2013 males",
+        "2013 females",
+        "2013 total",
+        "2013 males",
+        "2013 females",
+        "2013 total",
+      ],
       textinfo: "label+percent",
       insidetextorientation: "radial",
     },
@@ -802,6 +842,7 @@
 </script>
 
 <script>
+  /* Boxplot */
   var xData = [
     "Carmelo<br>Anthony",
     "Dwyane<br>Wade",

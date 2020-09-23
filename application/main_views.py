@@ -44,7 +44,46 @@ def energy_and_mineral_development():
 @app.route("/health")
 def health():
     fetch_all = Sector.query.filter(Sector.sector == "health")
-    return render_template("./main_pages/health.html", health_data=fetch_all)
+    """h_13m = Sector.query.filter(Sector.sector == health2013 
+    h_13f = Sector.query.filter(Sector.sector == health2013 fe
+    h_13t = Sector.query.filter(Sector.sector == health2013 
+    h_14m = Sector.query.filter(Sector.sector == health2014 
+    h_14f = Sector.query.filter(Sector.sector == health2014 fe
+    h_14t = Sector.query.filter(Sector.sector == health2014 
+    h_15m = Sector.query.filter(Sector.sector == health2015 
+    h_15f = Sector.query.filter(Sector.sector == health2015 fe
+    h_15t = Sector.query.filter(Sector.sector == health2015 
+    h_16m = Sector.query.filter(Sector.sector == health2016 
+    h_16f = Sector.query.filter(Sector.sector == health2016 fe
+    h_16t = Sector.query.filter(Sector.sector == health2016 
+    h_17m = Sector.query.filter(Sector.sector == health2017 
+    h_17f = Sector.query.filter(Sector.sector == health2017 fe
+    h_17t = Sector.query.filter(Sector.sector == health2017 
+    h_21m = Sector.query.filter(Sector.sector == health2021
+    h_21f = Sector.query.filter(Sector.sector == health2021
+    h_21t = Sector.query.filter(Sector.sector == health2021"""
+    return render_template(
+        "./main_pages/health.html",
+        health_data=fetch_all,
+        # h_13m=h_13m,
+        # h_13f=h_13f,
+        # h_13t=h_13t,
+        # h_14m=h_14m,
+        # h_14f=h_14f,
+        # h_14t=h_14t,
+        # h_15m=h_15m,
+        # h_15f=h_15f,
+        # h_15t=h_15t,
+        # h_16m=h_16m,
+        # h_16f=h_16f,
+        # h_16t=h_16t,
+        # h_17m=h_17m,
+        # h_17f=h_17f,
+        # h_17t=h_17t,
+        # h_21m=h_21m,
+        # h_21f=h_21f,
+        # h_21t=h_21t,
+    )
 
 
 @app.route("/ict_and_national_guidance")
