@@ -379,7 +379,9 @@
                             {{row.indicator}}
                           </option>
                           {% endfor %} {% else %}
-                          <option>No indicators avaible for this sector</option>
+                          <option>
+                            {{ "No indicators avaible for this sector" }}
+                          </option>
                           {% endif %}
                         </select>
                       </div>
