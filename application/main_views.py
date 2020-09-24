@@ -15,10 +15,10 @@ from .forms import ContactForm
 
 @app.route("/", methods=("GET", "POST"))
 def home():
-    # form = ContactForm()
-    # if form.validate_on_submit():
-    #   return redirect(url_for("home"))
-    return render_template("./main_pages/home.html")
+    form = ContactForm()
+    if form.validate_on_submit():
+        return redirect(url_for("home"))
+    return render_template("./main_pages/home.html", form=form)
 
 
 @app.route("/accountability")
@@ -43,7 +43,7 @@ def energy_and_mineral_development():
 
 @app.route("/health")
 def health():
-    fetch_all = Sector.query.all()
+    fetch_all = Sector.query.filter(Sector.sector == "health")
     """h_13m = Sector.query.filter(Sector.sector == health2013 
     h_13f = Sector.query.filter(Sector.sector == health2013 fe
     h_13t = Sector.query.filter(Sector.sector == health2013 
@@ -64,7 +64,7 @@ def health():
     h_21t = Sector.query.filter(Sector.sector == health2021"""
     return render_template(
         "./main_pages/health.html",
-        health_data=fetch_all
+        health_data=fetch_all,
         # h_13m=h_13m,
         # h_13f=h_13f,
         # h_13t=h_13t,
