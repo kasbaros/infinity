@@ -4,11 +4,6 @@ from flask_script import Manager
 from flask_sqlalchemy import SQLAlchemy
 from flask_migrate import Migrate, MigrateCommand
 
-# from application import app, db
-
-
-# from sqlalchemy import create_engine
-
 app = Flask(__name__, template_folder="templates")
 app.config["SECRET_KEY"] = os.environ.get("SECRET_KEY")
 app.config["SQLALCHEMY_ECHO"] = False
