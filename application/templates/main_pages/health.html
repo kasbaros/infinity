@@ -373,11 +373,14 @@
                       <div class="uk-margin">
                         <select class="uk-select">
                           <option>Select indicator from list below</option>
-                          {% for row in health_data %}
+                          {% if health_data is defined %} {% for row in
+                          health_data %}
                           <option value="{{ row.indicator }}">
                             {{row.indicator}}
                           </option>
-                          {% endfor %}
+                          {% endfor %} {% else %}
+                          <option>No indicators avaible for this sector</option>
+                          {% endif %}
                         </select>
                       </div>
                     </form>
@@ -570,6 +573,7 @@
                 <thead class="blue text-white">
                   <tr>
                     <th class="th-lg">NPGEI No</th>
+                    <th class="th-lg">Sector</th>
                     <th class="th-lg">Name of Indicator</th>
                     <th class="th-lg">Source</th>
                     <th class="th-lg">Geography</th>
@@ -577,9 +581,15 @@
                     <th class="th-lg">Males 2013</th>
                     <th class="th-lg">Females 2013</th>
                     <th class="th-lg">Total 2013</th>
+                    <th class="th-lg">Males 2014</th>
+                    <th class="th-lg">Females 2014</th>
+                    <th class="th-lg">Total 2014</th>
                     <th class="th-lg">Males 2015</th>
                     <th class="th-lg">Females 2015</th>
                     <th class="th-lg">Total 2015</th>
+                    <th class="th-lg">Males 2016</th>
+                    <th class="th-lg">Females 2016</th>
+                    <th class="th-lg">Total 2016</th>
                     <th class="th-lg">Males 2017</th>
                     <th class="th-lg">Females 2017</th>
                     <th class="th-lg">Total 2017</th>
@@ -589,25 +599,46 @@
                   </tr>
                 </thead>
                 <tbody>
+                  {% if health_data is defined %} {% for row in health_data %}
                   <tr>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
+                    <td>{{ row["npgei"] }}</td>
+                    <td>{{ row["sector"] }}</td>
+                    <td>{{ row["indicator"] }}</td>
+                    <td>{{ row["source"] }}</td>
+                    <td>{{ row["geo"] }}</td>
+                    <td>{{ row["tier"] }}</td>
+                    <td>{{ row["males_2013"] }}</td>
+                    <td>{{ row["females_2013"] }}</td>
+                    <td>{{ row["total_2013"] }}</td>
+                    <td>{{ row["males_2014"] }}</td>
+                    <td>{{ row["females_2014"] }}</td>
+                    <td>{{ row["total_2014"] }}</td>
+                    <td>{{ row["males_2015"] }}</td>
+                    <td>{{ row["females_2015"] }}</td>
+                    <td>{{ row["total_2015"] }}</td>
+                    <td>{{ row["males_2016"] }}</td>
+                    <td>{{ row["females_2016"] }}</td>
+                    <td>{{ row["total_2016"] }}</td>
+                    <td>{{ row["males_2017"] }}</td>
+                    <td>{{ row["females_2017"] }}</td>
+                    <td>{{ row["total_2017"] }}</td>
+                    <td>{{ row["males_2021"] }}</td>
+                    <td>{{ row["females_2021"] }}</td>
+                    <td>{{ row["total_2021"] }}</td>
                   </tr>
+                  {% else %}
+                  <article class="uk-article">
+                    <h1 class="uk-article-title">
+                      <a class="uk-link-reset" href="">No data yet</a>
+                    </h1>
+                    <p>
+                      There is not data yet to show in this sector. Our data
+                      collection teams are doing the data collection currently
+                      and once the data is available, it will be provided here
+                      for your disposal. Thank you
+                    </p>
+                  </article>
+                  {% endfor %}{% endif %}
                 </tbody>
               </table>
             </div>

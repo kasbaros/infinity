@@ -44,6 +44,7 @@ def energy_and_mineral_development():
 @app.route("/health")
 def health():
     fetch_all = Sector.query.filter(Sector.sector == "health")
+
     """h_13m = Sector.query.filter(Sector.sector == health2013 
     h_13f = Sector.query.filter(Sector.sector == health2013 fe
     h_13t = Sector.query.filter(Sector.sector == health2013 
