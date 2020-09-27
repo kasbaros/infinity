@@ -176,8 +176,10 @@
         <ul class="uk-breadcrumb">
           <li><a href="{{ url_for('home') }}" class="text-white">Home</a></li>
           <li>
-            <a href="{{ url_for('health') }}" class="text-white"
-              >Health Sector</a
+            <a
+              href="{{ url_for('ict_and_national_guidance') }}"
+              class="text-white"
+              >ICT and National Guidance sector</a
             >
           </li>
           <li><span></span></li>
@@ -199,6 +201,7 @@
           You can quickly choose which sector to view or which indicator by
           clicking on the corresponding buttons:
         </div>
+        <!-- ======================= the sector selection modal ========================== -->
         <!-- ======================= the sector selection modal ========================== -->
         <div class="col-md-4 text-center">
           <!-- Button trigger modal -->
@@ -269,10 +272,10 @@
                           <a
                             href="{{ url_for('energy_and_mineral_development') }}"
                           >
-                            <li>Energy and Mineral Development</li>
+                            <li>Eneryg and Mineral Development</li>
                           </a>
-                          <a href="{{ url_for('ict_and_national_guidance') }}">
-                            <li>ICT and National Guidance</li>
+                          <a href="{{ url_for('health') }}">
+                            <li>Health</li>
                           </a>
                           <a href="{{ url_for('justice_law_and_order') }}">
                             <li>Justice, Law and Order</li>
@@ -315,6 +318,7 @@
           </div>
         </div>
 
+        <!-- ======================= the indicators selection modal -->
         <!-- ======================= the indicators selection modal -->
         <div class="col-md-4 text-center">
           <!-- Button trigger modal -->
@@ -367,49 +371,24 @@
                     </p>
                     <hr />
                     <!-- ============== indicator selection form on the modal =============== -->
-                    <form action="" method="post">
+                    <form action="" method="GET">
                       <!-- Group of default radios - option 1 -->
-                      <div class="custom-control custom-radio">
-                        <input
-                          type="radio"
-                          class="custom-control-input"
-                          id="defaultGroupExample1"
-                          name="groupOfDefaultRadios"
-                        />
-                        <label
-                          class="custom-control-label"
-                          for="defaultGroupExample1"
-                          >Proportion of children who are exclusively breastfeed
-                          for six months</label
-                        >
-                      </div>
-                      <div class="custom-control custom-radio">
-                        <input
-                          type="radio"
-                          class="custom-control-input"
-                          id="defaultGroupExample1"
-                          name="groupOfDefaultRadios"
-                        />
-                        <label
-                          class="custom-control-label"
-                          for="defaultGroupExample1"
-                          >Proportion of children who are exclusively breastfeed
-                          for six months</label
-                        >
-                      </div>
-                      <div class="custom-control custom-radio">
-                        <input
-                          type="radio"
-                          class="custom-control-input"
-                          id="defaultGroupExample1"
-                          name="groupOfDefaultRadios"
-                        />
-                        <label
-                          class="custom-control-label"
-                          for="defaultGroupExample1"
-                          >Proportion of children who are exclusively breastfeed
-                          for six months</label
-                        >
+                      <div class="uk-margin">
+                        <select class="uk-select" id="mySelect">
+                          <option>Select indicator from list below</option>
+                          {% for row in ict_data %} {% if ict_data is defined %}
+                          <option
+                            value="{{ row.indicator }}"
+                            id="indicator_{{ row._id }}"
+                          >
+                            {{row.indicator}}
+                          </option>
+                          {% else %}
+                          <option>
+                            {{ "No indicators avaible for this sector" }}
+                          </option>
+                          {% endif %} {% endfor %}
+                        </select>
                       </div>
                     </form>
                     <!-- ============== indicator selection form on the modal =============== -->
@@ -442,11 +421,11 @@
   <h2
     class="uk-heading-line uk-text-center blue-gradient text-white pt-1 mt-2 mb-3"
   >
-    Health Sector
+    ICT and National Guidance sector
   </h2>
   <div class="row">
-    <div class="col-4 uk-text-center">col-4</div>
-    <div class="col-8 uk-text-center">col-8</div>
+    <div class="col-4 uk-text-center">Indicator:</div>
+    <div class="col-8 uk-text-center text-success" id="indicator_name"></div>
   </div>
 </div>
 <section class="py-2 header">
@@ -527,7 +506,8 @@
             aria-labelledby="v-pills-home-tab"
           >
             <h4 class="mb-2">
-              Graph Visuals for Gender records in the health sector
+              Graph Visuals for Gender records in the ICT and National Guidance
+              sector
             </h4>
             <p class="text-muted mb-2 text-black">
               You are able to view different graphs for the data collected in
@@ -557,13 +537,13 @@
                       </li>
                       <li>
                         <div
-                          id="healthPie"
+                          id="ictPie"
                           style="overflow-y: scroll; width: 100%"
                         ></div>
                       </li>
                       <li>
                         <div
-                          id="healthBox"
+                          id="ictBox"
                           style="overflow-y: scroll; width: 100%"
                         ></div>
                       </li>
@@ -582,7 +562,8 @@
             aria-labelledby="v-pills-profile-tab"
           >
             <h4 class="mb-4">
-              Data Tables for the gender records in the health sector
+              Data Tables for the gender records in the ICT and National
+              Guidance sector
             </h4>
             <p class="text-muted mb-2">
               The table depicted below contains records collected over time
@@ -599,6 +580,7 @@
                 <thead class="blue text-white">
                   <tr>
                     <th class="th-lg">NPGEI No</th>
+                    <th class="th-lg">Sector</th>
                     <th class="th-lg">Name of Indicator</th>
                     <th class="th-lg">Source</th>
                     <th class="th-lg">Geography</th>
@@ -606,9 +588,15 @@
                     <th class="th-lg">Males 2013</th>
                     <th class="th-lg">Females 2013</th>
                     <th class="th-lg">Total 2013</th>
+                    <th class="th-lg">Males 2014</th>
+                    <th class="th-lg">Females 2014</th>
+                    <th class="th-lg">Total 2014</th>
                     <th class="th-lg">Males 2015</th>
                     <th class="th-lg">Females 2015</th>
                     <th class="th-lg">Total 2015</th>
+                    <th class="th-lg">Males 2016</th>
+                    <th class="th-lg">Females 2016</th>
+                    <th class="th-lg">Total 2016</th>
                     <th class="th-lg">Males 2017</th>
                     <th class="th-lg">Females 2017</th>
                     <th class="th-lg">Total 2017</th>
@@ -618,25 +606,46 @@
                   </tr>
                 </thead>
                 <tbody>
+                  {% if ict_data is defined %} {% for row in ict_data %}
                   <tr>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
+                    <td>{{ row["npgei"] }}</td>
+                    <td>{{ row["sector"] }}</td>
+                    <td>{{ row["indicator"] }}</td>
+                    <td>{{ row["source"] }}</td>
+                    <td>{{ row["geo"] }}</td>
+                    <td>{{ row["tier"] }}</td>
+                    <td>{{ row["males_2013"] }}</td>
+                    <td>{{ row["females_2013"] }}</td>
+                    <td>{{ row["total_2013"] }}</td>
+                    <td>{{ row["males_2014"] }}</td>
+                    <td>{{ row["females_2014"] }}</td>
+                    <td>{{ row["total_2014"] }}</td>
+                    <td>{{ row["males_2015"] }}</td>
+                    <td>{{ row["females_2015"] }}</td>
+                    <td>{{ row["total_2015"] }}</td>
+                    <td>{{ row["males_2016"] }}</td>
+                    <td>{{ row["females_2016"] }}</td>
+                    <td>{{ row["total_2016"] }}</td>
+                    <td>{{ row["males_2017"] }}</td>
+                    <td>{{ row["females_2017"] }}</td>
+                    <td>{{ row["total_2017"] }}</td>
+                    <td>{{ row["males_2021"] }}</td>
+                    <td>{{ row["females_2021"] }}</td>
+                    <td>{{ row["total_2021"] }}</td>
                   </tr>
+                  {% endfor %} {% else %}
+                  <article class="uk-article">
+                    <h1 class="uk-article-title">
+                      <a class="uk-link-reset" href="">No data yet</a>
+                    </h1>
+                    <p>
+                      There is not data yet to show in this sector. Our data
+                      collection teams are doing the data collection currently
+                      and once the data is available, it will be provided here
+                      for your disposal. Thank you
+                    </p>
+                  </article>
+                  {% endif %}
                 </tbody>
               </table>
             </div>
@@ -725,10 +734,10 @@
 
 <br />
 
-<!-- PLOTLY MAP FOR THE HEALTH SECTOR -->
+<!-- PLOTLY MAP FOR THE ICT and National Guidance sector -->
 <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
 
-<!-- =========================== CHARTS FOR THE HEALTH SECTOR =============================== -->
+<!-- =========================== CHARTS FOR THE ICT and National Guidance sector =============================== -->
 
 <script>
   var trace1 = {
@@ -827,7 +836,7 @@
     },
   ];
 
-  Plotly.newPlot("healthPie", data, layout);
+  Plotly.newPlot("ictPie", data, layout);
 </script>
 
 <script>
@@ -919,7 +928,7 @@
     showlegend: false,
   };
 
-  Plotly.newPlot("healthBox", data, layout);
+  Plotly.newPlot("ictBox", data, layout);
 </script>
 
 <!--  ===================================== end of CHARTS =======================================  -->
@@ -951,6 +960,16 @@
         "</strong>",
       msg = '<span class="msg">Hidden input value: ';
     $(".msg").html(msg + input + "</span>");
+  });
+
+  /*  Select field test script to echo the id of the selected option of the indicator selection field  */
+  $("#mySelect").change(function () {
+    var value = $(this).val();
+    if (value != "" || value != " " || value != null) {
+      $("#indicator_name").text(value);
+    } else {
+      $("#indicator_name").html(value[0]);
+    }
   });
 </script>
 

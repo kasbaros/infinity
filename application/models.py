@@ -59,16 +59,18 @@ class Sector(db.Model):
 
 class Metadata(db.Model):
     sector = db.Column(db.String(50), nullable=False)
-    indicator = db.Column(db.String(50), unique=True, nullable=False, primary_key=True)
+    indicator = db.Column(
+        db.String(1000), unique=True, nullable=False, primary_key=True
+    )
     definition = db.Column(db.String(2000))
     unit = db.Column(db.String(30))
     method = db.Column(db.String(500))
     compilation = db.Column(db.String(1000))
     source = db.Column(db.String(200))
-    disaggregation = db.Column(db.String(50))
-    accessibility = db.Column(db.String(50))
-    periodicity = db.Column(db.String(50))
-    comments = db.Column(db.String(90))
+    disaggregation = db.Column(db.String(100))
+    accessibility = db.Column(db.String(100))
+    periodicity = db.Column(db.String(100))
+    comments = db.Column(db.String(100))
 
     def __repr__(self):
         return f"Metadata('{self.sector},{self.indicator},{self.definition},{self.unit},{self.method},{self.compilation},{self.source},{self.disaggregation},{self.accessibility},{self.periodicity},{self.comments}')"
@@ -77,7 +79,7 @@ class Metadata(db.Model):
 class News(db.Model):
     _id = db.Column(db.Integer(), unique=True, nullable=False, primary_key=True)
     title = db.Column(db.String(100), unique=True, nullable=False)
-    content = db.Column(db.String(10), unique=True, nullable=False)
+    content = db.Column(db.String(20000), unique=True, nullable=False)
 
     def __repr__(self):
         return f"News('{self._id}, {self.title}, {self.content}')"

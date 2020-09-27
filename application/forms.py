@@ -16,3 +16,9 @@ class ContactForm(FlaskForm):
     )
     recaptcha = RecaptchaField()
     submit = SubmitField("Submit")
+
+
+class IndicatorSelection(FlaskForm):
+    """ Indicator selection form to display particular indicator once selected """
+
+    pass
